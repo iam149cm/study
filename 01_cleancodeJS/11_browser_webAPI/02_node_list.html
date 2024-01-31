@@ -1,0 +1,45 @@
+
+<html>
+<body>
+    <!-- header -->
+    <header></header>
+    <!-- Node 문서 내의 모든 객체-->
+    <!-- Element : Tag 로 둘러싸인 요소-->
+
+    <main>
+    <div>
+        <div>
+            <span></span> 
+        </div>
+        <!-- contents -->
+            <div>
+                <p></p>
+            </div>
+            <article>
+                <section></section>
+            </article>
+            <article>
+                <section></section>
+            </article>
+        </main>
+
+    </div>
+</html>
+
+
+
+<script>
+    // NodeList 객체에는 entries() / forEach() / keys() / values() / item() / length 등의 메서드가 있다.
+const arr = document.querySelectorAll('a');
+console.log(arr); // NodeList(3) [a, a, a]
+
+const anchor = document.querySelector('a');
+console.log(anchor); // <a href="https://www.naver.com/">네이버</a>
+
+
+// Node : HTML 을 여러개로 형상화 하여 담아낸 것이 NodeList 이다.
+// NodeList 는 [...arr] 로 형변환을 거친다.
+const arrFromNode = [ ...arr ]
+console.log(arrFromNode); // (3) [a, a, a] ----- 일반적인 배열이 되었다.
+
+</script>
