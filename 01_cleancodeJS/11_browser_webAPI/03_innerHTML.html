@@ -1,0 +1,35 @@
+<html>
+    <body>
+        <main></main>
+    </body>
+    <script>
+        /* h1 태그와 동일하게 파싱되길 기대 */
+        const string = "<h1>Hi there!</h1>";
+        document.querySelector('main').innerHTML = string;
+
+        /* 위와 같이 삽입된다. 그러나 innerHTML 은 굉장히 오래됐고 좋지 않다.
+        - Cross Site Scripting (XSS) 공격에 취약하다. (사용자 입력을 그대로 삽입하기 때문)
+        
+        1. document.setHTML() 를 사용하면 XSS 공격을 방어할 수 있다.
+        - caniuse.com 에서 지원 여부를 확인할 수 있다.
+
+        2. Element.insertAdjacentHTML() 을 사용하면 XSS 공격을 방어할 수 있다.
+        - 더 많은 제어를 할 수 있다. (위치를 지정할 수 있다.)
+        - beforebegin, afterbegin, beforeend, afterend
+        - https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentHTML
+
+        */
+
+        // 함수에 인자로 위치와 문자열을 넘긴다
+        document.querySelector('main').insertAdjacentHTML('beforebegin','<h1>Hello World!</h1>'); 
+        document.querySelector('main').insertAdjacentHTML('afterbegin','<h1>Hello World!</h1>'); 
+
+        // 문자열을 랜더링하는 경우, innerHTML을 호출하는 대신 innerText 를 사용.
+        // 그러나 innerText 는 리플로우가 발생. XSS 공격의 가능성이 있다.
+        // 이 경우 textContent() 혹은 insertAdjacentText() 사용할 수 있다.
+        document.querySelector('main').insertAdjacentText('afterbegin','Hello World!'); 
+
+        // 👉 insertAdjacentElement(), insertAdjacentText(), insertAdjacentHTML() 사용을 권장한다.
+
+    </script>
+</html>

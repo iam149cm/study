@@ -1,0 +1,42 @@
+<!-- Data Attribute -->
+<html>
+    <body>
+        
+        <input type="text" class="" id=""/>
+
+        <!-- Attribute 의 좋지 않은 사례 
+        - 비표준 속성. 존재하지 않는 속성을 강제로 끼워 넣음. 동작은 잘 됨.
+        - 과거에는 html 에 커스텀한 속성을 추가하기도 했다. 그러나 문법적으로는 잘못된 방법이다.
+        - 이를 제한하기 위해 표준 속성 (data-*) 을 사용한다.
+        -->
+        <h1 안녕="하세요">Hello World</h1>
+        <main hello="world"></main>
+
+        <!-- data- 를 사용하면 표준 속성이다. (케밥 케이스) -->
+        <h1 id="electriccars"
+        data-columns="3"
+        data-index-numbers="12345"
+        data-parents="cars">Hello World</h1>
+
+    </body>
+    <script>
+        // getAttribute() 를 사용하여 data- 속성을 가져올 수 있다. 
+        // 그러나 data- 속성을 가져올 때는 dataset 을 사용하는 것이 좋다.
+        const main = document.querySelector('main');
+        console.log(main.getAttribute('hello')); // world
+
+        // 그러나 data- 속성을 가져올 때는 dataset 을 사용하는 것이 좋다.
+        /* 이유 : html 태그는 attribute 에 케밥 케이스를 사용하는 것을 권고한다.
+           그러나 자바스크립트에서는 케밥케이스를 사용할 수 없다. 자바스크립트는 주로 카멜/파스칼 케이스를 사용한다.
+           dataset 을 사용하면 자바스크립트에서 자동으로 케밥 케이스를 카멜/파스칼 케이스로 변환해준다.
+        */
+        const h1 = document.querySelector('h1');
+        console.log(h1.dataset('id')); // electriccars
+        console.log(h1.dataset('columns')); // 3
+        console.log(h1.dataset('indexNumbers')); // 12345
+        console.log(h1.dataset('parents')); // cars
+
+        /* 분석 툴 이외에도 테스트 툴인 cypress 사용할 때 data-cy 를 사용한다. */
+
+    </script>
+</html>
