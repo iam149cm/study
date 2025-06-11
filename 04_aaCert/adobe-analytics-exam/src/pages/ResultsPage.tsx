@@ -41,6 +41,10 @@ const ResultsPage: React.FC = () => {
   const [results, setResults] = useState<QuizResult | null>(null);
   const [expandedRows, setExpandedRows] = useState<{ [key: number]: boolean }>({});
 
+  useEffect(() => {
+    console.log('결과 페이지에 진입했습니다.');
+  }, []);
+
   const fireConfetti = useCallback(() => {
     const duration = 3 * 1000;
     const animationEnd = Date.now() + duration;

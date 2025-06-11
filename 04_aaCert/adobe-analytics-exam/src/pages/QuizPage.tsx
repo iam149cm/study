@@ -43,6 +43,18 @@ const QuizPage: React.FC = () => {
 
   const currentQuestion = quizQuestions[currentQuestionIndex];
 
+  // 페이지 진입 시 로그
+  useEffect(() => {
+    console.log('퀴즈 페이지에 진입했습니다.');
+  }, []);
+
+  // 문제 변경 시 로그
+  useEffect(() => {
+    if (currentQuestionIndex > 0) {
+      console.log(`현재 ${currentQuestionIndex + 1}번 문제입니다.`);
+    }
+  }, [currentQuestionIndex]);
+
   useEffect(() => {
     const timer = setInterval(() => {
       setTimeLeft((prev) => {

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { 
   Container, 
@@ -12,6 +12,10 @@ import AssessmentIcon from '@mui/icons-material/Assessment';
 
 const HomePage: React.FC = () => {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    console.log('홈페이지에 진입했습니다.');
+  }, []);
 
   return (
     <Container maxWidth="sm">
