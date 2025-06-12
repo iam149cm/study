@@ -1,7 +1,6 @@
 #!/bin/bash
 
-# 배포 대상 경로
-TARGET_DIR="study/04_aaCert/adobe-analytics-exam"
+TARGET_DIR="04_aaCert/adobe-analytics-exam"
 
 echo "🚀 이동: $TARGET_DIR"
 cd "$TARGET_DIR" || exit 1
