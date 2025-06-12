@@ -431,5 +431,427 @@ export const questions: Question[] = [
     },
     answer: ["A", "C"],
     explanation: "SDR에는 비즈니스 요구사항을 변수에 매핑한 내용과 데이터 레이어 사양이 포함되어야 합니다. 이는 구현의 기초가 되는 중요한 문서입니다."
+  },
+  {
+    id: 36,
+    question: "Which syntax correctly sets a merchandising eVar in the s.products string using product syntax?",
+    options: {
+      A: "s.products = 'Footwear;Running Shoes;1;69.95;eVar3=Discount'",
+      B: "s.products = 'Footwear;Running Shoes;1;69.95;;;eVar3=Discount'",
+      C: "s.products = 'Footwear;Running Shoes;1;69.95;;eVar3=Discount'",
+      D: "s.products = 'Footwear;Running Shoes;1;69.95;eVar3:Discount'"
+    },
+    answer: ["C"],
+    explanation: "product syntax에서 merchandising eVar는 6번째 위치에 들어가야 하므로, 다섯 번째 필드를 비워두기 위해 세미콜론(;)을 두 번 연속으로 써야 합니다."
+  },
+  {
+    id: 37,
+    question: "How can values from context data variables be transferred to props and eVars in Adobe Analytics?",
+    options: {
+      A: "By using Data Warehouse",
+      B: "By enabling the variables in Launch",
+      C: "By using Processing Rules",
+      D: "By writing a custom JavaScript plugin"
+    },
+    answer: ["C"],
+    explanation: "Context data 값은 Processing Rules를 통해 props, eVars, events에 매핑되어야 Analytics 보고서에 나타납니다."
+  },
+  {
+    id: 38,
+    question: "Which method allows a mobile app developer to send analytics data to multiple report suites?",
+    options: {
+      A: "Use a Virtual Report Suite",
+      B: "Specify multiple rsids in the 'analytics.rsids' field, comma-separated and no spaces",
+      C: "Enable multi-suite tracking in Processing Rules",
+      D: "Use Report Builder to duplicate data"
+    },
+    answer: ["B"],
+    explanation: "모바일 SDK 설정에서 'analytics.rsids' 항목에 복수의 RSID를 쉼표로 구분해 입력하면, 동일한 데이터를 여러 Report Suite에 전송할 수 있습니다."
+  },
+  {
+    id: 39,
+    question: "How does the s_gi() function behave when called with a report suite ID?",
+    options: {
+      A: "It returns a unique session ID",
+      B: "It sends data to Adobe Analytics immediately",
+      C: "It returns a tracking object instance for the specified report suite ID",
+      D: "It opens the report suite interface in Adobe Analytics"
+    },
+    answer: ["C"],
+    explanation: "s_gi() 함수는 지정된 Report Suite ID에 대한 tracking object 인스턴스를 반환하며, 이 객체를 통해 eVar, prop 설정 및 데이터 전송이 가능합니다."
+  },
+  {
+    id: 40,
+    question: "What is a key characteristic of tags in Adobe Launch?",
+    options: {
+      A: "Tags store raw data in the Adobe cloud",
+      B: "Tags allow for custom database connections",
+      C: "Tags execute code based on defined conditions or events",
+      D: "Tags automatically deduplicate tracking data"
+    },
+    answer: ["C"],
+    explanation: "태그(tag)는 사용자가 정의한 조건이나 이벤트에 따라 JavaScript 코드 또는 추적 명령을 실행하는 방식으로 동작합니다."
+  },
+  {
+    id: 41,
+    question: "During an Adobe Analytics implementation review, the analyst sees 'TypeError: Cannot read property eVar1 of null' in the debugger console. How does this affect data accuracy?",
+    options: {
+      A: "The value is partially sent to Adobe Analytics with fallback",
+      B: "The eVar1 value is not set and will be missing from the report",
+      C: "Adobe Analytics auto-fixes this during ingestion",
+      D: "It only affects JavaScript logging, not data collection"
+    },
+    answer: ["B"],
+    explanation: "JavaScript 오류로 인해 eVar1이 설정되지 않으면 해당 히트에서 값이 전송되지 않으며, 보고서에 eVar1 값이 누락됩니다."
+  },
+  {
+    id: 42,
+    question: "An analyst notices that the Page Name variable is frequently missing or inconsistent in reports. What is the most likely cause?",
+    options: {
+      A: "The Page Name variable is not enabled from Adobe Analytics UI",
+      B: "JavaScript errors on the website are preventing the Page Name variable from being captured",
+      C: "The Page Name variable is not configured in Adobe Launch",
+      D: "The Page Name variable is set to expire too quickly"
+    },
+    answer: ["B"],
+    explanation: "페이지 로딩 시 자바스크립트 오류가 발생하면 pageName 설정 코드가 실행되지 않아 값이 누락될 수 있습니다."
+  },
+  {
+    id: 43,
+    question: "After completing an implementation, a developer sees eVar data in the debugger but not in reports. What is the likely reason?",
+    options: {
+      A: "The eVars are not included in the report suite settings",
+      B: "The eVars are not passed in the image request",
+      C: "The eVars are not enabled in the Adobe Analytics report suite",
+      D: "The eVars were not added to the workspace project"
+    },
+    answer: ["C"],
+    explanation: "보고서에 값이 나타나지 않는 경우, 해당 eVar가 Report Suite 설정에서 활성화되지 않았을 가능성이 큽니다."
+  },
+  {
+    id: 44,
+    question: "Which method is used to dynamically change a report suite in the Adobe Launch configuration?",
+    options: {
+      A: "Enable Report Suite Switcher Extension",
+      B: "Map a dynamic data element to the report suite ID field",
+      C: "Use Processing Rules to change RSIDs",
+      D: "Use Virtual Report Suite logic in custom code"
+    },
+    answer: ["B"],
+    explanation: "Report Suite ID는 Adobe Launch의 Analytics Extension 설정에서 data element를 매핑하여 동적으로 변경할 수 있습니다."
+  },
+  {
+    id: 45,
+    question: "Which value type should be selected when using a data element to reference '%Analytics Page Name%' in Adobe Launch?",
+    options: {
+      A: "Static Value",
+      B: "Dynamic Value",
+      C: "From Data Element",
+      D: "Context Variable"
+    },
+    answer: ["A"],
+    explanation: "'%...%' 구문을 사용한 경우 Launch에서 Static Value 입력칸에 넣더라도 런타임 시 동적으로 Data Element를 참조하므로, 실제 동작은 동적입니다. 하지만 UI에서 입력할 때는 'Static Value'로 입력됩니다."
+  },
+  {
+    id: 46,
+    question: "Which syntax correctly sets a merchandising eVar in the s.products string using product syntax?",
+    options: {
+      A: "s.products = 'Footwear;Running Shoes;1;69.95;eVar3=Discount'",
+      B: "s.products = 'Footwear;Running Shoes;1;69.95;;;eVar3=Discount'",
+      C: "s.products = 'Footwear;Running Shoes;1;69.95;;eVar3=Discount'",
+      D: "s.products = 'Footwear;Running Shoes;1;69.95;eVar3:Discount'"
+    },
+    answer: ["C"],
+    explanation: "product syntax에서 merchandising eVar는 6번째 위치에 들어가야 하므로, 다섯 번째 필드를 비워두기 위해 세미콜론(;)을 두 번 연속으로 써야 합니다."
+  },
+  {
+    id: 47,
+    question: "How can values from context data variables be transferred to props and eVars in Adobe Analytics?",
+    options: {
+      A: "By using Data Warehouse",
+      B: "By enabling the variables in Launch",
+      C: "By using Processing Rules",
+      D: "By writing a custom JavaScript plugin"
+    },
+    answer: ["C"],
+    explanation: "Context data 값은 Processing Rules를 통해 props, eVars, events에 매핑되어야 Analytics 보고서에 나타납니다."
+  },
+  {
+    id: 48,
+    question: "Which method allows a mobile app developer to send analytics data to multiple report suites?",
+    options: {
+      A: "Use a Virtual Report Suite",
+      B: "Specify multiple rsids in the 'analytics.rsids' field, comma-separated and no spaces",
+      C: "Enable multi-suite tracking in Processing Rules",
+      D: "Use Report Builder to duplicate data"
+    },
+    answer: ["B"],
+    explanation: "모바일 SDK 설정에서 'analytics.rsids' 항목에 복수의 RSID를 쉼표로 구분해 입력하면, 동일한 데이터를 여러 Report Suite에 전송할 수 있습니다."
+  },
+  {
+    id: 49,
+    question: "How does the s_gi() function behave when called with a report suite ID?",
+    options: {
+      A: "It returns a unique session ID",
+      B: "It sends data to Adobe Analytics immediately",
+      C: "It returns a tracking object instance for the specified report suite ID",
+      D: "It opens the report suite interface in Adobe Analytics"
+    },
+    answer: ["C"],
+    explanation: "s_gi() 함수는 지정된 Report Suite ID에 대한 tracking object 인스턴스를 반환하며, 이 객체를 통해 eVar, prop 설정 및 데이터 전송이 가능합니다."
+  },
+  {
+    id: 50,
+    question: "What is a key characteristic of tags in Adobe Launch?",
+    options: {
+      A: "Tags store raw data in the Adobe cloud",
+      B: "Tags allow for custom database connections",
+      C: "Tags execute code based on defined conditions or events",
+      D: "Tags automatically deduplicate tracking data"
+    },
+    answer: ["C"],
+    explanation: "태그(tag)는 사용자가 정의한 조건이나 이벤트에 따라 JavaScript 코드 또는 추적 명령을 실행하는 방식으로 동작합니다."
+  },
+  {
+    id: 51,
+    question: "During an Adobe Analytics implementation review, the analyst sees 'TypeError: Cannot read property eVar1 of null' in the debugger console. How does this affect data accuracy?",
+    options: {
+      A: "The value is partially sent to Adobe Analytics with fallback",
+      B: "The eVar1 value is not set and will be missing from the report",
+      C: "Adobe Analytics auto-fixes this during ingestion",
+      D: "It only affects JavaScript logging, not data collection"
+    },
+    answer: ["B"],
+    explanation: "JavaScript 오류로 인해 eVar1이 설정되지 않으면 해당 히트에서 값이 전송되지 않으며, 보고서에 eVar1 값이 누락됩니다."
+  },
+  {
+    id: 52,
+    question: "An analyst notices that the Page Name variable is frequently missing or inconsistent in reports. What is the most likely cause?",
+    options: {
+      A: "The Page Name variable is not enabled from Adobe Analytics UI",
+      B: "JavaScript errors on the website are preventing the Page Name variable from being captured",
+      C: "The Page Name variable is not configured in Adobe Launch",
+      D: "The Page Name variable is set to expire too quickly"
+    },
+    answer: ["B"],
+    explanation: "페이지 로딩 시 자바스크립트 오류가 발생하면 pageName 설정 코드가 실행되지 않아 값이 누락될 수 있습니다."
+  },
+  {
+    id: 53,
+    question: "After completing an implementation, a developer sees eVar data in the debugger but not in reports. What is the likely reason?",
+    options: {
+      A: "The eVars are not included in the report suite settings",
+      B: "The eVars are not passed in the image request",
+      C: "The eVars are not enabled in the Adobe Analytics report suite",
+      D: "The eVars were not added to the workspace project"
+    },
+    answer: ["C"],
+    explanation: "보고서에 값이 나타나지 않는 경우, 해당 eVar가 Report Suite 설정에서 활성화되지 않았을 가능성이 큽니다."
+  },
+  {
+    id: 54,
+    question: "Which method is used to dynamically change a report suite in the Adobe Launch configuration?",
+    options: {
+      A: "Enable Report Suite Switcher Extension",
+      B: "Map a dynamic data element to the report suite ID field",
+      C: "Use Processing Rules to change RSIDs",
+      D: "Use Virtual Report Suite logic in custom code"
+    },
+    answer: ["B"],
+    explanation: "Report Suite ID는 Adobe Launch의 Analytics Extension 설정에서 data element를 매핑하여 동적으로 변경할 수 있습니다."
+  },
+  {
+    id: 55,
+    question: "Which value type should be selected when using a data element to reference '%Analytics Page Name%' in Adobe Launch?",
+    options: {
+      A: "Static Value",
+      B: "Dynamic Value",
+      C: "From Data Element",
+      D: "Context Variable"
+    },
+    answer: ["A"],
+    explanation: "'%...%' 구문을 사용한 경우 Launch에서 Static Value 입력칸에 넣더라도 런타임 시 동적으로 Data Element를 참조하므로, 실제 동작은 동적입니다. 하지만 UI에서 입력할 때는 'Static Value'로 입력됩니다."
+  },
+  {
+    id: 56,
+    question: "What is the main purpose of the 'channel' variable in Adobe Analytics?",
+    options: {
+      A: "To assign traffic to a marketing channel",
+      B: "To categorize website sections and assess popularity",
+      C: "To track server load distribution",
+      D: "To store internal campaign impressions"
+    },
+    answer: ["B"],
+    explanation: "channel 변수는 사이트 내 섹션을 구분하여 각 영역의 트래픽과 인기도를 분석할 수 있도록 합니다."
+  },
+  {
+    id: 57,
+    question: "A sales team reports that transaction IDs are missing from Adobe Analytics reports, but the developer sees them in the debugger. What is the likely cause?",
+    options: {
+      A: "The Transaction ID is overwritten by another value",
+      B: "The debugger tool is malfunctioning",
+      C: "Transaction ID is not enabled in the report suite settings",
+      D: "The transaction variable was expired too early"
+    },
+    answer: ["C"],
+    explanation: "Debugger에서는 값을 볼 수 있으나 보고서에 보이지 않는 경우, 해당 변수가 Report Suite 설정에서 활성화되지 않았을 수 있습니다."
+  },
+  {
+    id: 58,
+    question: "What is the difference between the product syntax and conversion syntax for a merchandising eVar?",
+    options: {
+      A: "Conversion syntax uses fewer parameters than product syntax",
+      B: "Product syntax appends eVar within s.products; conversion syntax sets eVar outside s.products",
+      C: "Product syntax is used only for event-based tracking",
+      D: "Conversion syntax sets eVars through context data"
+    },
+    answer: ["B"],
+    explanation: "Product syntax는 s.products 문자열 내에서 eVar 값을 설정하고, conversion syntax는 s.eVarN = 'value' 형식으로 제품 외부에서 설정합니다."
+  },
+  {
+    id: 59,
+    question: "How should the 'cookieDomainPeriods' variable be configured for a client with multiple country-based domains (e.g., mysite.com, mysite.co.jp, mysite.au)?",
+    options: {
+      A: "cookieDomainPeriods = 1",
+      B: "cookieDomainPeriods = 2",
+      C: "cookieDomainPeriods = 3",
+      D: "cookieDomainPeriods should be disabled"
+    },
+    answer: ["2"],
+    explanation: "2차 도메인까지 포함되는 일반적인 경우 cookieDomainPeriods는 2로 설정하여 공통 도메인에서 동일 방문자로 인식되도록 해야 합니다."
+  },
+  {
+    id: 60,
+    question: "Which method allows a mobile app to send data to multiple Adobe Analytics report suites?",
+    options: {
+      A: "Set up data forwarding in Processing Rules",
+      B: "Use multiple API calls to different RSIDs",
+      C: "Set the rsids field in the sa() function, comma-separated without spaces",
+      D: "Set separate SDK configurations per RSID"
+    },
+    answer: ["C"],
+    explanation: "모바일 앱에서는 sa() 함수 내 rsids 필드에 쉼표로 구분된 여러 RSID를 설정하면 하나의 히트가 모든 Report Suite로 전송됩니다."
+  },
+  {
+    id: 61,
+    question: "An Adobe Analytics developer modifies the name of a data element from 'Page Name' to 'Analytics Page Name' after it was already used to populate eVar1. What will eVar1 capture after this change?",
+    options: {
+      A: "The value of 'Analytics Page Name' if updated everywhere",
+      B: "Nothing, since the original reference is broken",
+      C: "A static string '%Analytics Page Name%'",
+      D: "The fallback default value of the extension"
+    },
+    answer: ["C"],
+    explanation: "Data Element 이름이 바뀌었지만 Adobe Launch 룰 설정에서 기존 이름 그대로 '%Page Name%'로 남아 있다면, eVar1에는 해당 문자열이 그대로 기록됩니다."
+  },
+  {
+    id: 62,
+    question: "What is the difference between Static Value and Dynamic Value in Adobe Launch?",
+    options: {
+      A: "Static Value changes based on user behavior; Dynamic Value does not",
+      B: "Static Value uses hard-coded strings, while Dynamic Value references Data Elements using percent signs",
+      C: "Static Value requires a custom rule; Dynamic Value does not",
+      D: "There is no difference in Adobe Launch"
+    },
+    answer: ["B"],
+    explanation: "Static Value는 문자열을 직접 입력하는 방식이며, '%Data Element%' 형태로 입력하면 런타임에서 Data Element 값으로 대체됩니다. 반면 Dynamic Value 타입은 Data Element 자체를 직접 선택하는 방식입니다."
+  },
+  {
+    id: 63,
+    question: "How should a developer refer to the 'language' value in an event object when configuring Adobe Launch to handle _satellite.track?",
+    options: {
+      A: "%event.language%",
+      B: "%event.data.language%",
+      C: "%event.detail.language%",
+      D: "%data.language%"
+    },
+    answer: ["C"],
+    explanation: "_satellite.track()에서 전달된 두 번째 매개변수는 detail 객체로 전달되므로, Launch에서 참조 시에는 '%event.detail.변수명%' 형태를 사용해야 합니다."
+  },
+  {
+    id: 64,
+    question: "Which data element type should be selected in Adobe Launch when referencing a value from the JavaScript data layer?",
+    options: {
+      A: "JavaScript Variable",
+      B: "URL Parameter",
+      C: "Query String",
+      D: "Constant"
+    },
+    answer: ["A"],
+    explanation: "data layer 객체는 일반적으로 window 객체 아래 존재하므로 JavaScript Variable 타입을 사용하여 예: window.digitalData.page.language 와 같이 참조해야 합니다."
+  },
+  {
+    id: 65,
+    question: "Which plugin can help convert all eVar values to lowercase in traditional Adobe Analytics implementations?",
+    options: {
+      A: "lowercaseVars",
+      B: "cleanVars",
+      C: "manageVars",
+      D: "formatVars"
+    },
+    answer: ["C"],
+    explanation: "manageVars 플러그인을 사용하면 지정한 변수(eVar, prop 등)를 자동으로 소문자(lowercase)로 변환할 수 있습니다. Web SDK에는 적용되지 않습니다."
+  },
+  {
+    id: 66,
+    question: "Which of the following variables is responsible for storing the Adobe Experience Cloud ID (ECID)?",
+    options: {
+      A: "s.visitorID",
+      B: "s.eVar0",
+      C: "s_fid",
+      D: "MID"
+    },
+    answer: ["D"],
+    explanation: "MID는 Adobe Experience Cloud ID (ECID)를 저장하는 필드로, Adobe Launch에서 ECID 서비스가 활성화되어 있으면 s_vi 쿠키 대신 MID가 사용됩니다."
+  },
+  {
+    id: 67,
+    question: "Which method is used to pass custom data into Adobe Analytics via Web SDK?",
+    options: {
+      A: "s.linkTrackVars",
+      B: "s.contextData",
+      C: "sendEvent() with xdm object",
+      D: "setContext()"
+    },
+    answer: ["C"],
+    explanation: "Web SDK에서는 sendEvent() 메서드를 사용하여 데이터를 전송하며, xdm 객체 내부에 사용자 정의 데이터를 넣어 전달합니다."
+  },
+  {
+    id: 68,
+    question: "Which of the following statements about Processing Rules is TRUE?",
+    options: {
+      A: "Processing Rules only apply to historical data",
+      B: "Processing Rules can overwrite variable values before data is stored",
+      C: "Processing Rules only work with mobile SDKs",
+      D: "Processing Rules require code deployment"
+    },
+    answer: ["B"],
+    explanation: "Processing Rules는 수집 시점에 context data 값을 eVar, prop, event 등에 매핑하거나 값을 조건적으로 변경할 수 있으며, 코드 수정 없이 Adobe Analytics UI에서 설정 가능합니다."
+  },
+  {
+    id: 69,
+    question: "Which variable is typically used in Adobe Analytics to track internal search terms?",
+    options: {
+      A: "prop5",
+      B: "eVar5",
+      C: "pageName",
+      D: "events"
+    },
+    answer: ["B"],
+    explanation: "내부 검색어는 일반적으로 eVar5 같은 eVar에 저장하여 방문자가 검색한 키워드를 세션 단위로 추적하고 분석할 수 있도록 합니다."
+  },
+  {
+    id: 70,
+    question: "Which Adobe Analytics tool allows creating virtual segments of data based on rules, without needing multiple report suites?",
+    options: {
+      A: "Processing Rules",
+      B: "Virtual Report Suite",
+      C: "Classifications",
+      D: "Data Warehouse"
+    },
+    answer: ["B"],
+    explanation: "Virtual Report Suite는 실제 데이터를 복사하지 않고 세그먼트 기반 필터링으로 다른 보고서처럼 사용할 수 있어, 리포트 수트를 나누지 않고도 목적별 분석이 가능합니다."
   }
+
+  
 ]; 
