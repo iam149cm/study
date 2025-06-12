@@ -1,21 +1,25 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
+import App from "./App";
 
-const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
+const root = ReactDOM.createRoot(
+  document.getElementById("root") as HTMLElement
+);
+
+// GitHub Pages용 basename 설정
+const isProduction = process.env.NODE_ENV === "production";
+const basename = isProduction
+  ? process.env.REACT_APP_BASENAME || "/"
+  : "/";
+
+console.log( "NODE_ENV >> ", process.env.NODE_ENV);
+console.log( "REACT_APP_BASENAME >> ", process.env.REACT_APP_BASENAME);
+
 root.render(
   <React.StrictMode>
-    <BrowserRouter basename={process.env.REACT_APP_BASENAME || '/'}>
+    <BrowserRouter basename={basename}>
       <App />
     </BrowserRouter>
   </React.StrictMode>
 );
-
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
