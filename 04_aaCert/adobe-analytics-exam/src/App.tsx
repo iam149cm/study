@@ -33,13 +33,13 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Router>
+
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/quiz" element={<QuizPage />} />
           <Route path="/results" element={<ResultsPage />} />
         </Routes>
-      </Router>
+
     </ThemeProvider>
   );
 }
