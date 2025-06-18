@@ -295,9 +295,9 @@ export const questions: Question[] = [
       A: "Page Load",
       B: "Link Click",
       C: "Form Submission",
-      D: "Both B and C"
+      D: "All of the above"
     },
-    answer: "D",
+    answer: ["B", "C"],
     explanation: "s.tl() 호출은 링크 클릭과 폼 제출과 같은 사용자 상호작용을 추적하는 데 사용됩니다. 이는 페이지 로드(s.t())와는 다른 방식으로 작동합니다."
   },
   {

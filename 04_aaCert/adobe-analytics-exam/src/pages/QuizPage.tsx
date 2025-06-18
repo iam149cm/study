@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import {
   Container,
   Typography,
@@ -25,14 +25,26 @@ import { getRandomQuestions, shuffleOptions, convertAnswer } from '../utils/quiz
 
 const QuizPage: React.FC = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const questionCount = location.state?.questionCount || 25;
+  
+  // 시간 설정
+  const getTimeLimit = (count: number) => {
+    switch (count) {
+      case 5: return 7 * 60; // 7분
+      case 50: return 60 * 60; // 60분
+      default: return 30 * 60; // 30분
+    }
+  };
+
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswers, setSelectedAnswers] = useState<string[]>([]);
   const [showExplanation, setShowExplanation] = useState(false);
-  const [timeLeft, setTimeLeft] = useState(30 * 60); // 30분
+  const [timeLeft, setTimeLeft] = useState(getTimeLimit(questionCount));
   const [isTimeUp, setIsTimeUp] = useState(false);
   const [showConfirmDialog, setShowConfirmDialog] = useState(false);
   const [quizQuestions, setQuizQuestions] = useState(() => {
-    const selectedQuestions = getRandomQuestions(allQuestions, 25);
+    const selectedQuestions = getRandomQuestions(allQuestions, questionCount);
     return selectedQuestions.map(q => ({
       ...q,
       shuffledOptions: shuffleOptions(q.options),
@@ -43,21 +55,9 @@ const QuizPage: React.FC = () => {
 
   const currentQuestion = quizQuestions[currentQuestionIndex];
 
-  // 페이지 진입 시 로그
-  useEffect(() => {
-    console.log('퀴즈 페이지에 진입했습니다.');
-  }, []);
-
-  // 문제 변경 시 로그
-  useEffect(() => {
-    if (currentQuestionIndex > 0) {
-      console.log(`현재 ${currentQuestionIndex + 1}번 문제입니다.`);
-    }
-  }, [currentQuestionIndex]);
-
   useEffect(() => {
     const timer = setInterval(() => {
-      setTimeLeft((prev) => {
+      setTimeLeft(prev => {
         if (prev <= 1) {
           clearInterval(timer);
           setIsTimeUp(true);
@@ -70,23 +70,19 @@ const QuizPage: React.FC = () => {
     return () => clearInterval(timer);
   }, []);
 
-  useEffect(() => {
-    // 현재 문제의 저장된 답변이 있으면 불러오기
-    if (userAnswers[currentQuestionIndex]) {
-      setSelectedAnswers(userAnswers[currentQuestionIndex]);
-    } else {
-      setSelectedAnswers([]);
-    }
-  }, [currentQuestionIndex, userAnswers]);
-
-  const formatTime = (seconds: number) => {
-    const minutes = Math.floor(seconds / 60);
-    const remainingSeconds = seconds % 60;
-    return `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`;
-  };
-
   const handleAnswerChange = (value: string) => {
-    const newAnswers = [value];
+    let newAnswers: string[];
+    
+    if (Array.isArray(currentQuestion.shuffledAnswer)) {
+      // 복수 선택인 경우 (체크박스)
+      newAnswers = selectedAnswers.includes(value)
+        ? selectedAnswers.filter(v => v !== value)
+        : [...selectedAnswers, value];
+    } else {
+      // 단일 선택인 경우 (라디오 버튼)
+      newAnswers = [value];
+    }
+    
     setSelectedAnswers(newAnswers);
     setUserAnswers(prev => ({
       ...prev,
@@ -94,30 +90,19 @@ const QuizPage: React.FC = () => {
     }));
   };
 
-  const handleMultipleAnswerChange = (value: string) => {
-    const newAnswers = selectedAnswers.includes(value)
-      ? selectedAnswers.filter(v => v !== value)
-      : [...selectedAnswers, value];
-    setSelectedAnswers(newAnswers);
-    setUserAnswers(prev => ({
-      ...prev,
-      [currentQuestionIndex]: newAnswers
-    }));
-  };
-
-  const handleNext = () => {
+  const handleNextQuestion = () => {
     if (currentQuestionIndex < quizQuestions.length - 1) {
-      setCurrentQuestionIndex(currentQuestionIndex + 1);
-      setShowExplanation(false);
+      setCurrentQuestionIndex(prev => prev + 1);
+      setSelectedAnswers(userAnswers[currentQuestionIndex + 1] || []);
     } else {
       setShowConfirmDialog(true);
     }
   };
 
-  const handlePrevious = () => {
+  const handlePrevQuestion = () => {
     if (currentQuestionIndex > 0) {
-      setCurrentQuestionIndex(currentQuestionIndex - 1);
-      setShowExplanation(false);
+      setCurrentQuestionIndex(prev => prev - 1);
+      setSelectedAnswers(userAnswers[currentQuestionIndex - 1] || []);
     }
   };
 
@@ -132,7 +117,7 @@ const QuizPage: React.FC = () => {
           : q.shuffledAnswer;
         return count + (userAnswer === correctAnswer ? 1 : 0);
       }, 0),
-      timeSpent: 30 * 60 - timeLeft,
+      timeSpent: getTimeLimit(questionCount) - timeLeft,
       questions: quizQuestions.map((q, index) => ({
         question: q.question,
         userAnswer: userAnswers[index] || [],
@@ -149,6 +134,12 @@ const QuizPage: React.FC = () => {
 
     localStorage.setItem('quizResults', JSON.stringify(results));
     navigate('/results');
+  };
+
+  const formatTime = (seconds: number) => {
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = seconds % 60;
+    return `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`;
   };
 
   if (isTimeUp) {
@@ -173,9 +164,19 @@ const QuizPage: React.FC = () => {
           <Typography variant="h6">
             문제 {currentQuestionIndex + 1} / {quizQuestions.length}
           </Typography>
-          <Typography variant="h6" color={timeLeft < 300 ? 'error' : 'inherit'}>
-            남은 시간: {formatTime(timeLeft)}
-          </Typography>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+            <Typography variant="h6" color={timeLeft < 300 ? 'error' : 'inherit'}>
+              남은 시간: {formatTime(timeLeft)}
+            </Typography>
+            <Button
+              variant="outlined"
+              color="secondary"
+              size="small"
+              onClick={() => navigate('/')}
+            >
+              처음 화면으로
+            </Button>
+          </Box>
         </Box>
         
         <LinearProgress 
@@ -189,38 +190,38 @@ const QuizPage: React.FC = () => {
             {currentQuestion.question}
           </Typography>
 
-          <FormControl component="fieldset" sx={{ width: '100%' }}>
-            {Array.isArray(currentQuestion.shuffledAnswer) ? (
-              <FormGroup>
-                {Object.entries(currentQuestion.shuffledOptions || {}).map(([key, value]) => (
-                  <FormControlLabel
-                    key={key}
-                    control={
-                      <Checkbox
-                        checked={selectedAnswers.includes(key)}
-                        onChange={() => handleMultipleAnswerChange(key)}
-                      />
-                    }
-                    label={value}
-                  />
-                ))}
-              </FormGroup>
-            ) : (
-              <RadioGroup
-                value={selectedAnswers[0] || ''}
-                onChange={(e) => handleAnswerChange(e.target.value)}
-              >
-                {Object.entries(currentQuestion.shuffledOptions || {}).map(([key, value]) => (
-                  <FormControlLabel
-                    key={key}
-                    value={key}
-                    control={<Radio />}
-                    label={value}
-                  />
-                ))}
-              </RadioGroup>
-            )}
-          </FormControl>
+          {Array.isArray(currentQuestion.shuffledAnswer) ? (
+            // 복수 선택인 경우 체크박스 사용
+            <FormGroup>
+              {Object.entries(currentQuestion.shuffledOptions || {}).map(([key, value]) => (
+                <FormControlLabel
+                  key={key}
+                  control={
+                    <Checkbox
+                      checked={selectedAnswers.includes(key)}
+                      onChange={() => handleAnswerChange(key)}
+                    />
+                  }
+                  label={value}
+                />
+              ))}
+            </FormGroup>
+          ) : (
+            // 단일 선택인 경우 라디오 버튼 사용
+            <RadioGroup
+              value={selectedAnswers[0] || ''}
+              onChange={(e) => handleAnswerChange(e.target.value)}
+            >
+              {Object.entries(currentQuestion.shuffledOptions || {}).map(([key, value]) => (
+                <FormControlLabel
+                  key={key}
+                  value={key}
+                  control={<Radio />}
+                  label={value}
+                />
+              ))}
+            </RadioGroup>
+          )}
 
           {showExplanation && (
             <Alert severity="info" sx={{ mt: 2 }}>
@@ -233,25 +234,25 @@ const QuizPage: React.FC = () => {
           <Box>
             <Button
               variant="outlined"
-              onClick={() => setShowExplanation(!showExplanation)}
+              onClick={handlePrevQuestion}
+              disabled={currentQuestionIndex === 0}
               sx={{ mr: 1 }}
+            >
+              이전
+            </Button>
+            <Button
+              variant="outlined"
+              onClick={() => setShowExplanation(!showExplanation)}
             >
               {showExplanation ? '해설 숨기기' : '해설 보기'}
             </Button>
-            {currentQuestionIndex > 0 && (
-              <Button
-                variant="outlined"
-                onClick={handlePrevious}
-              >
-                이전 문제
-              </Button>
-            )}
           </Box>
           <Button
             variant="contained"
-            onClick={handleNext}
+            onClick={handleNextQuestion}
+            disabled={selectedAnswers.length === 0}
           >
-            {currentQuestionIndex === quizQuestions.length - 1 ? '완료' : '다음 문제'}
+            {currentQuestionIndex === quizQuestions.length - 1 ? '완료' : '다음'}
           </Button>
         </Box>
       </Box>
@@ -260,16 +261,18 @@ const QuizPage: React.FC = () => {
         open={showConfirmDialog}
         onClose={() => setShowConfirmDialog(false)}
       >
-        <DialogTitle>퀴즈 완료</DialogTitle>
+        <DialogTitle>시험 종료</DialogTitle>
         <DialogContent>
           <Typography>
-            모든 문제를 풀었습니다. 결과를 확인하시겠습니까?
+            시험을 종료하시겠습니까?
           </Typography>
         </DialogContent>
         <DialogActions>
-          <Button onClick={() => setShowConfirmDialog(false)}>계속하기</Button>
-          <Button onClick={handleFinish} variant="contained">
-            결과 보기
+          <Button onClick={() => setShowConfirmDialog(false)}>
+            취소
+          </Button>
+          <Button onClick={handleFinish} color="primary">
+            종료
           </Button>
         </DialogActions>
       </Dialog>

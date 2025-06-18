@@ -15,7 +15,11 @@ import {
   Chip,
   CircularProgress,
   IconButton,
-  Collapse
+  Collapse,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions
 } from '@mui/material';
 import confetti from 'canvas-confetti';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
@@ -40,6 +44,7 @@ const ResultsPage: React.FC = () => {
   const navigate = useNavigate();
   const [results, setResults] = useState<QuizResult | null>(null);
   const [expandedRows, setExpandedRows] = useState<{ [key: number]: boolean }>({});
+  const [showNoResultsModal, setShowNoResultsModal] = useState(false);
 
   useEffect(() => {
     console.log('결과 페이지에 진입했습니다.');
@@ -81,14 +86,17 @@ const ResultsPage: React.FC = () => {
 
   useEffect(() => {
     const savedResults = localStorage.getItem('quizResults');
-    if (savedResults) {
-      const parsedResults = JSON.parse(savedResults);
-      setResults(parsedResults);
-      
-      const score = (parsedResults.correctAnswers / parsedResults.totalQuestions) * 100;
-      if (score >= 70) {
-        fireConfetti();
-      }
+    if (!savedResults) {
+      setShowNoResultsModal(true);
+      return;
+    }
+    
+    const parsedResults = JSON.parse(savedResults);
+    setResults(parsedResults);
+    
+    const score = (parsedResults.correctAnswers / parsedResults.totalQuestions) * 100;
+    if (score >= 70) {
+      fireConfetti();
     }
   }, [fireConfetti]);
 
@@ -99,13 +107,36 @@ const ResultsPage: React.FC = () => {
     }));
   };
 
+  const handleCloseModal = () => {
+    setShowNoResultsModal(false);
+    navigate('/');
+  };
+
   if (!results) {
     return (
-      <Container maxWidth="md">
-        <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
-          <CircularProgress />
-        </Box>
-      </Container>
+      <>
+        <Container maxWidth="md">
+          <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
+            <CircularProgress />
+          </Box>
+        </Container>
+        <Dialog
+          open={showNoResultsModal}
+          onClose={handleCloseModal}
+        >
+          <DialogTitle>알림</DialogTitle>
+          <DialogContent>
+            <Typography>
+              아직 시험을 응시하지 않았습니다. 시험을 먼저 응시해주세요.
+            </Typography>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleCloseModal} color="primary">
+              확인
+            </Button>
+          </DialogActions>
+        </Dialog>
+      </>
     );
   }
 

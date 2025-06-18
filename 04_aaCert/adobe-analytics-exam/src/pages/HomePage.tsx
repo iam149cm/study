@@ -5,53 +5,94 @@ import {
   Typography, 
   Button, 
   Box,
-  Paper
+  Paper,
+  Card,
+  CardContent,
+  CardActions,
+  Grid,
+  RadioGroup,
+  FormControlLabel,
+  Radio,
+  FormControl,
+  FormLabel
 } from '@mui/material';
 import AssignmentIcon from '@mui/icons-material/Assignment';
 import AssessmentIcon from '@mui/icons-material/Assessment';
 
 const HomePage: React.FC = () => {
   const navigate = useNavigate();
+  const [selectedQuestionCount, setSelectedQuestionCount] = React.useState<number>(25);
 
   useEffect(() => {
     console.log('홈페이지에 진입했습니다.');
   }, []);
 
+  const handleQuestionCountChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSelectedQuestionCount(Number(event.target.value));
+  };
+
+  const handleStartQuiz = () => {
+    navigate('/quiz', { state: { questionCount: selectedQuestionCount } });
+  };
+
+  const handleViewResults = () => {
+    navigate('/results');
+  };
+
   return (
-    <Container maxWidth="sm">
-      <Box sx={{ mt: 8, textAlign: 'center' }}>
-        <Typography variant="h3" component="h1" gutterBottom>
-          Adobe Analytics 인증 시험 모의고사
-        </Typography>
-        <Typography variant="h6" color="text.secondary" sx={{ mb: 4 }}>
-          AD0-E213 인증 시험 준비를 위한 모의고사
+    <Container maxWidth="md">
+      <Box sx={{ mt: 4, textAlign: 'center' }}>
+        <Typography variant="h4" gutterBottom>
+          Adobe Analytics 자격증 시험 연습
         </Typography>
         
-        <Paper elevation={3} sx={{ p: 4, mb: 4 }}>
-          <Typography variant="body1" sx={{ mb: 3 }}>
-            총 25문제, 제한시간 30분
-          </Typography>
-          <Box sx={{ display: 'flex', gap: 2, justifyContent: 'center' }}>
-            <Button
-              variant="contained"
+        <Card sx={{ mt: 4, mb: 4 }}>
+          <CardContent>
+            <FormControl component="fieldset">
+              <FormLabel component="legend">문제 수 선택</FormLabel>
+              <RadioGroup
+                value={selectedQuestionCount}
+                onChange={handleQuestionCountChange}
+                row
+                sx={{ justifyContent: 'center', mt: 2 }}
+              >
+                <FormControlLabel 
+                  value={5} 
+                  control={<Radio />} 
+                  label="5문제 (7분)" 
+                />
+                <FormControlLabel 
+                  value={25} 
+                  control={<Radio />} 
+                  label="25문제 (30분)" 
+                />
+                <FormControlLabel 
+                  value={50} 
+                  control={<Radio />} 
+                  label="50문제 (60분)" 
+                />
+              </RadioGroup>
+            </FormControl>
+          </CardContent>
+          <CardActions sx={{ justifyContent: 'center', pb: 3 }}>
+            <Button 
+              variant="contained" 
+              color="primary" 
               size="large"
-              startIcon={<AssignmentIcon />}
-              onClick={() => navigate('/quiz')}
-              sx={{ minWidth: 200 }}
+              onClick={handleStartQuiz}
             >
-              문제 풀기
+              시험 시작하기
             </Button>
-            <Button
-              variant="outlined"
-              size="large"
-              startIcon={<AssessmentIcon />}
-              onClick={() => navigate('/results')}
-              sx={{ minWidth: 200 }}
-            >
-              결과 보기
-            </Button>
-          </Box>
-        </Paper>
+          </CardActions>
+        </Card>
+
+        <Button 
+          variant="outlined" 
+          onClick={handleViewResults}
+          sx={{ mt: 2 }}
+        >
+          이전 결과 보기
+        </Button>
       </Box>
     </Container>
   );
