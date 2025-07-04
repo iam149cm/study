@@ -43,7 +43,8 @@ const HomePage: React.FC = () => {
     <Container maxWidth="md">
       <Box sx={{ mt: 4, textAlign: 'center' }}>
         <Typography variant="h4" gutterBottom>
-          Adobe Analytics 자격증 시험 연습
+          [AD0-E213] Adobe Analytics Developer Professional<br/>
+          자격증 시험 모의고사
         </Typography>
         
         <Card sx={{ mt: 4, mb: 4 }}>
