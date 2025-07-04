@@ -94,6 +94,7 @@ const QuizPage: React.FC = () => {
     if (currentQuestionIndex < quizQuestions.length - 1) {
       setCurrentQuestionIndex(prev => prev + 1);
       setSelectedAnswers(userAnswers[currentQuestionIndex + 1] || []);
+      setShowExplanation(false);
     } else {
       setShowConfirmDialog(true);
     }
