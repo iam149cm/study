@@ -28,7 +28,15 @@ const HomePage: React.FC = () => {
 
   useEffect(() => {
     console.log('홈페이지에 진입했습니다.');
+    // 기본 타이틀 설정
+    document.title = 'Adobe Analytics 자격증 시험 모의고사';
   }, []);
+
+  useEffect(() => {
+    // 선택된 자격증에 따라 타이틀 변경
+    const certInfo = getCertificationInfo(selectedCertification);
+    document.title = `[${selectedCertification}] ${certInfo.title} 인증 시험 모의고사`;
+  }, [selectedCertification]);
 
   const handleQuestionCountChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedQuestionCount(Number(event.target.value));

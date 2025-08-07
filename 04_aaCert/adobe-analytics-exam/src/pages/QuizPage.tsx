@@ -59,6 +59,12 @@ const QuizPage: React.FC = () => {
   const currentQuestion = quizQuestions[currentQuestionIndex];
 
   useEffect(() => {
+    // 퀴즈 페이지 진입 시 타이틀 변경
+    const certTitle = certification === 'AD0-E213' ? 'Adobe Analytics Developer Professional' : 'Adobe Analytics Developer Expert';
+    document.title = `[${certification}] ${certTitle} 모의고사 - 문제 ${currentQuestionIndex + 1}/${quizQuestions.length}`;
+  }, [certification, currentQuestionIndex, quizQuestions.length]);
+
+  useEffect(() => {
     const timer = setInterval(() => {
       setTimeLeft(prev => {
         if (prev <= 1) {

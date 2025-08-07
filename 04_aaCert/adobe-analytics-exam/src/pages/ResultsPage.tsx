@@ -49,6 +49,8 @@ const ResultsPage: React.FC = () => {
 
   useEffect(() => {
     console.log('결과 페이지에 진입했습니다.');
+    // 결과 페이지 타이틀 설정
+    document.title = 'Adobe Analytics 모의고사 결과';
   }, []);
 
   const fireConfetti = useCallback(() => {
