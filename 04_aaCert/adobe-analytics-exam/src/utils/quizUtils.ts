@@ -1,4 +1,4 @@
-import { Question } from '../data/questions';
+import { Question } from '../data/questionsAD0E213';
 
 // 선택지를 랜덤으로 섞는 함수
 export const shuffleOptions = (options: { [key: string]: string }) => {

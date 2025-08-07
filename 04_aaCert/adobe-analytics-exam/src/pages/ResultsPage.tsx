@@ -30,6 +30,7 @@ interface QuizResult {
   answeredQuestions: number;
   correctAnswers: number;
   timeSpent: number;
+  certification?: string;
   questions: {
     question: string;
     userAnswer: string[];
@@ -153,6 +154,17 @@ const ResultsPage: React.FC = () => {
         <Typography variant="h4" gutterBottom align="center">
           퀴즈 결과
         </Typography>
+        
+        {results.certification && (
+          <Box sx={{ textAlign: 'center', mb: 3 }}>
+            <Typography variant="h5" gutterBottom>
+              {results.certification === 'AD0-E213' ? 'Adobe Analytics Developer Professional' : 'Adobe Analytics Developer Expert'}
+            </Typography>
+            <Typography variant="subtitle1" color="text.secondary">
+              {results.certification} 모의고사 결과
+            </Typography>
+          </Box>
+        )}
         
         <Paper elevation={3} sx={{ p: 3, mb: 4 }}>
           <Box sx={{ display: 'flex', justifyContent: 'space-around', mb: 3 }}>

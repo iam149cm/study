@@ -14,7 +14,9 @@ import {
   FormControlLabel,
   Radio,
   FormControl,
-  FormLabel
+  FormLabel,
+  ToggleButtonGroup,
+  ToggleButton
 } from '@mui/material';
 import AssignmentIcon from '@mui/icons-material/Assignment';
 import AssessmentIcon from '@mui/icons-material/Assessment';
@@ -22,6 +24,7 @@ import AssessmentIcon from '@mui/icons-material/Assessment';
 const HomePage: React.FC = () => {
   const navigate = useNavigate();
   const [selectedQuestionCount, setSelectedQuestionCount] = React.useState<number>(25);
+  const [selectedCertification, setSelectedCertification] = React.useState<string>('AD0-E213');
 
   useEffect(() => {
     console.log('홈페이지에 진입했습니다.');
@@ -31,24 +34,104 @@ const HomePage: React.FC = () => {
     setSelectedQuestionCount(Number(event.target.value));
   };
 
+  const handleCertificationChange = (event: React.MouseEvent<HTMLElement>, newCertification: string) => {
+    if (newCertification !== null) {
+      setSelectedCertification(newCertification);
+    }
+  };
+
   const handleStartQuiz = () => {
-    navigate('/quiz', { state: { questionCount: selectedQuestionCount } });
+    navigate('/quiz', { 
+      state: { 
+        questionCount: selectedQuestionCount,
+        certification: selectedCertification
+      } 
+    });
   };
 
   const handleViewResults = () => {
     navigate('/results');
   };
 
+  const getCertificationInfo = (cert: string) => {
+    switch (cert) {
+      case 'AD0-E213':
+        return {
+          title: 'Adobe Analytics Developer Professional',
+          description: 'Adobe Analytics 구현 및 개발 전문가 자격증',
+          focus: '구현, 개발, 기술적 측면'
+        };
+      case 'AD0-E209':
+        return {
+          title: 'Adobe Analytics Developer Expert',
+          description: 'Adobe Analytics 개발자 전문가 (고급) 자격증',
+          focus: '고급 구현, 서버사이드 추적, API, 고급 분석'
+        };
+      default:
+        return {
+          title: '',
+          description: '',
+          focus: ''
+        };
+    }
+  };
+
+  const certInfo = getCertificationInfo(selectedCertification);
+
   return (
     <Container maxWidth="md">
       <Box sx={{ mt: 4, textAlign: 'center' }}>
         <Typography variant="h4" gutterBottom>
-          [AD0-E213] Adobe Analytics Developer Professional<br/>
-          자격증 시험 모의고사
+          Adobe Analytics 자격증 시험 모의고사
         </Typography>
         
         <Card sx={{ mt: 4, mb: 4 }}>
           <CardContent>
+            <Typography variant="h6" gutterBottom sx={{ mb: 3 }}>
+              자격증 선택
+            </Typography>
+            
+            <ToggleButtonGroup
+              value={selectedCertification}
+              exclusive
+              onChange={handleCertificationChange}
+              aria-label="자격증 선택"
+              sx={{ mb: 3 }}
+            >
+              <ToggleButton value="AD0-E213" aria-label="AD0-E213" sx={{ minWidth: 200 }}>
+                <Box sx={{ textAlign: 'center', p: 1 }}>
+                  <Typography variant="subtitle1" fontWeight="bold">
+                    AD0-E213
+                  </Typography>
+                  <Typography variant="caption" display="block">
+                    Developer Professional
+                  </Typography>
+                </Box>
+              </ToggleButton>
+              <ToggleButton value="AD0-E209" aria-label="AD0-E209" sx={{ minWidth: 200 }}>
+                <Box sx={{ textAlign: 'center', p: 1 }}>
+                  <Typography variant="subtitle1" fontWeight="bold">
+                    AD0-E209
+                  </Typography>
+                  <Typography variant="caption" display="block">
+                    Developer Expert
+                  </Typography>
+                </Box>
+              </ToggleButton>
+            </ToggleButtonGroup>
+
+            <Box sx={{ mb: 3, p: 2, bgcolor: 'grey.50', borderRadius: 1 }}>
+              <Typography variant="h6" color="primary" gutterBottom>
+                {certInfo.title}
+              </Typography>
+              <Typography variant="body2" color="text.secondary" gutterBottom>
+                {certInfo.description}
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                <strong>중점 영역:</strong> {certInfo.focus}
+              </Typography>
+            </Box>
+
             <FormControl component="fieldset">
               <FormLabel component="legend">문제 수 선택</FormLabel>
               <RadioGroup

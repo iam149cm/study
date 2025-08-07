@@ -20,13 +20,15 @@ import {
   DialogContent,
   DialogActions
 } from '@mui/material';
-import { questions as allQuestions } from '../data/questions';
+import { questionsAD0E213 } from '../data/questionsAD0E213';
+import { questionsAD0E209 } from '../data/questionsAD0E209';
 import { getRandomQuestions, shuffleOptions, convertAnswer } from '../utils/quizUtils';
 
 const QuizPage: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const questionCount = location.state?.questionCount || 25;
+  const certification = location.state?.certification || 'AD0-E213';
   
   // 시간 설정
   const getTimeLimit = (count: number) => {
@@ -44,6 +46,7 @@ const QuizPage: React.FC = () => {
   const [isTimeUp, setIsTimeUp] = useState(false);
   const [showConfirmDialog, setShowConfirmDialog] = useState(false);
   const [quizQuestions, setQuizQuestions] = useState(() => {
+    const allQuestions = certification === 'AD0-E213' ? questionsAD0E213 : questionsAD0E209;
     const selectedQuestions = getRandomQuestions(allQuestions, questionCount);
     return selectedQuestions.map(q => ({
       ...q,
@@ -119,6 +122,7 @@ const QuizPage: React.FC = () => {
         return count + (userAnswer === correctAnswer ? 1 : 0);
       }, 0),
       timeSpent: getTimeLimit(questionCount) - timeLeft,
+      certification: certification,
       questions: quizQuestions.map((q, index) => ({
         question: q.question,
         userAnswer: userAnswers[index] || [],
@@ -161,6 +165,15 @@ const QuizPage: React.FC = () => {
   return (
     <Container maxWidth="md">
       <Box sx={{ mt: 4 }}>
+        <Box sx={{ textAlign: 'center', mb: 3 }}>
+          <Typography variant="h5" gutterBottom>
+            {certification === 'AD0-E213' ? 'Adobe Analytics Developer Professional' : 'Adobe Analytics Developer Expert'}
+          </Typography>
+          <Typography variant="subtitle1" color="text.secondary">
+            {certification} 모의고사
+          </Typography>
+        </Box>
+        
         <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 2 }}>
           <Typography variant="h6">
             문제 {currentQuestionIndex + 1} / {quizQuestions.length}
@@ -203,7 +216,7 @@ const QuizPage: React.FC = () => {
                       onChange={() => handleAnswerChange(key)}
                     />
                   }
-                  label={value}
+                  label={value as string}
                 />
               ))}
             </FormGroup>
@@ -218,7 +231,7 @@ const QuizPage: React.FC = () => {
                   key={key}
                   value={key}
                   control={<Radio />}
-                  label={value}
+                  label={value as string}
                 />
               ))}
             </RadioGroup>
