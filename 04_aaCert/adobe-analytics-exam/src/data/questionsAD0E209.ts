@@ -490,5 +490,245 @@ export const questionsAD0E209: Question[] = [
     },
     answer: "C",
     explanation: "하나의 이벤트에 대해 여러 개의 규칙이 조건 없이 동시에 작동할 경우, 중복 트래킹이 발생할 수 있습니다."
+  },
+  {
+    id: 41,
+    question: "Your company recently migrated its e-commerce site to a Single Page Application (SPA) built with React, using the AEP Web SDK for Analytics. Product detail content is loaded asynchronously via XHR after the route changes, but analysts report that page view counts in Workspace are 25% lower than expected. Investigation shows that the 'view' event is fired on every route change without verifying that the product data is fully loaded. Which approach ensures accurate view tracking without inflating counts?",
+    options: {
+      A: "Send a view event immediately on every route change regardless of data readiness",
+      B: "Dispatch a custom event after the product data has fully hydrated, then call 'sendEvent({type:\"view\"})'",
+      C: "Introduce a fixed 2-second delay before calling 'sendEvent' on every route change",
+      D: "Rely solely on DOMContentLoaded for both initial and subsequent views"
+    },
+    answer: "B",
+    explanation: "SPA 환경에서는 화면 전환과 데이터 로드 타이밍이 불일치할 수 있습니다. 데이터 하이드레이션이 완료되는 시점(커스텀 이벤트)에 맞춰 view 이벤트를 호출해야 누락과 중복을 모두 방지할 수 있습니다."
+  },
+  {
+    id: 42,
+    question: "A global retail site migrated from AppMeasurement to the AEP Web SDK. After migration, the Marketing Channels report shows unexpected attribution shifts because campaign query parameters are now captured at a different timing than before. Legacy implementation used custom query param mapping via s.campaign. The marketing team wants the channel attribution model to remain consistent across historical and new data. Which solution should you implement?",
+    options: {
+      A: "Disable Marketing Channels to avoid mismatches",
+      B: "Reproduce the legacy query parameter mapping in Processing Rules and validate using a small percentage of staged traffic",
+      C: "Use Campaign Classifications to align historical and future data",
+      D: "Set all traffic source to 'Direct' for consistency"
+    },
+    answer: "B",
+    explanation: "Web SDK 전환 후 채널 데이터의 캡처 타이밍이 변하면 어트리뷰션이 변동될 수 있습니다. Processing Rules로 기존 매핑을 재현하고 테스트 트래픽으로 비교 검증하는 것이 안전합니다."
+  },
+  {
+    id: 43,
+    question: "Two related brand sites on different domains require unified visitor identification for personalization. The current approach loads an embedded iframe on domain B to set ECID before redirecting users from domain A. However, analytics shows that 15% of users are still being counted as two separate visitors across domains. Debug logs reveal that ECID cookies are not always shared. What is the most likely cause?",
+    options: {
+      A: "Using different report suites",
+      B: "Tracking server and cookie domain sharing are not consistently configured across domains",
+      C: "Prop variables are disabled in one domain",
+      D: "Visit timeout is set too short"
+    },
+    answer: "B",
+    explanation: "크로스 도메인 ECID 공유를 위해서는 트래킹 서버 설정과 쿠키 도메인 공유가 양쪽 도메인에 동일하게 구성되어야 하며, 불일치 시 방문자 식별이 분리됩니다."
+  },
+  {
+    id: 44,
+    question: "After implementing IAB TCF v2 consent management, your Analytics data volume dropped sharply for Safari users only. Consent strings are present and valid in the debugger. The site uses a third-party tracking server. Given Safari's Intelligent Tracking Prevention (ITP) restrictions, what is the best fix to restore data collection without violating consent rules?",
+    options: {
+      A: "Force cookies into third-party mode to bypass ITP",
+      B: "Migrate to a first-party CNAME collection setup or use server-side forwarding, ensuring consent checks are respected",
+      C: "Disable consent enforcement for Safari users",
+      D: "Extend cookie lifetime to 2 years"
+    },
+    answer: "B",
+    explanation: "Safari ITP 환경에서는 3rd-party 쿠키를 차단하므로 1st-party CNAME 방식이나 서버사이드 포워딩으로 전환하고, 동의 상태를 확인해 전송하는 것이 필요합니다."
+  },
+  {
+    id: 45,
+    question: "A mobile retail app implemented offline tracking using the AEP Mobile SDK. The app queues hits when offline and sends them with timestamps once the device reconnects. However, Workspace funnels now show steps out of order, breaking conversion analysis. Debug logs show that timestamps are present but the report suite setting has not been adjusted. How can you ensure the sequence of events is preserved?",
+    options: {
+      A: "Rely only on processing time for ordering",
+      B: "Enable 'timestampEnabled' on the report suite and ensure device timestamps are correctly incremented",
+      C: "Disable hit batching entirely",
+      D: "Create calculated metrics to reorder events"
+    },
+    answer: "B",
+    explanation: "오프라인 이벤트의 순서를 유지하려면 타임스탬프 기반 처리를 활성화해야 하며, 장치에서 시간 값이 연속성을 유지하도록 보장해야 합니다."
+  },
+  {
+    id: 46,
+    question: "During an SPA checkout refactor, duplicate purchase events are recorded. The debugger shows the custom purchase event firing once on route change and again when the checkout summary component rehydrates with order data. What is the most effective method to prevent duplicate orders being counted?",
+    options: {
+      A: "Apply a fixed debounce of 2 seconds to all purchase events",
+      B: "Implement a one-time guard based on orderId within the session before firing the event",
+      C: "Move the purchase tracking rule to Window Loaded",
+      D: "Disable purchase tracking for SPA pages"
+    },
+    answer: "B",
+    explanation: "중복을 방지하려면 주문ID를 기준으로 세션 내 1회성 가드를 적용해 동일 주문에 대해 이벤트를 한 번만 전송하도록 해야 합니다."
+  },
+  {
+    id: 47,
+    question: "Your Processing Rule currently copies prop10 (landing page campaign) into eVar10 on every hit. This is overwriting the initial campaign value with unrelated page values after the first page view. Analysts request that campaign attribution persist from the landing page until conversion. How should you modify the Processing Rule?",
+    options: {
+      A: "Change the action to 'Set if empty' and restrict the rule to execute only on the landing page",
+      B: "Keep overwrite for all hits to ensure freshness",
+      C: "Append prop10 to eVar10",
+      D: "Remove prop10 entirely from tracking"
+    },
+    answer: "A",
+    explanation: "최초 유입 캠페인 값을 유지하려면 최초 페이지에서만 설정하고, 값이 이미 있는 경우 덮어쓰지 않도록 Set if empty 조건을 적용해야 합니다."
+  },
+  {
+    id: 48,
+    question: "Your checkout relies on a vendor library to populate the data layer. Occasionally, this library fails to load due to CDN latency, causing missing purchase events. You need to ensure Analytics still receives complete purchase data. What is the most robust pattern?",
+    options: {
+      A: "Fire purchase events on DOM Ready regardless of data state",
+      B: "Use a promise or observer that resolves when the purchase payload is complete, then trigger a direct call rule",
+      C: "Wrap vendor library calls in try/catch without changing timing",
+      D: "Send purchase events twice to improve reliability"
+    },
+    answer: "B",
+    explanation: "구매 데이터가 준비되는 시점을 보장하기 위해 비동기 완료 시그널(프로미스/옵저버)을 사용하고, 해당 시점에 맞춰 직접 호출하는 방식이 안정적입니다."
+  },
+  {
+    id: 49,
+    question: "After enabling Bot Rules and internal IP filtering, overall traffic volume dropped by 40% but revenue remained the same. Initial suspicion is over-filtering. How should you validate and fix this without disrupting bot protection?",
+    options: {
+      A: "Review Marketing Channel classifications",
+      B: "Audit the filter definitions to ensure legitimate VPN/proxy internal users are not being excluded",
+      C: "Remove bot rules temporarily",
+      D: "Change report suite timezone"
+    },
+    answer: "B",
+    explanation: "필터 정의가 내부 QA, VPN, 프록시 사용자의 합법적 트래픽까지 제외하고 있는지 확인하고, 필요 시 화이트리스트 조정이 필요합니다."
+  },
+  {
+    id: 50,
+    question: "Your team migrated Analytics integration for Target and Audience Manager from client-side beacons to Server-Side Forwarding (SSF) using the AEP Web SDK. After deployment, some conversion events stopped appearing in Adobe Analytics, but Target data still shows normally. Investigation reveals that certain variables are being set only after the 'sendEvent' call. What is the most likely cause?",
+    options: {
+      A: "SSF requires disabling all client-side beacons, causing AA events to be blocked",
+      B: "Required Analytics variables and events must be set before the SSF handoff occurs",
+      C: "Audience Manager does not support conversion events",
+      D: "Target activities overwrite Analytics data when using SSF"
+    },
+    answer: "B",
+    explanation: "SSF는 이벤트를 전달하기 전에 Analytics용 변수가 세팅되어야만 함께 전송됩니다. 핸드오프 이후에 설정하면 AA로 전달되지 않습니다."
+  },
+  {
+    id: 51,
+    question: "A retailer uses separate report suites for their web and mobile app properties. Executives request a single, unified view of the customer journey in Workspace, including cross-device pathing. How should you meet this requirement without merging raw data into one report suite?",
+    options: {
+      A: "Copy all web data into the app suite",
+      B: "Leverage Customer Journey Analytics with a shared XDM schema and create a Virtual Report Suite for unified analysis",
+      C: "Use a prop to stitch session IDs between platforms",
+      D: "Export data to Data Warehouse and join offline"
+    },
+    answer: "B",
+    explanation: "CJA와 공통 XDM 스키마를 사용하면 서로 다른 수트 데이터를 통합 분석할 수 있고, VRS를 통해 경로 분석을 포함한 일관된 뷰를 제공합니다."
+  },
+  {
+    id: 52,
+    question: "Your privacy compliance policy mandates that no analytics data be sent until explicit user consent is granted. Currently, some rules in Launch still fire before consent is processed, causing compliance risk. What is the most robust solution?",
+    options: {
+      A: "Evaluate consent within each rule's condition and block 'sendEvent' calls until consent is true",
+      B: "Hide the Debugger tool from end users",
+      C: "Set eVars to 'no-consent' until updated",
+      D: "Delay all analytics calls by a fixed time after page load"
+    },
+    answer: "A",
+    explanation: "룰 조건과 전송 시점에서 동의 여부를 반드시 검사해 비동의 상태에서는 호출을 막는 것이 가장 안전합니다."
+  },
+  {
+    id: 53,
+    question: "Product category hierarchies are managed via SAINT Classifications. Analysts complain that newly launched categories take days to appear correctly in reports, and some SKUs never get categorized. Upon review, uploads are infrequent and contain outdated keys. What is the best remediation?",
+    options: {
+      A: "Switch entirely to Processing Rules",
+      B: "Automate classification uploads with smaller, more frequent batches and validate keys before upload",
+      C: "Store categories directly in props instead",
+      D: "Disable classifications to avoid delay"
+    },
+    answer: "B",
+    explanation: "소량·빈번 업로드와 키 검증을 통해 지연과 누락을 최소화하는 것이 실무적으로 가장 안정적인 방법입니다."
+  },
+  {
+    id: 54,
+    question: "Marketing requests that the last non-direct channel be credited for conversions within a 30-day window. Your current campaign eVar uses 'Most Recent' allocation with 'Visit' expiration. Which configuration meets the requirement?",
+    options: {
+      A: "Allocation: Most Recent; Expiration: Purchase",
+      B: "Allocation: Most Recent; Expiration: 30 days",
+      C: "Allocation: Original Value; Expiration: 30 days",
+      D: "Allocation: Linear; Expiration: Visit"
+    },
+    answer: "B",
+    explanation: "마지막 클릭 어트리뷰션과 30일 윈도우를 위해 Most Recent/30일 만료 설정이 필요합니다."
+  },
+  {
+    id: 55,
+    question: "After migrating to a first-party CNAME tracking setup, the Unique Visitors metric spiked by 60%. The ECID service is enabled. What is the most likely misconfiguration causing this anomaly?",
+    options: {
+      A: "Too many events are being sent per visitor",
+      B: "Tracking server change without migrating ECID cookies, causing cookie scope mismatch",
+      C: "Using both eVars and props for visitor ID",
+      D: "Multiple libraries included on the same page"
+    },
+    answer: "B",
+    explanation: "트래킹 서버 변경 시 기존 ECID 쿠키 스코프를 유지하지 않으면 동일 방문자가 새로운 방문자로 인식되어 UV 급증이 발생합니다."
+  },
+  {
+    id: 56,
+    question: "During checkout, each step fires 'scCheckout' with a step number prop. Analysts observe that steps sometimes appear out of order for fast users on high-latency connections. Data layer values update asynchronously. How can you ensure the sequence is accurate?",
+    options: {
+      A: "Remove the step number from tracking",
+      B: "Persist the step number in an eVar and enforce monotonic increment logic, or use ordered custom events",
+      C: "Send all steps only at the final purchase event",
+      D: "Increase visit timeout to reduce resets"
+    },
+    answer: "B",
+    explanation: "비동기 상황에서는 이전 값 저장과 순차 증가 로직 또는 순서 보장 이벤트를 사용해야 정확한 단계 순서를 유지할 수 있습니다."
+  },
+  {
+    id: 57,
+    question: "You need to exclude most internal QA traffic from Analytics while still keeping a small, controlled sample for validation purposes. The team accesses the site from a range of dynamic IPs. What is the most practical approach?",
+    options: {
+      A: "Block all internal IPs at the CDN level",
+      B: "Set an allow-list cookie for sampled QA sessions and default all others to be excluded",
+      C: "Disable Analytics during office hours",
+      D: "Filter by User-Agent string only"
+    },
+    answer: "B",
+    explanation: "IP가 변동되는 환경에서는 허용 쿠키로 샘플 트래픽만 포함시키고 기본적으로 제외하는 방식이 효과적입니다."
+  },
+  {
+    id: 58,
+    question: "A bug in your checkout tracking caused eVar15 (payment method) to be set to 'undefined' for two weeks. Accurate payment method data exists in the order management system, keyed by orderId. How can you backfill Analytics with the correct values?",
+    options: {
+      A: "Delete all affected rows from Data Warehouse",
+      B: "Use SAINT Classifications or Data Sources to backfill eVar15 using the orderId as the key",
+      C: "Retroactively set eVar15 via Processing Rules",
+      D: "Reprocess the report suite with updated data"
+    },
+    answer: "B",
+    explanation: "과거 데이터 수정은 Data Sources 또는 Classifications를 통해 키-값 매핑으로 백필하는 것이 현실적입니다."
+  },
+  {
+    id: 59,
+    question: "An SPA using the AEP Web SDK sends combined Analytics and Target data via 'sendEvent'. On route changes, Target activities render slowly, causing flicker. How can you improve Target performance without losing Analytics tracking?",
+    options: {
+      A: "Disable Target for SPA routes",
+      B: "Prefetch Target decisions or use 'renderDecisions' immediately after route change, then send a corresponding view event",
+      C: "Only track views on first page load",
+      D: "Add a 5-second delay before firing 'sendEvent'"
+    },
+    answer: "B",
+    explanation: "Target 지연을 줄이려면 SPA 전환 시 사전 의사결정 로드 또는 즉시 렌더링을 적용하고, 그 후 view 이벤트로 Analytics와 동기화해야 합니다."
+  },
+  {
+    id: 60,
+    question: "Your legal team requires compliance with GDPR 'right to be forgotten'. A customer requests deletion of all their data from Adobe Analytics. The ECID and CRM IDs are available. Which solution should you implement?",
+    options: {
+      A: "Hide the user in Workspace segments",
+      B: "Submit a deletion request via Adobe Privacy Service using ECID/namespace mapping",
+      C: "Drop all traffic from the user's IP address",
+      D: "Remove the user's data from Data Warehouse exports only"
+    },
+    answer: "B",
+    explanation: "법적 삭제를 위해서는 Adobe Privacy Service를 사용해야 하며, ECID와 같은 식별자를 정확히 매핑해 요청 대상 데이터를 삭제해야 합니다."
   }
 ]; 
