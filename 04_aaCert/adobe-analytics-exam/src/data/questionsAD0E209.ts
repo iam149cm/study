@@ -730,5 +730,727 @@ export const questionsAD0E209: Question[] = [
     },
     answer: "B",
     explanation: "법적 삭제를 위해서는 Adobe Privacy Service를 사용해야 하며, ECID와 같은 식별자를 정확히 매핑해 요청 대상 데이터를 삭제해야 합니다."
+  },
+  {
+    "id": 61,
+    "question": "Which Adobe Experience Platform component builds unified customer profiles from multiple sources?",
+    "options": {
+      "A": "Identity Graph",
+      "B": "Data Lake",
+      "C": "Adobe Audience Manager",
+      "D": "Tag Manager"
+    },
+    "answer": "A",
+    "explanation": "여러 데이터 소스를 통해 고객 프로필을 통합 생성하는 기능은 Identity Graph가 담당합니다."
+  },
+  {
+    "id": 62,
+    "question": "What does the 'sendEvent' API do in AEP Web SDK?",
+    "options": {
+      "A": "Sends combined data to Adobe Edge Network",
+      "B": "Creates a local JSON file",
+      "C": "Deletes customer records",
+      "D": "Disables decisions rendering"
+    },
+    "answer": "A",
+    "explanation": "sendEvent는 Analytics, Target 등 여러 Adobe 서비스로 데이터를 통합 전송합니다."
+  },
+  {
+    "id": 63,
+    "question": "A user requests deletion under GDPR. Which identifier should you use for Adobe Privacy Service deletion?",
+    "options": {
+      "A": "IP address",
+      "B": "ECID or CRM ID",
+      "C": "Country code",
+      "D": "Device type"
+    },
+    "answer": "B",
+    "explanation": "GDPR 삭제 요청 시 ECID, CRM ID와 같이 개인 식별할 수 있는 값을 Adobe Privacy Service에 제출해야 합니다."
+  },
+  {
+    "id": 64,
+    "question": "What is the recommended way to reduce Target flicker in SPA?",
+    "options": {
+      "A": "Add extra redirects",
+      "B": "Prefetch or immediately render Target decisions after route change, then send view event for Analytics",
+      "C": "Disable Target for all routes",
+      "D": "Ignore flicker issues"
+    },
+    "answer": "B",
+    "explanation": "SPA에서 전환 시 Target 결정 사전 로딩 또는 즉시 렌더 후 view 이벤트 발송이 성능 개선에 효과적입니다."
+  },
+  {
+    "id": 65,
+    "question": "In AEP, what does the Real-Time Customer Data Platform (RTCDP) enable?",
+    "options": {
+      "A": "Video hosting",
+      "B": "Personalized experiences via real-time segmentation",
+      "C": "FTP data transfer",
+      "D": "Serverless compute"
+    },
+    "answer": "B",
+    "explanation": "RTCDP는 실시간 세분화를 통해 맞춤 경험을 제공하는 데 사용됩니다."
+  },
+  {
+    "id": 66,
+    "question": "Which file format is NOT typically supported for ingestion into AEP?",
+    "options": {
+      "A": "CSV",
+      "B": "JSON",
+      "C": "MP3",
+      "D": "XML"
+    },
+    "answer": "C",
+    "explanation": "MP3와 같은 오디오 포맷은 데이터 분석 목적의 인제션에 지원되지 않습니다."
+  },
+  {
+    "id": 67,
+    "question": "What is one key benefit of migrating from AppMeasurement.js to AEP Web SDK?",
+    "options": {
+      "A": "Slower load times",
+      "B": "Unified and faster data collection",
+      "C": "No need for consent management",
+      "D": "Disables Analytics tracking"
+    },
+    "answer": "B",
+    "explanation": "Web SDK는 여러 Adobe 서비스를 통합하고 웹사이트 성능을 높여줍니다."
+  },
+  {
+    "id": 68,
+    "question": "How does AEP Web SDK improve privacy compliance?",
+    "options": {
+      "A": "No privacy support",
+      "B": "Built-in consent management and edge processing",
+      "C": "Tracks users without consent",
+      "D": "Stores data only locally"
+    },
+    "answer": "B",
+    "explanation": "Web SDK는 동의 기반 데이터 처리 및 엣지 네트워크 관리가 내장되어 있어 GDPR 등 규제 준수를 쉽게 합니다."
+  },
+  {
+    "id": 69,
+    "question": "Which element speeds up route change personalization in SPAs using Target?",
+    "options": {
+      "A": "Delayed sendEvent",
+      "B": "Immediate renderDecisions",
+      "C": "Ignoring Analytics tracking",
+      "D": "Manual page reload"
+    },
+    "answer": "B",
+    "explanation": "renderDecisions를 즉시 호출하면 SPA 내 라우트 변경 시 Target 액티비티의 지연을 최소화할 수 있습니다."
+  },
+  {
+    "id": 70,
+    "question": "To be GDPR compliant, which step is required for data erasure?",
+    "options": {
+      "A": "Manually filter client hits in Segments",
+      "B": "Submit API request through Adobe Privacy Service",
+      "C": "Keep all records for analytics accuracy",
+      "D": "Export data to third-party DMP"
+    },
+    "answer": "B",
+    "explanation": "Adobe Privacy Service를 통해 해당 고객 식별자의 삭제 API 요청이 GDPR 준수를 위해 필수입니다."
+  },
+  {
+    "id": 71,
+    "question": "Which feature of AEP helps unify identifiers across sources?",
+    "options": {
+      "A": "Identity Graph",
+      "B": "Data Science Workspace",
+      "C": "Report Builder",
+      "D": "Experience Events"
+    },
+    "answer": "A",
+    "explanation": "Identity Graph는 여러 소스의 고객 식별자를 통합하는 데 사용됩니다."
+  },
+  {
+    "id": 72,
+    "question": "Which namespace would typically be processed for deletion in Privacy Service?",
+    "options": {
+      "A": "Email",
+      "B": "ECID",
+      "C": "IP Range",
+      "D": "Device Type"
+    },
+    "answer": "B",
+    "explanation": "ECID는 Adobe Privacy Service에서 고객 데이터 삭제의 기준 식별자입니다."
+  },
+  {
+    "id": 73,
+    "question": "What is a recommended approach for reducing duplicate Analytics hits in a SPA?",
+    "options": {
+      "A": "Track only initial page load views",
+      "B": "Track each route change as a separate view event",
+      "C": "Never send view events after navigation",
+      "D": "Send events only for external links"
+    },
+    "answer": "B",
+    "explanation": "SPA에서는 각 라우트 변경마다 view 이벤트를 별도로 보내야 중복 히트 발생을 방지할 수 있습니다."
+  },
+  {
+    "id": 74,
+    "question": "Which approach helps maintain GDPR compliance across Adobe platforms?",
+    "options": {
+      "A": "Submit requests via Privacy Service API",
+      "B": "Delete local cookies only",
+      "C": "Inform users about data retention",
+      "D": "Export all tracking logs"
+    },
+    "answer": "A",
+    "explanation": "개인정보 삭제 등 GDPR 처리 요구 사항을 API를 통해 Privacy Service로 요청하는 것이 표준 방식입니다."
+  },
+  {
+    "id": 75,
+    "question": "What is the main role of the Adobe Edge Network in Web SDK?",
+    "options": {
+      "A": "Local data storage",
+      "B": "Routing and processing unified requests",
+      "C": "Replacing customer CRM",
+      "D": "Disabling privacy controls"
+    },
+    "answer": "B",
+    "explanation": "Edge Network는 Web SDK를 통해 들어온 트래킹 요청을 빠르게 처리하고 각 서비스로 전달합니다."
+  },
+  {
+    "id": 76,
+    "question": "If a SPA page flickers after each route change, what should you check first?",
+    "options": {
+      "A": "Route configuration",
+      "B": "Target decision timing and rendering",
+      "C": "Browser consent settings",
+      "D": "Email campaign tracking"
+    },
+    "answer": "B",
+    "explanation": "SPA에서 flicker가 발생하면 Target 의사결정 로딩 및 렌더링 타이밍을 먼저 점검해야 합니다."
+  },
+  {
+    "id": 77,
+    "question": "Which Adobe service enables automated response to GDPR requests?",
+    "options": {
+      "A": "Privacy Service",
+      "B": "Target",
+      "C": "Audience Manager",
+      "D": "Data Lake"
+    },
+    "answer": "A",
+    "explanation": "Privacy Service는 GDPR 접근/삭제 등 자동화 요청을 처리하는 Adobe 공식 서비스입니다."
+  },
+  {
+    "id": 78,
+    "question": "How can you improve tagging performance on high-traffic sites using AEP?",
+    "options": {
+      "A": "Use multiple separate SDKs",
+      "B": "Consolidate tracking with Web SDK",
+      "C": "Disable Analytics for large audiences",
+      "D": "Delay all tracking events"
+    },
+    "answer": "B",
+    "explanation": "Web SDK는 여러 Adobe 서비스를 하나의 요청으로 통합해 성능을 향상시킵니다."
+  },
+  {
+    "id": 79,
+    "question": "What action should be taken to fulfill a CCPA deletion request in AEP?",
+    "options": {
+      "A": "Activate Privacy Service",
+      "B": "Send separate data export",
+      "C": "Email support team",
+      "D": "Delete only cookies"
+    },
+    "answer": "A",
+    "explanation": "AEP의 CCPA 요청은 Privacy Service를 통해 해당 고객 정보 삭제를 자동 처리해야 합니다."
+  },
+  {
+    "id": 80,
+    "question": "Which is true about AEP Web SDK consent management?",
+    "options": {
+      "A": "Consent checks occur before data transmission",
+      "B": "Consent is ignored for first-party cookies",
+      "C": "Consent is managed only for mobile apps",
+      "D": "Consent settings are handled server-side only"
+    },
+    "answer": "A",
+    "explanation": "Web SDK는 데이터 전송 전에 반드시 동의여부를 점검해 규정 준수 및 고객 프라이버시를 보장합니다."
+  },
+  {
+    "id": 81,
+    "question": "You are implementing AEP Web SDK on a retail SPA. After navigating between product pages, you notice the same product view event is fired twice. How should you fix this?",
+    "options": {
+      "A": "Remove view event tracking on route change",
+      "B": "Trigger view events only after a new route is fully rendered and product data changes",
+      "C": "Disable analytics for product pages",
+      "D": "Send events only on first page load"
+    },
+    "answer": "B",
+    "explanation": "SPA에서는 각 라우트 변경 후 데이터가 렌더링되고 실제 변화가 있을 때 view 이벤트를 발송해야 중복 추적을 방지할 수 있습니다."
+  },
+  {
+    "id": 82,
+    "question": "While integrating Adobe Target with AEP Web SDK, your marketing team complains about visible flicker on banner updates in SPA route changes. What should you do?",
+    "options": {
+      "A": "Use prefetch decisions before route changes and immediately apply renderDecisions afterwards",
+      "B": "Delay route rendering by 3 seconds",
+      "C": "Disable Target in SPA views",
+      "D": "Reduce banner size"
+    },
+    "answer": "A",
+    "explanation": "Target 성능 최적화를 위해 SPA 전환 전 결정을 미리 받아두고, 전환 직후 renderDecisions를 실행하면 깜빡임 현상을 줄일 수 있습니다."
+  },
+  {
+    "id": 83,
+    "question": "A customer submits a CCPA data deletion request. You have their ECID and email. What is the correct process in AEP?",
+    "options": {
+      "A": "Delete cookies manually from the browser",
+      "B": "Submit a Privacy Service deletion request with ECID and correct namespace mapping",
+      "C": "Export their data to CSV and remove it locally",
+      "D": "Block their IP in the firewall"
+    },
+    "answer": "B",
+    "explanation": "CCPA 준수를 위해 Adobe Privacy Service API에 ECID와 네임스페이스 매핑 정보를 포함해 삭제 요청을 제출해야 합니다."
+  },
+  {
+    "id": 84,
+    "question": "Your SPA sends Target and Analytics data together via Web SDK. After a promotional banner campaign went live, Analytics tracking remained correct but banners were delayed. How can you improve Target load time?",
+    "options": {
+      "A": "Track Analytics only once per session",
+      "B": "Trigger renderDecisions immediately after route load before tracking view events",
+      "C": "Send events every 10 seconds",
+      "D": "Disable personalization for banners"
+    },
+    "answer": "B",
+    "explanation": "SPA에서 Target 지연 개선은 우선 의사결정을 렌더링한 뒤 Analytics view 이벤트를 발송하는 순서 최적화로 가능해집니다."
+  },
+  {
+    "id": 85,
+    "question": "You detect that Analytics events from your SPA include old route names. What is the likely cause?",
+    "options": {
+      "A": "Events are sent before the route updates in the DOM",
+      "B": "ECID mismatch",
+      "C": "Target decisions missing",
+      "D": "Privacy Service blocking events"
+    },
+    "answer": "A",
+    "explanation": "라우트 변경이 DOM에 반영되기 전에 이벤트를 전송하면 이전 페이지 이름이 전송될 수 있습니다."
+  },
+  {
+    "id": 86,
+    "question": "During GDPR deletion testing, you notice some user data still appears in Customer Journey Analytics. What's the most probable reason?",
+    "options": {
+      "A": "Deletion was requested for the wrong namespace",
+      "B": "Target campaigns are still active",
+      "C": "Web SDK does not support deletions",
+      "D": "Data Lake sync completed successfully"
+    },
+    "answer": "A",
+    "explanation": "GDPR 삭제 요청 시 ECID 등 올바른 네임스페이스를 사용하지 않으면 사용자 데이터가 완전히 제거되지 않습니다."
+  },
+  {
+    "id": 87,
+    "question": "A travel website uses AEP Web SDK for personalization. After switching to an SPA framework, Target offers often appear after a noticeable delay. What’s the optimal approach?",
+    "options": {
+      "A": "Load Target offers only on the home page",
+      "B": "Use SPA view events and target prefetch",
+      "C": "Disable content personalization",
+      "D": "Increase asset cache time"
+    },
+    "answer": "B",
+    "explanation": "SPA 환경에서는 라우트 전환 시 SPA view 이벤트와 Target 사전 로딩(prefetch)을 병행하면 지연을 줄일 수 있습니다."
+  },
+  {
+    "id": 88,
+    "question": "An e-commerce site using AEP notices that some consent preferences are ignored for repeat visitors. What should you check?",
+    "options": {
+      "A": "Consent status persistence in the SDK configuration",
+      "B": "Target activity names",
+      "C": "User login frequency",
+      "D": "CJA data stitching options"
+    },
+    "answer": "A",
+    "explanation": "반복 방문자에서 동의 상태가 무시되면 SDK 설정에서 동의 상태가 지속(persistence)되도록 구성했는지 확인해야 합니다."
+  },
+  {
+    "id": 89,
+    "question": "You need to capture a purchase event with product details and send it to AEP via Web SDK. Which data structure should you use?",
+    "options": {
+      "A": "IdentityMap only",
+      "B": "XDM schema with commerce.purchase event type and product list",
+      "C": "Raw string array",
+      "D": "Custom cookie"
+    },
+    "answer": "B",
+    "explanation": "구매 이벤트는 commerce.purchase 타입과 제품 리스트가 포함된 XDM 스키마를 사용해 Web SDK로 전송해야 합니다."
+  },
+  {
+    "id": 90,
+    "question": "A retail SPA shows outdated product prices in personalized recommendations after updates. What could be the cause?",
+    "options": {
+      "A": "Target decision caching not refreshed",
+      "B": "ECID regeneration",
+      "C": "GDPR deletion request pending",
+      "D": "Analytics queue full"
+    },
+    "answer": "A",
+    "explanation": "개인화 추천이 오래된 가격을 표시하는 경우 Target 결정 캐시가 갱신되지 않았을 가능성이 큽니다."
+  },
+  {
+    "id": 91,
+    "question": "Your analytics team wants to segment users who have seen a special campaign banner in the last 7 days. Which data should you use?",
+    "options": {
+      "A": "Experience Event with campaign impression flag",
+      "B": "IdentityMap only",
+      "C": "Privacy Service logs",
+      "D": "Custom cookie storage"
+    },
+    "answer": "A",
+    "explanation": "특정 캠페인 배너 노출 여부는 Experience Event 데이터에 플래그를 설정해 세분화할 수 있습니다."
+  },
+  {
+    "id": 92,
+    "question": "In a debugging session, you see that Analytics hits are being sent before consent is granted. How should you fix this?",
+    "options": {
+      "A": "Disable consent checking",
+      "B": "Use setConsent before tracking calls",
+      "C": "Lower page load time",
+      "D": "Use POST instead of GET"
+    },
+    "answer": "B",
+    "explanation": "동의가 주어지기 전에 히트가 전송되지 않도록 setConsent 호출을 먼저 수행해야 합니다."
+  },
+  {
+    "id": 93,
+    "question": "A user opts out of personalization but still receives targeted offers. What is the problem?",
+    "options": {
+      "A": "Analytics data retention",
+      "B": "Target not respecting consent settings",
+      "C": "XDM schema misconfiguration",
+      "D": "Expired ECID cookies"
+    },
+    "answer": "B",
+    "explanation": "개인화 거부에도 타겟팅이 계속된다면 Target 설정에서 동의 상태를 준수하도록 구성되지 않은 것입니다."
+  },
+  {
+    "id": 94,
+    "question": "During SPA route changes, your analytics reports show missing page view data. Which fix should you apply?",
+    "options": {
+      "A": "Add view events for each SPA navigation",
+      "B": "Send data only on first page load",
+      "C": "Disable SPA routing",
+      "D": "Use static HTML pages"
+    },
+    "answer": "A",
+    "explanation": "SPA에서는 라우트 변경 시마다 view 이벤트를 발송해야 빠진 페이지뷰 데이터를 방지할 수 있습니다."
+  },
+  {
+    "id": 95,
+    "question": "Your marketing analyst reports that CJA shows two identities for the same customer. How can you unify them?",
+    "options": {
+      "A": "Use Identity Graph to map the identifiers",
+      "B": "Delete one identifier",
+      "C": "Request Privacy Service for merge",
+      "D": "Block duplicate records"
+    },
+    "answer": "A",
+    "explanation": "Identity Graph를 통해 서로 다른 식별자를 같은 사람으로 매핑해 CJA에서 통합할 수 있습니다."
+  },
+  {
+    "id": 96,
+    "question": "Your sales team wants product recommendations based on real-time behavior. Which AEP feature should you use?",
+    "options": {
+      "A": "Real-Time Customer Data Platform",
+      "B": "Data Lake",
+      "C": "Privacy Service",
+      "D": "Report Builder"
+    },
+    "answer": "A",
+    "explanation": "RTCDP를 통해 실시간 행동 기반으로 제품 추천을 제공할 수 있습니다."
+  },
+  {
+    "id": 97,
+    "question": "You migrate from AppMeasurement to Web SDK and notice faster page loads but missing campaign parameters. What should you check?",
+    "options": {
+      "A": "Query string capture in XDM schema mapping",
+      "B": "Target activities sync",
+      "C": "Privacy Service status",
+      "D": "Local cache settings"
+    },
+    "answer": "A",
+    "explanation": "캠페인 파라미터가 누락되면 XDM 스키마 매핑에서 쿼리스트링 캡처가 설정되어 있는지 확인해야 합니다."
+  },
+  {
+    "id": 98,
+    "question": "You need to implement GDPR access requests for all customer data in AEP. Which approach is correct?",
+    "options": {
+      "A": "Use Privacy Service access requests with all linked namespaces",
+      "B": "Send CSV exports to the requester",
+      "C": "Delete the customer's data",
+      "D": "Use IP-based filtering"
+    },
+    "answer": "A",
+    "explanation": "GDPR 접근 요청 시 연결된 모든 네임스페이스로 Privacy Service 접근 요청을 수행해야 합니다."
+  },
+  {
+    "id": 99,
+    "question": "Your personalization campaign in Target is not applying for users coming from a mobile app deep link. What’s the likely cause?",
+    "options": {
+      "A": "Missing SPA view event on deep link load",
+      "B": "ECID duplication",
+      "C": "Privacy Service active",
+      "D": "AEP schema version mismatch"
+    },
+    "answer": "A",
+    "explanation": "모바일 딥링크로 진입 시 SPA view 이벤트가 누락되면 타겟팅이 적용되지 않습니다."
+  },
+  {
+    "id": 100,
+    "question": "A video streaming site using AEP sees performance issues on high-traffic events. What’s the best solution?",
+    "options": {
+      "A": "Consolidate all tracking into Web SDK single calls",
+      "B": "Increase server capacity",
+      "C": "Track events in multiple APIs",
+      "D": "Disable tracking during peak hours"
+    },
+    "answer": "A",
+    "explanation": "Web SDK 단일 호출로 여러 추적을 통합하면 대규모 이벤트 트래픽에서도 성능을 개선할 수 있습니다."
+  },
+  
+  {
+    "id": 101,
+    "question": "What must be set up in Adobe Analytics for custom event tracking?",
+    "options": {
+      "A": "Processing rules",
+      "B": "Event variables",
+      "C": "Conversion eVars",
+      "D": "Traffic sProps"
+    },
+    "answer": "B",
+    "explanation": "사용자 이벤트 추적을 위해서는 이벤트 변수를 정의하고 설정해야 합니다."
+  },
+  {
+    "id": 102,
+    "question": "What is an advantage of using Data Layer for Adobe Analytics implementation?",
+    "options": {
+      "A": "Improved user interface",
+      "B": "Consistent and reliable data collection",
+      "C": "Faster browser rendering",
+      "D": "Automatic variable mapping"
+    },
+    "answer": "B",
+    "explanation": "데이터 레이어는 일관되고 신뢰할 수 있는 데이터 수집을 가능하게 합니다."
+  },
+  {
+    "id": 103,
+    "question": "Which Adobe tool is primarily used for tag management?",
+    "options": {
+      "A": "Audience Manager",
+      "B": "Experience Platform Launch",
+      "C": "Report Builder",
+      "D": "LiveCycle"
+    },
+    "answer": "B",
+    "explanation": "Adobe Experience Platform Launch는 태그 관리 및 배포에 특화된 도구입니다."
+  },
+  {
+    "id": 104,
+    "question": "Which variable type in Adobe Analytics remains tied to a single visit?",
+    "options": {
+      "A": "eVar",
+      "B": "sProp",
+      "C": "Event",
+      "D": "ListVar"
+    },
+    "answer": "B",
+    "explanation": "sProp은 방문 단위로 값을 기록하므로 여러 페이지 이동 시 연동되지 않습니다."
+  },
+  {
+    "id": 105,
+    "question": "When mapping data to Adobe's XDM schema, what is a key requirement?",
+    "options": {
+      "A": "Correct data types for each field",
+      "B": "Compressed variable names",
+      "C": "Only string values allowed",
+      "D": "Duplicate field names"
+    },
+    "answer": "A",
+    "explanation": "모든 필드에 적합한 데이터 타입 매핑이 반드시 필요합니다."
+  },
+  {
+    "id": 106,
+    "question": "Which extension in Launch helps detect data layer changes?",
+    "options": {
+      "A": "Rule Engine",
+      "B": "Data Layer Manager",
+      "C": "Privacy Connector",
+      "D": "Experience Events"
+    },
+    "answer": "B",
+    "explanation": "Data Layer Manager 확장은 데이터 레이어 변화 감지와 트리거에 사용됩니다."
+  },
+  {
+    "id": 107,
+    "question": "To ensure Analytics tracking works on mobile web, what should be verified?",
+    "options": {
+      "A": "Responsive design only",
+      "B": "AppMeasurement.js loaded correctly",
+      "C": "Tracking server supports HTTPS",
+      "D": "User agent string"
+    },
+    "answer": "B",
+    "explanation": "모바일에서도 AppMeasurement.js의 정상 로딩이 중요합니다."
+  },
+  {
+    "id": 108,
+    "question": "Which setting is required for enabling cross-domain Analytics tracking?",
+    "options": {
+      "A": "Unique report suite per domain",
+      "B": "Visitor ID service",
+      "C": "Custom tagging rule",
+      "D": "Separate XDM schema"
+    },
+    "answer": "B",
+    "explanation": "크로스도메인 추적은 Visitor ID 서비스 적용이 핵심입니다."
+  },
+  {
+    "id": 109,
+    "question": "Which report suite setting allows customizing currency reporting in Analytics?",
+    "options": {
+      "A": "Time zone",
+      "B": "Data retention period",
+      "C": "Currency code",
+      "D": "Session length"
+    },
+    "answer": "C",
+    "explanation": "통화 코드를 지정하면 보고서의 화폐 단위가 맞게 설정됩니다."
+  },
+  {
+    "id": 110,
+    "question": "For real-time segmentation in AEP, which system is used?",
+    "options": {
+      "A": "Data Lake",
+      "B": "RTCDP",
+      "C": "Processing rules",
+      "D": "Report Builder"
+    },
+    "answer": "B",
+    "explanation": "RTCDP(Real-Time Customer Data Platform)는 실시간 세그먼트화에 사용됩니다."
+  },
+  {
+    "id": 111,
+    "question": "Which of the following cannot be configured via the Launch UI?",
+    "options": {
+      "A": "Tag firing rules",
+      "B": "Data elements mapping",
+      "C": "Custom report suite settings",
+      "D": "Extension installation"
+    },
+    "answer": "C",
+    "explanation": "보고서 설정은 Adobe Analytics UI에서 해야 하며 Launch에서는 불가능합니다."
+  },
+  {
+    "id": 112,
+    "question": "What should an Analytics developer do before publishing Launch changes?",
+    "options": {
+      "A": "Clear cookies",
+      "B": "Perform a build audit and staging test",
+      "C": "Change report suite IDs",
+      "D": "Disable all extensions"
+    },
+    "answer": "B",
+    "explanation": "배포 전 빌드 감사 및 스테이징 테스트가 필수입니다."
+  },
+  {
+    "id": 113,
+    "question": "Which Adobe Analytics API allows pulling segmented data programmatically?",
+    "options": {
+      "A": "Reporting API v2",
+      "B": "Experience Events API",
+      "C": "Privacy Service API",
+      "D": "Mobile Services API"
+    },
+    "answer": "A",
+    "explanation": "Reporting API v2가 세그먼트 데이터 등 리포트 추출을 지원합니다."
+  },
+  {
+    "id": 114,
+    "question": "A new variable must be tracked only when a specific button is clicked. Where should this logic be configured in Launch?",
+    "options": {
+      "A": "In the extension manifest",
+      "B": "As a rule with event trigger 'Click'",
+      "C": "Directly in the data layer",
+      "D": "Privacy Settings"
+    },
+    "answer": "B",
+    "explanation": "특정 버튼 클릭에 대한 추적은 Launch Rule에서 'Click' 이벤트로 지정해야 합니다."
+  },
+  {
+    "id": 115,
+    "question": "To debug Analytics beacon issues, which tool is recommended?",
+    "options": {
+      "A": "Launch Rule editor",
+      "B": "Browser Network Inspector",
+      "C": "Conversion Variable manager",
+      "D": "Data Layer Logger"
+    },
+    "answer": "B",
+    "explanation": "네트워크 인스펙터에서 Beacon 호출 및 응답을 디버깅할 수 있습니다."
+  },
+  {
+    "id": 116,
+    "question": "Which Launch feature enables scheduling when tagging rules are active?",
+    "options": {
+      "A": "Rule Conditions",
+      "B": "Library Publishing",
+      "C": "Data Elements",
+      "D": "Extension Loader"
+    },
+    "answer": "A",
+    "explanation": "Rule의 조건(Conditions)을 통해 태그가 작동하는 시점을 제어할 수 있습니다."
+  },
+  {
+    "id": 117,
+    "question": "Which analytics variable tracks the value of a completed transaction?",
+    "options": {
+      "A": "event1",
+      "B": "purchaseID",
+      "C": "eVar",
+      "D": "Revenue"
+    },
+    "answer": "D",
+    "explanation": "Revenue 변수는 구매 금액 등 트랜잭션 값을 기록합니다."
+  },
+  {
+    "id": 118,
+    "question": "What is a common reason for missing Analytics data after go-live?",
+    "options": {
+      "A": "Wrong report suite ID",
+      "B": "Slow internet",
+      "C": "Changes in CSS selectors",
+      "D": "Outdated browser cache"
+    },
+    "answer": "A",
+    "explanation": "잘못된 리포트 슈트 ID 사용 시 데이터가 누락될 수 있습니다."
+  },
+  {
+    "id": 119,
+    "question": "Which method can combine multiple identifiers in the Experience Platform?",
+    "options": {
+      "A": "Identity Graph mapping",
+      "B": "Event concatenation",
+      "C": "Report suite stitching",
+      "D": "Custom variable combine"
+    },
+    "answer": "A",
+    "explanation": "Identity Graph는 여러 고객 식별자를 통합합니다."
+  },
+  {
+    "id": 120,
+    "question": "Before migrating from AppMeasurement.js to Web SDK, which check is most important?",
+    "options": {
+      "A": "Consent configuration compatibility",
+      "B": "HTML doctype declaration",
+      "C": "Mobile screen resolution",
+      "D": "Image compression settings"
+    },
+    "answer": "A",
+    "explanation": "Web SDK 마이그레이션 전 동의 설정 호환성 검토가 매우 중요합니다."
   }
+
 ]; 
