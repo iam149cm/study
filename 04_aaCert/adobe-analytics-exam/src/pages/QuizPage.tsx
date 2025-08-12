@@ -22,6 +22,7 @@ import {
 } from '@mui/material';
 import { questionsAD0E213 } from '../data/questionsAD0E213';
 import { questionsAD0E209 } from '../data/questionsAD0E209';
+import { questionsAD0E208 } from '../data/questionsAD0E208';
 import { getRandomQuestions, shuffleOptions, convertAnswer } from '../utils/quizUtils';
 
 const QuizPage: React.FC = () => {
@@ -46,7 +47,20 @@ const QuizPage: React.FC = () => {
   const [isTimeUp, setIsTimeUp] = useState(false);
   const [showConfirmDialog, setShowConfirmDialog] = useState(false);
   const [quizQuestions, setQuizQuestions] = useState(() => {
-    const allQuestions = certification === 'AD0-E213' ? questionsAD0E213 : questionsAD0E209;
+    let allQuestions;
+    switch (certification) {
+      case 'AD0-E213':
+        allQuestions = questionsAD0E213;
+        break;
+      case 'AD0-E209':
+        allQuestions = questionsAD0E209;
+        break;
+      case 'AD0-E208':
+        allQuestions = questionsAD0E208;
+        break;
+      default:
+        allQuestions = questionsAD0E213;
+    }
     const selectedQuestions = getRandomQuestions(allQuestions, questionCount);
     return selectedQuestions.map(q => ({
       ...q,
@@ -60,7 +74,20 @@ const QuizPage: React.FC = () => {
 
   useEffect(() => {
     // 퀴즈 페이지 진입 시 타이틀 변경
-    const certTitle = certification === 'AD0-E213' ? 'Adobe Analytics Developer Professional' : 'Adobe Analytics Developer Expert';
+    let certTitle = '';
+    switch (certification) {
+      case 'AD0-E213':
+        certTitle = 'Adobe Analytics Developer Professional';
+        break;
+      case 'AD0-E209':
+        certTitle = 'Adobe Analytics Developer Expert';
+        break;
+      case 'AD0-E208':
+        certTitle = 'Adobe Analytics Business Practitioner Expert';
+        break;
+      default:
+        certTitle = 'Adobe Analytics';
+    }
     document.title = `[${certification}] ${certTitle} 모의고사 - 문제 ${currentQuestionIndex + 1}/${quizQuestions.length}`;
   }, [certification, currentQuestionIndex, quizQuestions.length]);
 

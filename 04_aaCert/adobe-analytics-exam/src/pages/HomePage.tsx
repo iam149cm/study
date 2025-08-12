@@ -75,6 +75,12 @@ const HomePage: React.FC = () => {
           description: 'Adobe Analytics 개발자 전문가 (고급) 자격증',
           focus: '고급 구현, 서버사이드 추적, API, 고급 분석'
         };
+      case 'AD0-E208':
+        return {
+          title: 'Adobe Analytics Business Practitioner Expert',
+          description: 'Adobe Analytics 비즈니스 실무 전문가 자격증',
+          focus: '비즈니스 분석, 리포트 작성, 데이터 해석, 실무 활용'
+        };
       default:
         return {
           title: '',
@@ -123,6 +129,16 @@ const HomePage: React.FC = () => {
                   </Typography>
                   <Typography variant="caption" display="block">
                     Developer Expert
+                  </Typography>
+                </Box>
+              </ToggleButton>
+              <ToggleButton value="AD0-E208" aria-label="AD0-E208" sx={{ minWidth: 200 }}>
+                <Box sx={{ textAlign: 'center', p: 1 }}>
+                  <Typography variant="subtitle1" fontWeight="bold">
+                    AD0-E208
+                  </Typography>
+                  <Typography variant="caption" display="block">
+                    Business Practitioner Expert
                   </Typography>
                 </Box>
               </ToggleButton>
