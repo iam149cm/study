@@ -252,7 +252,7 @@ const ResultsPage: React.FC = () => {
                           <Typography variant="subtitle1" gutterBottom component="div">
                             해설
                           </Typography>
-                          <Typography variant="body2" color="text.secondary">
+                          <Typography variant="body2" color="text.secondary" sx={{ whiteSpace: 'pre-wrap' }}>
                             {q.explanation || "해설이 없습니다."}
                           </Typography>
                         </Box>

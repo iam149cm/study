@@ -10,8 +10,7 @@ import {
   Button,
   Paper,
   LinearProgress,
-  FormControl,
-  FormLabel,
+  
   Checkbox,
   FormGroup,
   Alert,
@@ -46,7 +45,7 @@ const QuizPage: React.FC = () => {
   const [timeLeft, setTimeLeft] = useState(getTimeLimit(questionCount));
   const [isTimeUp, setIsTimeUp] = useState(false);
   const [showConfirmDialog, setShowConfirmDialog] = useState(false);
-  const [quizQuestions, setQuizQuestions] = useState(() => {
+  const [quizQuestions] = useState(() => {
     let allQuestions;
     switch (certification) {
       case 'AD0-E213':
@@ -71,6 +70,20 @@ const QuizPage: React.FC = () => {
   const [userAnswers, setUserAnswers] = useState<{ [key: number]: string[] }>({});
 
   const currentQuestion = quizQuestions[currentQuestionIndex];
+  
+  // 상단 헤더 타이틀 (인증 코드별 매핑)
+  const headerTitle = (() => {
+    switch (certification) {
+      case 'AD0-E213':
+        return 'Adobe Analytics Developer Professional';
+      case 'AD0-E209':
+        return 'Adobe Analytics Developer Expert';
+      case 'AD0-E208':
+        return 'Adobe Analytics Business Practitioner Expert';
+      default:
+        return 'Adobe Analytics';
+    }
+  })();
 
   useEffect(() => {
     // 퀴즈 페이지 진입 시 타이틀 변경
@@ -200,7 +213,7 @@ const QuizPage: React.FC = () => {
       <Box sx={{ mt: 4 }}>
         <Box sx={{ textAlign: 'center', mb: 3 }}>
           <Typography variant="h5" gutterBottom>
-            {certification === 'AD0-E213' ? 'Adobe Analytics Developer Professional' : 'Adobe Analytics Developer Expert'}
+            {headerTitle}
           </Typography>
           <Typography variant="subtitle1" color="text.secondary">
             {certification} 모의고사
@@ -272,7 +285,9 @@ const QuizPage: React.FC = () => {
 
           {showExplanation && (
             <Alert severity="info" sx={{ mt: 2 }}>
-              {currentQuestion.explanation}
+              <Typography variant="body2" sx={{ whiteSpace: 'pre-wrap' }}>
+                {currentQuestion.explanation}
+              </Typography>
             </Alert>
           )}
         </Paper>
