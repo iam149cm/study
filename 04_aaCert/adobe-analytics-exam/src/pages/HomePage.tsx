@@ -112,7 +112,7 @@ const HomePage: React.FC = () => {
               aria-label="자격증 선택"
               sx={{ mb: 3 }}
             >
-              <ToggleButton value="AD0-E213" aria-label="AD0-E213" sx={{ minWidth: 200 }}>
+              <ToggleButton value="AD0-E213" aria-label="AD0-E213" sx={{ width: 220, height: 80 }}>
                 <Box sx={{ textAlign: 'center', p: 1 }}>
                   <Typography variant="subtitle1" fontWeight="bold">
                     AD0-E213
@@ -122,7 +122,7 @@ const HomePage: React.FC = () => {
                   </Typography>
                 </Box>
               </ToggleButton>
-              <ToggleButton value="AD0-E209" aria-label="AD0-E209" sx={{ minWidth: 200 }}>
+              <ToggleButton value="AD0-E209" aria-label="AD0-E209" sx={{ width: 220, height: 80 }}>
                 <Box sx={{ textAlign: 'center', p: 1 }}>
                   <Typography variant="subtitle1" fontWeight="bold">
                     AD0-E209
@@ -132,7 +132,7 @@ const HomePage: React.FC = () => {
                   </Typography>
                 </Box>
               </ToggleButton>
-              <ToggleButton value="AD0-E208" aria-label="AD0-E208" sx={{ minWidth: 200 }}>
+              <ToggleButton value="AD0-E208" aria-label="AD0-E208" sx={{ width: 220, height: 80 }}>
                 <Box sx={{ textAlign: 'center', p: 1 }}>
                   <Typography variant="subtitle1" fontWeight="bold">
                     AD0-E208
