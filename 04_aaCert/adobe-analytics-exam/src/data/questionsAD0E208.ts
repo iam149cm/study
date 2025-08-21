@@ -1034,5 +1034,485 @@ export const questionsAD0E208: Question[] = [
     },
     answer: "C",
     explanation: "Nested breakdowns allow analyzing an item by more than one dimension.\n\n중첩 분해를 통해 하나의 항목을 여러 차원으로 세부 분석할 수 있습니다."
+  },
+  {
+    id: 86,
+    question: "What is the primary purpose of eVars in Adobe Analytics?",
+    options: {
+      A: "Track page views only",
+      B: "Capture and persist custom conversion variables",
+      C: "Monitor server performance",
+      D: "Store demographic data"
+    },
+    answer: "B",
+    explanation: "eVars are designed to capture custom conversion variables that persist across visits and can be used for attribution analysis.\n\neVar는 방문 간 지속되는 사용자 정의 전환 변수를 캡처하여 기여도 분석에 사용됩니다."
+  },
+  {
+    id: 87,
+    question: "Which metric represents the percentage of visits that viewed only one page?",
+    options: {
+      A: "Exit Rate",
+      B: "Bounce Rate", 
+      C: "Page Views",
+      D: "Single Access"
+    },
+    answer: "B",
+    explanation: "Bounce Rate measures the percentage of single-page visits where visitors leave without viewing additional pages.\n\n이탈률은 추가 페이지를 보지 않고 떠나는 단일 페이지 방문의 비율을 측정합니다."
+  },
+  {
+    id: 88,
+    question: "What is the maximum number of success events that can be configured in Adobe Analytics?",
+    options: {
+      A: "100",
+      B: "200", 
+      C: "1000",
+      D: "Unlimited"
+    },
+    answer: "C",
+    explanation: "Adobe Analytics allows up to 1,000 custom success events (event1-event1000) to be configured.\n\nAdobe Analytics에서는 최대 1,000개의 사용자 정의 성공 이벤트(event1-event1000)를 구성할 수 있습니다."
+  },
+  {
+    id: 89,
+    question: "Which attribution model gives 100% credit to the last marketing channel before conversion?",
+    options: {
+      A: "First Touch",
+      B: "Last Touch",
+      C: "Linear",
+      D: "Time Decay"
+    },
+    answer: "B",
+    explanation: "Last Touch attribution assigns full credit to the final touchpoint before conversion occurs.\n\n라스트 터치 어트리뷰션은 전환 발생 직전의 마지막 터치포인트에 모든 크레딧을 할당합니다."
+  },
+  {
+    id: 90,
+    question: "What does the 'Instances' metric represent in Adobe Analytics?",
+    options: {
+      A: "Total page views",
+      B: "Number of times a variable was set",
+      C: "Unique visitors count",
+      D: "Session duration"
+    },
+    answer: "B",
+    explanation: "Instances counts the number of times a specific variable (prop, eVar, event) was explicitly set or fired.\n\n인스턴스는 특정 변수(prop, eVar, event)가 명시적으로 설정되거나 발생한 횟수를 계산합니다."
+  },
+  {
+    id: 91,
+    question: "Which workspace component allows you to compare date ranges side by side?",
+    options: {
+      A: "Cohort Table",
+      B: "Flow Visualization",
+      C: "Date Comparison",
+      D: "Fallout Visualization"
+    },
+    answer: "C",
+    explanation: "Date Comparison feature enables side-by-side analysis of different time periods within Analysis Workspace.\n\n날짜 비교 기능을 통해 Analysis Workspace에서 서로 다른 기간을 나란히 분석할 수 있습니다."
+  },
+  {
+    id: 92,
+    question: "What is the difference between a Hit and a Visit in Adobe Analytics?",
+    options: {
+      A: "No difference, they are the same",
+      B: "Hit is a single server call, Visit is a series of hits in one session",
+      C: "Hit counts pages, Visit counts users",
+      D: "Hit is monthly, Visit is daily"
+    },
+    answer: "B",
+    explanation: "A Hit represents a single image request to Adobe servers, while a Visit encompasses all hits from one visitor session.\n\n히트는 Adobe 서버에 대한 단일 이미지 요청을 나타내며, 방문은 한 방문자 세션의 모든 히트를 포함합니다."
+  },
+  {
+    id: 93,
+    question: "Which feature helps identify where visitors commonly exit your site?",
+    options: {
+      A: "Flow Visualization",
+      B: "Exit Pages report",
+      C: "Bounce Rate analysis",
+      D: "All of the above"
+    },
+    answer: "D",
+    explanation: "Flow visualization, Exit Pages report, and Bounce Rate analysis all provide insights into visitor exit patterns.\n\n플로우 시각화, 종료 페이지 보고서, 이탈률 분석 모두 방문자 이탈 패턴에 대한 인사이트를 제공합니다."
+  },
+  {
+    id: 94,
+    question: "What is the primary purpose of Virtual Report Suites in Adobe Analytics?",
+    options: {
+      A: "Create backup copies of data",
+      B: "Apply segments and settings without affecting raw data",
+      C: "Export data to external systems",
+      D: "Increase processing speed"
+    },
+    answer: "B",
+    explanation: "Virtual Report Suites allow you to apply segments, date ranges, and processing settings without modifying the underlying data.\n\n가상 보고서 세트를 통해 기본 데이터를 수정하지 않고 세그먼트, 날짜 범위 및 처리 설정을 적용할 수 있습니다."
+  },
+  {
+    id: 95,
+    question: "Which dimension would be most appropriate for tracking campaign effectiveness?",
+    options: {
+      A: "Page URL",
+      B: "Browser Type",
+      C: "Tracking Code",
+      D: "Time Spent"
+    },
+    answer: "C",
+    explanation: "Tracking Code dimension captures campaign identifiers and is specifically designed for measuring campaign performance.\n\n추적 코드 차원은 캠페인 식별자를 캡처하며 캠페인 성과 측정을 위해 특별히 설계되었습니다."
+  },
+  {
+    id: 96,
+    question: "What happens when you apply multiple segments to a report?",
+    options: {
+      A: "Only the first segment is applied",
+      B: "Segments are combined using OR logic",
+      C: "Segments are combined using AND logic by default",
+      D: "Data is averaged across segments"
+    },
+    answer: "C",
+    explanation: "Multiple segments are combined using AND logic, meaning visitors must qualify for all applied segments.\n\n여러 세그먼트는 AND 로직으로 결합되어, 방문자가 적용된 모든 세그먼트 조건을 만족해야 합니다."
+  },
+  {
+    id: 97,
+    question: "Which calculated metric function would you use to count unique occurrences of a dimension?",
+    options: {
+      A: "Sum()",
+      B: "Count()",
+      C: "Approximate Count Distinct()",
+      D: "Average()"
+    },
+    answer: "C",
+    explanation: "Approximate Count Distinct function counts unique values of a dimension, similar to how Unique Visitors works.\n\nApproximate Count Distinct 함수는 고유 방문자와 유사하게 차원의 고유 값을 계산합니다."
+  },
+  {
+    id: 98,
+    question: "What is the recommended approach for tracking single-page applications (SPAs)?",
+    options: {
+      A: "Use standard page view tracking only",
+      B: "Implement virtual page views for route changes",
+      C: "Disable analytics on SPAs",
+      D: "Only track the initial page load"
+    },
+    answer: "B",
+    explanation: "SPAs require virtual page view tracking to capture route changes that don't trigger traditional page loads.\n\nSPA는 기존 페이지 로드를 트리거하지 않는 경로 변경을 캡처하기 위해 가상 페이지 뷰 추적이 필요합니다."
+  },
+  {
+    id: 99,
+    question: "Which Analysis Workspace visualization is best for showing customer journey paths?",
+    options: {
+      A: "Bar Chart",
+      B: "Flow Visualization",
+      C: "Histogram",
+      D: "Scatter Plot"
+    },
+    answer: "B",
+    explanation: "Flow Visualization displays the paths visitors take through your site, making it ideal for journey analysis.\n\n플로우 시각화는 방문자가 사이트를 통과하는 경로를 표시하므로 여정 분석에 이상적입니다."
+  },
+  {
+    id: 100,
+    question: "What is the main benefit of using Processing Rules in Adobe Analytics?",
+    options: {
+      A: "Increase data collection speed",
+      B: "Modify or populate variables during data processing",
+      C: "Create custom reports",
+      D: "Export data automatically"
+    },
+    answer: "B",
+    explanation: "Processing Rules allow you to modify context data and populate analytics variables during the data processing phase.\n\n처리 규칙을 통해 데이터 처리 단계에서 컨텍스트 데이터를 수정하고 분석 변수를 채울 수 있습니다."
+  },
+  {
+    id: 101,
+    question: "Which metric should you use to measure the effectiveness of site search functionality?",
+    options: {
+      A: "Page Views",
+      B: "Internal Search Instances",
+      C: "Bounce Rate",
+      D: "Time on Site"
+    },
+    answer: "B",
+    explanation: "Internal Search Instances specifically tracks how often visitors use your site's search feature.\n\n내부 검색 인스턴스는 방문자가 사이트의 검색 기능을 사용하는 빈도를 구체적으로 추적합니다."
+  },
+  {
+    id: 102,
+    question: "What does 'Participation' allocation do for conversion events?",
+    options: {
+      A: "Credits only the last value",
+      B: "Credits only the first value",
+      C: "Credits all values in the conversion path",
+      D: "Splits credit equally among all values"
+    },
+    answer: "C",
+    explanation: "Participation allocation gives full credit to all values that participated in the conversion path.\n\n참여 할당은 전환 경로에 참여한 모든 값에 전체 크레딧을 부여합니다."
+  },
+  {
+    id: 103,
+    question: "Which workspace panel type is specifically designed for cohort analysis?",
+    options: {
+      A: "Freeform Panel",
+      B: "Media Concurrent Viewers Panel",
+      C: "Cohort Panel",
+      D: "Quick Insights Panel"
+    },
+    answer: "C",
+    explanation: "Cohort Panel is specifically built for retention analysis and tracking user behavior over time periods.\n\n코호트 패널은 리텐션 분석과 시간 경과에 따른 사용자 행동 추적을 위해 특별히 구축되었습니다."
+  },
+  {
+    id: 104,
+    question: "What is the maximum number of breakdowns you can apply in a Freeform Table?",
+    options: {
+      A: "3 levels",
+      B: "5 levels", 
+      C: "10 levels",
+      D: "Unlimited levels"
+    },
+    answer: "B",
+    explanation: "Freeform Tables support up to 5 levels of breakdowns to maintain performance and readability.\n\n자유 형식 테이블은 성능과 가독성을 유지하기 위해 최대 5레벨의 분해를 지원합니다."
+  },
+  {
+    id: 105,
+    question: "Which method is recommended for implementing Adobe Analytics on mobile apps?",
+    options: {
+      A: "Web SDK only",
+      B: "Mobile SDK (AEP Mobile SDK)",
+      C: "Server-side implementation only",
+      D: "Third-party tracking tools"
+    },
+    answer: "B",
+    explanation: "Adobe Experience Platform Mobile SDK is the recommended solution for mobile app analytics implementation.\n\nAdobe Experience Platform Mobile SDK는 모바일 앱 분석 구현을 위한 권장 솔루션입니다."
+  },
+  {
+    id: 106,
+    question: "Which of the following are valid eVar allocation settings? (Select all that apply)",
+    options: {
+      A: "Most Recent (Last)",
+      B: "Original Value (First)",
+      C: "Linear",
+      D: "Participation"
+    },
+    answer: ["A", "B","C", "D"],
+    explanation: "All listed options are valid eVar allocation methods available in Adobe Analytics for attribution analysis.\n\n나열된 모든 옵션은 기여도 분석을 위해 Adobe Analytics에서 사용 가능한 유효한 eVar 할당 방법입니다."
+  },
+  {
+    id: 107,
+    question: "You notice that your e-commerce site's conversion rate dropped 20% this week. Your manager asks you to investigate. What steps should you take first in Adobe Analytics?",
+    options: {
+      A: "Check for tracking code changes or site updates",
+      B: "Compare traffic sources week-over-week",
+      C: "Analyze the checkout funnel for drop-off points",
+      D: "Review mobile vs desktop performance trends"
+    },
+    answer: "A",
+    explanation: "First step should be validating data integrity by checking for implementation changes that could affect tracking accuracy.\n\n첫 번째 단계는 추적 정확도에 영향을 줄 수 있는 구현 변경 사항을 확인하여 데이터 무결성을 검증하는 것입니다."
+  },
+  {
+    id: 108,
+    question: "Which components are required to set up goal tracking in Adobe Analytics? (Select all that apply)",
+    options: {
+      A: "Success Events",
+      B: "Conversion Variables (eVars)",
+      C: "Processing Rules",
+      D: "Segments"
+    },
+    answer: ["A", "B"],
+    explanation: "Success Events and Conversion Variables (eVars) are the core components needed for goal tracking, while Processing Rules and Segments are optional enhancements.\n\n성공 이벤트와 전환 변수(eVar)는 목표 추적에 필요한 핵심 구성 요소이며, 처리 규칙과 세그먼트는 선택적 향상 기능입니다."
+  },
+  {
+    id: 109,
+    question: "Your marketing team wants to track video engagement across different campaigns. They need to measure video starts, 25% completion, 50% completion, 75% completion, and video completes. How would you configure this in Adobe Analytics?",
+    options: {
+      A: "Use 5 separate success events for each milestone",
+      B: "Use 1 counter event with different values",
+      C: "Use props to capture video percentage",
+      D: "Use calculated metrics only"
+    },
+    answer: "A",
+    explanation: "Video milestone tracking requires separate success events for each completion percentage to enable proper funnel analysis and campaign attribution.\n\n비디오 마일스톤 추적은 적절한 퍼널 분석과 캠페인 기여도 분석을 위해 각 완료 비율에 대한 별도의 성공 이벤트가 필요합니다."
+  },
+  {
+    id: 110,
+    question: "Which of the following can cause data discrepancies in Adobe Analytics? (Select all that apply)",
+    options: {
+      A: "Ad blockers",
+      B: "JavaScript errors on pages",
+      C: "Bot traffic",
+      D: "Timezone differences"
+    },
+    answer: ["A", "B","C", "D"],
+    explanation: "All these factors can impact data accuracy: ad blockers prevent tracking, JavaScript errors stop data collection, bot traffic inflates metrics, and timezone differences affect reporting periods.\n\n이 모든 요소가 데이터 정확성에 영향을 줄 수 있습니다: 광고 차단기는 추적을 방해하고, JavaScript 오류는 데이터 수집을 중단시키며, 봇 트래픽은 지표를 부풀리고, 시간대 차이는 보고 기간에 영향을 줍니다."
+  },
+  {
+    id: 111,
+    question: "A retail client wants to understand which products are frequently viewed together. They have product data in eVar5 and want to create a cross-sell analysis. What approach would you recommend?",
+    options: {
+      A: "Use Flow visualization with product dimension",
+      B: "Create a segment for product viewers and analyze next page views",
+      C: "Set up a calculated metric for product correlation",
+      D: "Use Fallout visualization"
+    },
+    answer: "A",
+    explanation: "Flow visualization can show the path between different products, revealing which products are commonly viewed in sequence.\n\n플로우 시각화는 서로 다른 제품 간의 경로를 보여주어 어떤 제품들이 순차적으로 조회되는지 알 수 있습니다."
+  },
+  {
+    id: 112,
+    question: "Which of the following are benefits of using Virtual Report Suites? (Select all that apply)",
+    options: {
+      A: "Apply permanent data filtering",
+      B: "Test different attribution models",
+      C: "Create custom calendar definitions",
+      D: "Isolate specific user segments"
+    },
+    answer: "B,C,D",
+    explanation: "Virtual Report Suites allow testing attribution models, custom calendars, and segment isolation. They don't permanently filter raw data, just the view of it.\n\n가상 보고서 세트는 기여도 모델 테스트, 사용자 정의 캘린더, 세그먼트 격리를 허용합니다. 원시 데이터를 영구적으로 필터링하지는 않고 단지 보기만 필터링합니다."
+  },
+  {
+    id: 113,
+    question: "Your company launched a new mobile app and wants to track user engagement. The product manager asks: 'How many users opened the app more than 5 times in their first week?' How would you build this analysis?",
+    options: {
+      A: "Create a segment for new users, then filter by app launches > 5",
+      B: "Use Cohort analysis with app launch as the inclusion event",
+      C: "Build a calculated metric dividing visits by unique visitors",
+      D: "Use Flow visualization starting from first app open"
+    },
+    answer: "B",
+    explanation: "Cohort analysis is designed to track user behavior over specific time periods after an initial action, perfect for first-week engagement tracking.\n\n코호트 분석은 초기 액션 이후 특정 기간 동안의 사용자 행동을 추적하도록 설계되어 첫 주 참여도 추적에 완벽합니다."
+  },
+  {
+    id: 114,
+    question: "Which workspace features help ensure report accuracy and reliability? (Select all that apply)",
+    options: {
+      A: "Data validation using segments",
+      B: "Date range annotations",
+      C: "Attribution panel comparisons",
+      D: "Calculated metric testing"
+    },
+    answer: ["A", "B","C", "D"],
+    explanation: "All these features contribute to report accuracy: segments validate data quality, annotations provide context, attribution panels compare models, and calculated metrics need testing.\n\n이 모든 기능이 보고서 정확성에 기여합니다: 세그먼트는 데이터 품질을 검증하고, 주석은 맥락을 제공하며, 기여도 패널은 모델을 비교하고, 계산된 지표는 테스트가 필요합니다."
+  },
+  {
+    id: 115,
+    question: "A SaaS company wants to track feature adoption across different user tiers (Free, Pro, Enterprise). They implemented custom events for each feature use. What's the best way to analyze feature adoption rates by user tier?",
+    options: {
+      A: "Create separate reports for each user tier",
+      B: "Use eVar for user tier and breakdown feature events by it",
+      C: "Use props for both user tier and features",
+      D: "Implement calculated metrics for each combination"
+    },
+    answer: "B",
+    explanation: "Using eVar for user tier enables persistent tracking and allows breaking down feature events by user segment for comprehensive adoption analysis.\n\n사용자 계층에 eVar를 사용하면 지속적인 추적이 가능하고 기능 이벤트를 사용자 세그먼트별로 분해하여 포괄적인 도입 분석을 할 수 있습니다."
+  },
+  {
+    id: 116,
+    question: "Which Attribution IQ models are available in Adobe Analytics? (Select all that apply)",
+    options: {
+      A: "Linear",
+      B: "Time Decay",
+      C: "U-Shaped",
+      D: "Algorithmic"
+    },
+    answer: ["A", "B","C", "D"],
+    explanation: "Adobe Analytics Attribution IQ includes all these models: Linear distributes credit equally, Time Decay gives more credit to recent touchpoints, U-Shaped credits first and last, and Algorithmic uses machine learning.\n\nAdobe Analytics Attribution IQ에는 이 모든 모델이 포함됩니다: Linear는 크레딧을 균등하게 분배하고, Time Decay는 최근 터치포인트에 더 많은 크레딧을 주며, U-Shaped는 첫 번째와 마지막에 크레딧을 주고, Algorithmic은 머신러닝을 사용합니다."
+  },
+  {
+    id: 117,
+    question: "You're analyzing a sudden spike in bounce rate on your homepage. Visitors increased 40% but engagement dropped significantly. Your stakeholders want to understand why. What analysis approach would provide the most actionable insights?",
+    options: {
+      A: "Segment by traffic source and compare bounce rates",
+      B: "Check page load times and technical metrics",
+      C: "Analyze mobile vs desktop performance separately",
+      D: "All of the above in a systematic approach"
+    },
+    answer: "D",
+    explanation: "A comprehensive analysis requires examining traffic sources, technical performance, and device differences to identify the root cause of engagement issues.\n\n포괄적인 분석을 위해서는 참여도 문제의 근본 원인을 파악하기 위해 트래픽 소스, 기술적 성능, 기기 차이를 모두 검토해야 합니다."
+  },
+  {
+    id: 118,
+    question: "Which of the following require careful consideration when setting up cross-domain tracking? (Select all that apply)",
+    options: {
+      A: "Visitor ID service configuration",
+      B: "Cookie domain settings",
+      C: "Referrer header handling",
+      D: "SSL certificate consistency"
+    },
+    answer: ["A", "B", "C"],
+    explanation: "Cross-domain tracking requires proper Visitor ID service setup, correct cookie domain configuration, and referrer header management. SSL certificates don't directly impact tracking.\n\n크로스 도메인 추적에는 적절한 방문자 ID 서비스 설정, 올바른 쿠키 도메인 구성, 리퍼러 헤더 관리가 필요합니다. SSL 인증서는 추적에 직접적인 영향을 주지 않습니다."
+  },
+  {
+    id: 119,
+    question: "A content publisher wants to measure article engagement beyond page views. They ask: 'Which articles keep readers engaged the longest and drive the most social shares?' How would you structure this analysis?",
+    options: {
+      A: "Use Time Spent on Page and Social Media referrals only",
+      B: "Create a calculated metric combining time spent, scroll depth, and social events",
+      C: "Focus on bounce rate analysis by article",
+      D: "Use page views as the primary metric"
+    },
+    answer: "B",
+    explanation: "A comprehensive engagement analysis requires multiple metrics combined into a calculated metric that reflects true reader engagement beyond simple page views.\n\n포괄적인 참여도 분석에는 단순한 페이지 뷰를 넘어 실제 독자 참여를 반영하는 여러 지표를 계산된 지표로 결합해야 합니다."
+  },
+  {
+    id: 120,
+    question: "Which workspace visualizations are best for time-series analysis? (Select all that apply)",
+    options: {
+      A: "Line Chart",
+      B: "Area Chart",
+      C: "Cohort Table",
+      D: "Flow Visualization"
+    },
+    answer: ["A", "B", "C"],
+    explanation: "Line charts, area charts, and cohort tables effectively show trends over time. Flow visualization shows paths but not time-series trends.\n\n선 차트, 영역 차트, 코호트 테이블은 시간 경과에 따른 트렌드를 효과적으로 보여줍니다. 플로우 시각화는 경로를 보여주지만 시계열 트렌드는 보여주지 않습니다."
+  },
+  {
+    id: 121,
+    question: "A B2B company runs account-based marketing campaigns. They want to track: 'How many target accounts engaged with our content in the last quarter, and what was their journey?' You have company domain in eVar10. What analysis framework would you recommend?",
+    options: {
+      A: "Create company domain segments and use Flow visualization",
+      B: "Use Fallout analysis with company domains",
+      C: "Build cohort analysis by company engagement",
+      D: "Focus on individual visitor journey only"
+    },
+    answer: "A",
+    explanation: "Company domain segments combined with Flow visualization provides the clearest view of account-level engagement patterns and customer journey paths.\n\n회사 도메인 세그먼트와 플로우 시각화를 결합하면 계정 수준의 참여 패턴과 고객 여정 경로를 가장 명확하게 볼 수 있습니다."
+  },
+  {
+    id: 122,
+    question: "Which of the following can be used as containers in Adobe Analytics segments? (Select all that apply)",
+    options: {
+      A: "Hit",
+      B: "Visit",
+      C: "Visitor",
+      D: "Page View"
+    },
+    answer: ["A", "B", "C"],
+    explanation: "Adobe Analytics supports Hit, Visit, and Visitor containers for segmentation. Page View is a metric, not a container type.\n\nAdobe Analytics는 세그먼테이션을 위해 히트, 방문, 방문자 컨테이너를 지원합니다. 페이지 뷰는 지표이지 컨테이너 유형이 아닙니다."
+  },
+  {
+    id: 123,
+    question: "Your SaaS platform shows that trial-to-paid conversion decreased from 15% to 8% over two months. The CEO wants to understand what changed. You have trial start date, user properties, and feature usage data. What analysis sequence would provide the most insights?",
+    options: {
+      A: "Analyze trial user cohorts by start month and compare feature engagement patterns",
+      B: "Look at overall traffic trends only",
+      C: "Focus on payment page abandonment",
+      D: "Compare marketing campaign performance"
+    },
+    answer: "A",
+    explanation: "Cohort analysis by trial start month, combined with feature engagement comparison, reveals behavioral changes between high-converting and low-converting user groups.\n\n체험 시작 월별 코호트 분석과 기능 참여도 비교를 통해 높은 전환율과 낮은 전환율 사용자 그룹 간의 행동 변화를 파악할 수 있습니다."
+  },
+  {
+    id: 124,
+    question: "Which data processing features can modify data before it appears in reports? (Select all that apply)",
+    options: {
+      A: "Processing Rules",
+      B: "VISTA Rules",
+      C: "Marketing Channel Rules",
+      D: "Classification Rules"
+    },
+    answer: ["A", "B", "C"],
+    explanation: "Processing Rules, VISTA Rules, and Marketing Channel Rules all modify data during processing. Classification Rules organize data but don't modify the original values.\n\n처리 규칙, VISTA 규칙, 마케팅 채널 규칙은 모두 처리 중에 데이터를 수정합니다. 분류 규칙은 데이터를 정리하지만 원래 값을 수정하지는 않습니다."
+  },
+  {
+    id: 125,
+    question: "An education platform wants to identify at-risk students. They define at-risk as: 'Students who had high initial engagement (>10 course interactions in week 1) but then showed declining activity (50% drop in week 3).' How would you build this analysis?",
+    options: {
+      A: "Create two segments and use intersection logic",
+      B: "Use sequential segmentation with time-based conditions",
+      C: "Build a calculated metric for engagement decline",
+      D: "Use cohort analysis with custom metrics"
+    },
+    answer: "B",
+    explanation: "Sequential segmentation with time-based conditions allows you to define users who meet criteria in week 1 AND then show different behavior in week 3.\n\n시간 기반 조건이 있는 순차적 세그먼테이션을 통해 1주차에 조건을 만족하고 3주차에 다른 행동을 보이는 사용자를 정의할 수 있습니다."
   }
 ];
