@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { 
   Container, 
@@ -20,17 +20,30 @@ import {
 } from '@mui/material';
 import AssignmentIcon from '@mui/icons-material/Assignment';
 import AssessmentIcon from '@mui/icons-material/Assessment';
+import useGTM from '../utils/useGTM';
 
 const HomePage: React.FC = () => {
   const navigate = useNavigate();
+  const { trackButtonClick, trackPageView } = useGTM();
   const [selectedQuestionCount, setSelectedQuestionCount] = React.useState<number>(25);
   const [selectedCertification, setSelectedCertification] = React.useState<string>('AD0-E213');
+
+  // 페이지뷰 추적을 useCallback으로 메모이제이션
+  const trackHomePageView = useCallback(() => {
+    trackPageView({
+      page_name: '/',
+      page_title: 'Adobe Analytics 자격증 시험 모의고사'
+    });
+  }, [trackPageView]);
 
   useEffect(() => {
     console.log('홈페이지에 진입했습니다.');
     // 기본 타이틀 설정
     document.title = 'Adobe Analytics 자격증 시험 모의고사';
-  }, []);
+    
+    // GTM 페이지뷰 추적
+    trackHomePageView();
+  }, [trackHomePageView]);
 
   useEffect(() => {
     // 선택된 자격증에 따라 타이틀 변경
@@ -45,10 +58,31 @@ const HomePage: React.FC = () => {
   const handleCertificationChange = (event: React.MouseEvent<HTMLElement>, newCertification: string) => {
     if (newCertification !== null) {
       setSelectedCertification(newCertification);
+      
+      // GTM 자격증 변경 추적
+      trackButtonClick({
+        name: 'certification_change',
+        category: 'selection',
+        location: 'homepage',
+        additionalData: {
+          certification: newCertification
+        }
+      });
     }
   };
 
   const handleStartQuiz = () => {
+    // GTM 시험 시작 버튼 클릭 추적
+    trackButtonClick({
+      name: 'start_quiz',
+      category: 'navigation',
+      location: 'homepage',
+      additionalData: {
+        question_count: selectedQuestionCount,
+        certification: selectedCertification
+      }
+    });
+    
     navigate('/quiz', { 
       state: { 
         questionCount: selectedQuestionCount,
@@ -58,6 +92,13 @@ const HomePage: React.FC = () => {
   };
 
   const handleViewResults = () => {
+    // GTM 결과 보기 버튼 클릭 추적
+    trackButtonClick({
+      name: 'view_results',
+      category: 'navigation',
+      location: 'homepage'
+    });
+    
     navigate('/results');
   };
 
@@ -112,7 +153,7 @@ const HomePage: React.FC = () => {
               aria-label="자격증 선택"
               sx={{ mb: 3 }}
             >
-              <ToggleButton value="AD0-E213" aria-label="AD0-E213" sx={{ width: 220, height: 80 }}>
+              <ToggleButton value="AD0-E213" aria-label="AD0-E213" sx={{ minWidth: 200 }}>
                 <Box sx={{ textAlign: 'center', p: 1 }}>
                   <Typography variant="subtitle1" fontWeight="bold">
                     AD0-E213
@@ -122,7 +163,7 @@ const HomePage: React.FC = () => {
                   </Typography>
                 </Box>
               </ToggleButton>
-              <ToggleButton value="AD0-E209" aria-label="AD0-E209" sx={{ width: 220, height: 80 }}>
+              <ToggleButton value="AD0-E209" aria-label="AD0-E209" sx={{ minWidth: 200 }}>
                 <Box sx={{ textAlign: 'center', p: 1 }}>
                   <Typography variant="subtitle1" fontWeight="bold">
                     AD0-E209
@@ -132,7 +173,7 @@ const HomePage: React.FC = () => {
                   </Typography>
                 </Box>
               </ToggleButton>
-              <ToggleButton value="AD0-E208" aria-label="AD0-E208" sx={{ width: 220, height: 80 }}>
+              <ToggleButton value="AD0-E208" aria-label="AD0-E208" sx={{ minWidth: 200 }}>
                 <Box sx={{ textAlign: 'center', p: 1 }}>
                   <Typography variant="subtitle1" fontWeight="bold">
                     AD0-E208

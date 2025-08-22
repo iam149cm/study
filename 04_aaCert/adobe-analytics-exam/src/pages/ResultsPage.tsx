@@ -24,6 +24,7 @@ import {
 import confetti from 'canvas-confetti';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import useGTM from '../utils/useGTM';
 
 interface QuizResult {
   totalQuestions: number;
@@ -43,6 +44,7 @@ interface QuizResult {
 
 const ResultsPage: React.FC = () => {
   const navigate = useNavigate();
+  const { trackButtonClick, trackPageView, trackCustomEvent } = useGTM();
   const [results, setResults] = useState<QuizResult | null>(null);
   const [expandedRows, setExpandedRows] = useState<{ [key: number]: boolean }>({});
   const [showNoResultsModal, setShowNoResultsModal] = useState(false);
@@ -51,7 +53,13 @@ const ResultsPage: React.FC = () => {
     console.log('결과 페이지에 진입했습니다.');
     // 결과 페이지 타이틀 설정
     document.title = 'Adobe Analytics 모의고사 결과';
-  }, []);
+    
+    // GTM 페이지뷰 추적
+    trackPageView({
+      page_name: '/results',
+      page_title: 'Adobe Analytics 모의고사 결과'
+    });
+  }, [trackPageView]);
 
   const fireConfetti = useCallback(() => {
     const duration = 3 * 1000;
@@ -101,17 +109,44 @@ const ResultsPage: React.FC = () => {
     if (score >= 70) {
       fireConfetti();
     }
-  }, [fireConfetti]);
+    
+    // GTM 결과 페이지 로드 추적
+    trackCustomEvent('results_page_loaded', {
+      total_questions: parsedResults.totalQuestions,
+      correct_answers: parsedResults.correctAnswers,
+      score_percentage: Math.round(score),
+      time_spent: parsedResults.timeSpent,
+      certification: parsedResults.certification
+    });
+  }, [fireConfetti, trackCustomEvent]);
 
   const toggleRow = (index: number) => {
     setExpandedRows(prev => ({
       ...prev,
       [index]: !prev[index]
     }));
+    
+    // GTM 문제 상세 보기 추적
+    trackButtonClick({
+      name: expandedRows[index] ? 'hide_question_detail' : 'show_question_detail',
+      category: 'interaction',
+      location: 'results_page',
+      additionalData: {
+        question_number: index + 1
+      }
+    });
   };
 
   const handleCloseModal = () => {
     setShowNoResultsModal(false);
+    
+    // GTM 모달 닫기 추적
+    trackButtonClick({
+      name: 'close_no_results_modal',
+      category: 'interaction',
+      location: 'results_page'
+    });
+    
     navigate('/');
   };
 
@@ -134,7 +169,10 @@ const ResultsPage: React.FC = () => {
             </Typography>
           </DialogContent>
           <DialogActions>
-            <Button onClick={handleCloseModal} color="primary">
+            <Button 
+              onClick={handleCloseModal} 
+              color="primary"
+            >
               확인
             </Button>
           </DialogActions>
@@ -268,14 +306,28 @@ const ResultsPage: React.FC = () => {
         <Box sx={{ mt: 4, textAlign: 'center' }}>
           <Button 
             variant="contained" 
-            onClick={() => navigate('/')}
+            onClick={() => {
+              trackButtonClick({
+                name: 'go_home_from_results',
+                category: 'navigation',
+                location: 'results_page'
+              });
+              navigate('/');
+            }}
             sx={{ mr: 2 }}
           >
             홈으로
           </Button>
           <Button 
             variant="outlined" 
-            onClick={() => navigate('/quiz')}
+            onClick={() => {
+              trackButtonClick({
+                name: 'retake_quiz',
+                category: 'navigation',
+                location: 'results_page'
+              });
+              navigate('/quiz');
+            }}
           >
             다시 풀기
           </Button>
