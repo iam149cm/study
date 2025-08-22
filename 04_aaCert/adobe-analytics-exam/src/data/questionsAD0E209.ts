@@ -1931,6 +1931,247 @@ export const questionsAD0E209: Question[] = [
     },
     answer: "A",
     explanation: "서버사이드에서 데이터를 Adobe Analytics로 전송할 때는 BAAAM 또는 Bulk Data Insertion API를 사용하는 것이 권장됩니다."
-  }
+  },
+  {
+   id: 161,
+   question: "Which of the following are valid methods to implement cross-domain tracking in Adobe Analytics? (Select all that apply)",
+   options: {
+     A: "appendVisitorIDsTo() function",
+     B: "s.linkInternalFilters variable",
+     C: "Visitor.getInstance() method",
+     D: "Manual query string parameters"
+   },
+   answer: ["A", "C"],
+   explanation: "appendVisitorIDsTo() 함수와 Visitor.getInstance() 메서드는 크로스 도메인 추적을 구현하는 유효한 방법입니다. linkInternalFilters는 내부 링크 필터링용이며, 수동 쿼리 스트링은 권장되지 않습니다."
+ },
+ {
+   id: 162,
+   question: "What is the maximum number of eVars available in Adobe Analytics?",
+   options: {
+     A: "75",
+     B: "100",
+     C: "250",
+     D: "200"
+   },
+   answer: "C",
+   explanation: "Adobe Analytics는 최대 250개의 eVar를 지원합니다."
+ },
+ {
+   id: 163,
+   question: "Which features are available in Analysis Workspace but NOT in Reports & Analytics? (Select all that apply)",
+   options: {
+     A: "Flow visualization",
+     B: "Cohort analysis",
+     C: "Real-time reports",
+     D: "Attribution IQ"
+   },
+   answer: ["A", "B", "D"],
+   explanation: "Flow visualization, Cohort analysis, Attribution IQ는 Analysis Workspace에서만 사용 가능합니다. Real-time reports는 Reports & Analytics에서 사용 가능합니다."
+ },
+ {
+   id: 164,
+   question: "What is the correct order of processing in Adobe Analytics data collection?",
+   options: {
+     A: "VISTA rules → Processing rules → Marketing channels → Classifications",
+     B: "Processing rules → VISTA rules → Marketing channels → Classifications",
+     C: "Processing rules → Marketing channels → VISTA rules → Classifications",
+     D: "Marketing channels → Processing rules → VISTA rules → Classifications"
+   },
+   answer: "B",
+   explanation: "Adobe Analytics의 처리 순서는 Processing rules → VISTA rules → Marketing channels → Classifications 입니다."
+ },
+ {
+   id: 165,
+   question: "Which allocation setting for eVars persists the value until a specified event occurs?",
+   options: {
+     A: "Most Recent (Last)",
+     B: "Original Value (First)",
+     C: "Linear",
+     D: "Event-based expiration"
+   },
+   answer: "D",
+   explanation: "Event-based expiration은 특정 이벤트가 발생할 때까지 eVar 값을 유지합니다."
+ },
+ {
+   id: 166,
+   question: "What are valid data sources for Data Feeds in Adobe Analytics? (Select all that apply)",
+   options: {
+     A: "Amazon S3",
+     B: "FTP",
+     C: "Google Cloud Storage",
+     D: "Azure Blob Storage"
+   },
+   answer: ["A", "B", "D"],
+   explanation: "Data Feeds는 Amazon S3, FTP, Azure Blob Storage로 전송 가능합니다. Google Cloud Storage는 직접 지원되지 않습니다."
+ },
+ {
+   id: 167,
+   question: "Which metric is automatically calculated and cannot be modified in Adobe Analytics?",
+   options: {
+     A: "Bounce Rate",
+     B: "Average Time on Site",
+     C: "Conversion Rate",
+     D: "Unique Visitors"
+   },
+   answer: "D",
+   explanation: "Unique Visitors는 Adobe Analytics에서 자동으로 계산되며 수정할 수 없는 메트릭입니다."
+ },
+ {
+   id: 168,
+   question: "What is the maximum size limit for a single Analytics request?",
+   options: {
+     A: "2KB",
+     B: "8KB",
+     C: "16KB",
+     D: "64KB"
+   },
+   answer: "D",
+   explanation: "Adobe Analytics의 단일 요청 최대 크기는 64KB입니다."
+ },
+ {
+   id: 169,
+   question: "Which components can be shared across report suites using the Admin Console? (Select all that apply)",
+   options: {
+     A: "Calculated metrics",
+     B: "Segments",
+     C: "Processing rules",
+     D: "Classifications"
+   },
+   answer: ["A", "B"],
+   explanation: "Calculated metrics와 Segments는 report suite 간 공유가 가능합니다. Processing rules와 Classifications는 report suite별로 설정됩니다."
+ },
+ {
+   id: 170,
+   question: "What is the purpose of the s.abort variable in Adobe Analytics?",
+   options: {
+     A: "To stop all tracking on a page",
+     B: "To prevent a specific image request from being sent",
+     C: "To clear all variables",
+     D: "To reset the visitor ID"
+   },
+   answer: "B",
+   explanation: "s.abort 변수는 특정 이미지 요청이 전송되는 것을 방지하는 데 사용됩니다."
+ },
+ {
+   id: 171,
+   question: "Which of the following are valid serialization methods for events? (Select all that apply)",
+   options: {
+     A: "Event ID serialization",
+     B: "Once per visit",
+     C: "Once per visitor",
+     D: "Purchase ID serialization"
+   },
+   answer: ["A", "B"],
+   explanation: "Event ID serialization과 Once per visit는 유효한 이벤트 직렬화 방법입니다. Once per visitor는 없으며, Purchase ID는 구매 중복 제거용입니다."
+ },
+ {
+   id: 172,
+   question: "What is the default cookie lifetime for the Adobe Analytics visitor ID cookie?",
+   options: {
+     A: "1 year",
+     B: "2 years",
+     C: "5 years",
+     D: "Never expires"
+   },
+   answer: "B",
+   explanation: "Adobe Analytics 방문자 ID 쿠키의 기본 수명은 2년입니다."
+ },
+ {
+   id: 173,
+   question: "Which API should be used for real-time data extraction from Adobe Analytics?",
+   options: {
+     A: "Reporting API 2.0",
+     B: "Livestream API",
+     C: "Data Warehouse API",
+     D: "Bulk Data Insertion API"
+   },
+   answer: "B",
+   explanation: "Livestream API는 Adobe Analytics에서 실시간 데이터 추출에 사용됩니다."
+ },
+ {
+   id: 174,
+   question: "What are the benefits of using Virtual Report Suites? (Select all that apply)",
+   options: {
+     A: "Reduce server call volume",
+     B: "Apply permanent segments",
+     C: "Customize component names",
+     D: "Set different time zones"
+   },
+   answer: ["B", "C", "D"],
+   explanation: "VRS는 영구 세그먼트 적용, 컴포넌트 이름 커스터마이징, 다른 시간대 설정이 가능합니다. 서버 호출 볼륨은 줄이지 않습니다."
+ },
+ {
+   id: 175,
+   question: "Which variable type is best for capturing values that change frequently within a single visit?",
+   options: {
+     A: "eVar",
+     B: "prop",
+     C: "hier",
+     D: "list var"
+   },
+   answer: "B",
+   explanation: "prop은 단일 방문 내에서 자주 변경되는 값을 캡처하는 데 가장 적합합니다. 지속성이 없어 각 히트마다 새로운 값을 기록합니다."
+ },
+ {
+   id: 176,
+   question: "What is the maximum number of values that can be passed in a list variable?",
+   options: {
+     A: "100",
+     B: "250",
+     C: "500",
+     D: "No limit"
+   },
+   answer: "B",
+   explanation: "List variable은 최대 250개의 값을 전달할 수 있습니다."
+ },
+ {
+   id: 177,
+   question: "Which features require the Experience Cloud ID Service? (Select all that apply)",
+   options: {
+     A: "A4T (Analytics for Target)",
+     B: "Cross-Device Analytics",
+     C: "People metric",
+     D: "Basic pathing reports"
+   },
+   answer: ["A", "B", "C"],
+   explanation: "A4T, Cross-Device Analytics, People metric은 모두 Experience Cloud ID Service가 필요합니다. 기본 경로 보고서는 필요하지 않습니다."
+ },
+ {
+   id: 178,
+   question: "What is the purpose of the s.linkTrackVars variable?",
+   options: {
+     A: "To specify which variables to send with custom link tracking",
+     B: "To enable automatic exit link tracking",
+     C: "To set the link timeout value",
+     D: "To define internal URL filters"
+   },
+   answer: "A",
+   explanation: "s.linkTrackVars는 사용자 정의 링크 추적과 함께 전송할 변수를 지정하는 데 사용됩니다."
+ },
+ {
+   id: 179,
+   question: "Which classification type allows for date-based categorization?",
+   options: {
+     A: "Text classifications",
+     B: "Numeric 2 classifications",
+     C: "Date-enabled classifications",
+     D: "Conversion classifications"
+   },
+   answer: "C",
+   explanation: "Date-enabled classifications는 날짜 기반 분류를 가능하게 하여 시간에 따라 변경되는 메타데이터를 관리할 수 있습니다."
+ },
+ {
+   id: 180,
+   question: "What are valid methods to implement Activity Map? (Select all that apply)",
+   options: {
+     A: "AppMeasurement plugin",
+     B: "Separate JavaScript file",
+     C: "Adobe Experience Platform Launch extension",
+     D: "Server-side implementation"
+   },
+   answer: ["A", "C"],
+   explanation: "Activity Map은 AppMeasurement 플러그인 또는 Adobe Experience Platform Launch extension을 통해 구현할 수 있습니다. 서버 사이드 구현은 불가능합니다."
+ }
+  
 
 ]; 
