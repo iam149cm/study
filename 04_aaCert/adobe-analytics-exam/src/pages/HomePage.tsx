@@ -243,6 +243,12 @@ const HomePage: React.FC = () => {
           이전 결과 보기
         </Button>
       </Box>
+
+      <Box sx={{ mt: 6, mb: 4, textAlign: 'center' }}>
+        <Typography variant="caption" color="text.secondary" display="block">
+          ⚠️ Disclaimer: AI-generated practice questions for study only — not real Adobe exam items.
+        </Typography>
+    </Box>
     </Container>
   );
 };
