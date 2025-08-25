@@ -10,8 +10,8 @@
 | 폴더 | 설명 |
 |-------|-------|
 | **01_cleancodeJS/** | 자바스크립트 **클린 코드 패턴과 리팩토링 실습** 코드 |
-| **02_tkinter/gui_basic/** | 파이썬 **Tkinter GUI 프로그래밍** 기초 실습 |
-| **03_typeScript/01/** | 타입스크립트 기초 문법 및 실습 예제 |
+| **02_tkinter/** | 파이썬 **Tkinter GUI 프로그래밍** 기초 실습 |
+| **03_typeScript/** | 타입스크립트 기초 문법 및 실습 예제 |
 | **04_aaCert/** | **Adobe Analytics 자격증 준비 프로젝트** <br> - React 기반 모의고사 앱 <br> - Docsify 기반 학습 뉴스레터 |
 
 ---
