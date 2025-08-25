@@ -247,8 +247,14 @@ const HomePage: React.FC = () => {
       <Box sx={{ mt: 6, mb: 4, textAlign: 'center' }}>
         <Typography variant="caption" color="text.secondary" display="block">
           ⚠️ Disclaimer: AI-generated practice questions for study only — not real Adobe exam items.
+          <br />
+
+          <a href="https://study-6bt.pages.dev/" target="_blank" rel="noopener noreferrer" style={{ all: 'unset', cursor: 'pointer' }}>
+          ✉️ Newsletter
+          </a>
         </Typography>
-    </Box>
+      </Box>
+
     </Container>
   );
 };
