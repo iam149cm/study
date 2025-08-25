@@ -9,7 +9,7 @@ Adobe Analytics Certification 대비 학습용 뉴스레터 아카이브입니�
 |회 차|<center>제 목|
 |:---:|:---|
 | [#01](./newsletter/01-250822.md)   |   **Web SDK vs AppMeasurement**  :   최신 수집 방식 비교 |
-| [#02](./newsletter/02-250822.md)   |   comming soon 👀 |
+| [#02](./newsletter/02-250822.md)   |   coming soon  ▪️▪️▪️👀 |
 
 ---
 
