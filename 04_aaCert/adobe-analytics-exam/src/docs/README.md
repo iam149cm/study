@@ -36,3 +36,8 @@ docs/
 - https://certification.adobe.com/certification/developer-expert
 - https://certification.adobe.com/certification/analytics-business-practitioner-expert
 - https://iam149cm.github.io/study/04_aaCert/adobe-analytics-exam	
+
+---
+#### 🎉 재밌게 보셨다면? 박수를 눌러주세요! 👏🏻
+
+<applause-button url="https://study-6bt.pages.dev" style="width:60px;height:60px;" multiclap=true></applause-button>
