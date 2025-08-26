@@ -9,7 +9,7 @@
 </head>
 <body>
   <!-- Docsify가 Markdown을 여기에 렌더링 -->
-  <div id="app">Loading...</div>
+  <div id="app">Loading... Thinking...... 💭</div>
 
   <!-- Docsify Core Script -->
   <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
@@ -18,7 +18,11 @@
       name: 'AA Newsletter',  // 사이트 이름
       repo: 'https://github.com/iam149cm/study', // 깃허브 저장소 URL (옵션)
       loadSidebar: false,  // 사이드바 비활성화 (필요하면 true로 변경)
-      subMaxLevel: 2       // 목차 자동 생성 수준
+      subMaxLevel: 2,       // 목차 자동 생성 수준
+      alias: {
+        '/en/.*': '/en/',
+        '/ko/.*': '/ko/'
+      }
     }
   </script>
 </body>
