@@ -248,12 +248,16 @@ const HomePage: React.FC = () => {
         <Typography variant="caption" color="text.secondary" display="block">
           ⚠️ Disclaimer: AI-generated practice questions for study only — not real Adobe exam items.
           <br />
-
-          <a href="https://study-6bt.pages.dev/" target="_blank" rel="noopener noreferrer" style={{ all: 'unset', cursor: 'pointer' }}>
-          ✉️ Newsletter
+          <a
+            href="https://study-6bt.pages.dev/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rainbow-link"
+          >
+            ✉️ Newsletter
           </a>
         </Typography>
-      </Box>
+     </Box>  
 
     </Container>
   );

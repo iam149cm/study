@@ -36,3 +36,30 @@
     transform: rotate(360deg);
   }
 }
+
+.rainbow-link {
+  all: unset;               /* 기본 a 태그 스타일 제거 */
+  cursor: pointer;
+  font-weight: inherit;      /* 주변 텍스트와 동일한 두께 */
+  color: inherit !important; /* 주변(Disclaimer)과 동일 색상 */
+  text-decoration: none;     /* 밑줄 제거 */
+  display: inline;           /* 인라인 텍스트처럼 보이게 */
+}
+
+/* hover 했을 때만 무지개 효과 */
+.rainbow-link:hover,
+.rainbow-link:visited:hover {
+  background-image: linear-gradient(
+    90deg, red, orange, yellow, green, cyan, blue, violet
+  );
+  background-size: 400% 100%;
+  background-position: 0% 50%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent !important;
+  animation: rainbow-shift 2s linear infinite;
+}
+
+@keyframes rainbow-shift {
+  0%   { background-position:   0% 50%; }
+  100% { background-position: 100% 50%; }
+}
