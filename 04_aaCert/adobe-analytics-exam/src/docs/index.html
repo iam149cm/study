@@ -6,6 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Docsify 기본 테마 -->
   <link rel="stylesheet" href="//unpkg.com/docsify/themes/vue.css">
+  <style>
+    html, body, .page { height:100%; }
+    body { margin:0; }
+    .page { min-height:100vh; display:flex; flex-direction:column; }
+    #app { flex:1 0 auto; }   /* 본문이 남는 공간 채우기 */
+    .footer { flex-shrink:0; } /* 푸터는 맨 아래 */
+  </style>
 </head>
 <body>
   <!-- Docsify가 Markdown을 여기에 렌더링 -->
@@ -27,5 +34,19 @@
   </script>
   <link rel="stylesheet" href="https://unpkg.com/applause-button/dist/applause-button.css" />
   <script src="https://unpkg.com/applause-button/dist/applause-button.js"></script>
+
+  <script>
+    (function(){
+      let footerHTML = '';
+      fetch('./_footer.html').then(r=>r.text()).then(html => { footerHTML = html; });
+  
+      window.$docsify = window.$docsify || {};
+      window.$docsify.plugins = (window.$docsify.plugins || []).concat(function (hook) {
+        hook.afterEach(function (html) {
+          return html + footerHTML; // 본문 뒤에 푸터 주입
+        });
+      });
+    })();
+  </script>
 </body>
 </html>
