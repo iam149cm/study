@@ -93,8 +93,8 @@ export const questionsAD0E213: Question[] = [
       C: "props allow pathing analysis",
       D: "eVars allow pathing analysis"
     },
-    answer: "D",
-    explanation: "eVars는 attribution(귀속) 분석이 가능하고, props는 pathing(경로) 분석이 가능합니다. 이는 두 변수 타입의 가장 큰 개념적 차이점입니다."
+    answer: "C",
+    explanation: "eVar는 전환 귀속(Attribution)에 사용되는 변수로, 설정된 만료 시점까지 값이 유지됩니다. 반면 prop은 히트 단위로만 기록되며 경로(Pathing) 분석에 활용할 수 있는 트래픽 변수입니다. 따라서 eVar는 귀속, prop은 경로 분석이 가능한 것이 가장 큰 차이입니다."
   },
   {
     id: 8,
