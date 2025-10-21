@@ -12,6 +12,7 @@ Adobe Analytics Certification 대비 학습용 뉴스레터 아카이브입니�
 | 02 | **Context Data & Processing Rules** : 보고서 매핑 핵심 | [✅](/ko/02-250905.md) | [✅](/en/02-250905.md) |
 | 03 | **Consent Management & Data Mapping** : 동의 수준과 데이터 매핑 전략 | [✅](/ko/03-250919.md) | [✅](/en/03-250919.md) |
 | 04 | **eVar vs prop vs event** : 변수의 개념적 차이 | [✅](/ko/04-251003.md) | [✅](/en/04-251003.md) |
+| 05 | **SDR & Implementation Planning** : 설계 문서와 구현 계획 | [✅](/ko/05-251017.md) | [✅](/en/05-251017.md) |
 
 ---
 
