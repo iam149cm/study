@@ -16,8 +16,11 @@ BullionDB는 구매한 실물 은(Bullion)의 수량과 매수 가격을 기록�
 - **Framework**: Next.js (App Router)
 - **Styling**: Tailwind CSS
 - **State Management**: React Context API 또는 단순 Props (MVP 기준)
-- **Deployment**: Git Page (Vercel 사용할 수도 있음)
+- **Deployment**: Vercel
 - **Editor**: Cursor (AI-Powered)
+
+## 🌐 배포 URL
+- **Live Site**: https://bulliondb.vercel.app/
 
 ## 📊 데이터 모델 (Initial Data Structure)
 현재 보유 중인 항목을 기준으로 초기 데이터를 구성합니다.
