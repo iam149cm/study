@@ -52,7 +52,7 @@ export default function Home() {
         // 환율 가져오기
         const exchangeResponse = await fetch('/api/exchange-rate')
         if (!exchangeResponse.ok) {
-          const errorData = await exchangeResponse.json()
+          const errorData = await exchangeResponse.json().catch(() => ({ error: '응답 파싱 실패' }))
           throw new Error(errorData.error || '환율을 가져오는데 실패했습니다')
         }
         const exchangeData = await exchangeResponse.json()
