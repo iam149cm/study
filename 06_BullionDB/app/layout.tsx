@@ -1,5 +1,19 @@
 import type { Metadata } from "next";
+import { Playfair_Display, Lato } from "next/font/google";
 import "./globals.css";
+
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  variable: "--font-playfair",
+  display: "swap",
+});
+
+const lato = Lato({
+  weight: ["400", "700"],
+  subsets: ["latin"],
+  variable: "--font-lato",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "BullionDB - 실물 자산 실시간 가치 추적",
@@ -12,8 +26,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ko">
-      <body className="antialiased">
+    <html lang="ko" className={`${playfair.variable} ${lato.variable}`}>
+      <body className="antialiased font-sans">
         {children}
       </body>
     </html>

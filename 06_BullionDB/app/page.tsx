@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react'
 
 interface MetalPrice {
   price: number
+  change: number
+  changePercent: number
   currency: string
   unit: string
 }
@@ -86,14 +88,14 @@ export default function Home() {
   }
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 p-4 md:p-8">
+    <main className="min-h-screen p-4 md:p-8">
       <div className="max-w-7xl mx-auto">
-        <header className="mb-8">
-          <h1 className="text-4xl font-bold text-gray-900 mb-2">
+        <header className="mb-10 border-b border-[#d4af37]/30 pb-6 font-serif">
+          <h1 className="text-4xl font-bold text-white mb-2 tracking-wide">
             🪙 BullionDB
           </h1>
-          <p className="text-gray-600">
-            실물 자산 실시간 가치 추적 대시보드
+          <p className="text-[#d4af37] font-medium">
+            ── 실물 자산 실시간 가치 추적 대시보드
           </p>
         </header>
 
@@ -113,43 +115,48 @@ export default function Home() {
         {!loading && !error && (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
             {/* 금 시세 카드 */}
-            <div className="bg-white rounded-lg shadow-md p-6">
-              <h2 className="text-xl font-semibold text-gray-800 mb-4 flex items-center gap-2">
+            <div className="bg-gradient-to-br from-white to-gray-100 rounded-xl shadow-xl p-6 border-t-4 font-serif border-[#d4af37]">
+              <h2 className="text-xl font-bold text-[#002d54] mb-4 flex items-center gap-2">
                 <span className="text-2xl">🥇</span>
                 실시간 금 시세
               </h2>
               {goldPrice ? (
                 <div className="space-y-3">
                   <div className="flex justify-between items-center">
-                    <span className="text-gray-600">USD/oz</span>
-                    <span className="text-2xl font-bold text-yellow-600">
-                      ${formatNumber(goldPrice.price)}
-                    </span>
+                    <span className="text-gray-500 font-medium">USD/oz</span>
+                    <div className="text-right">
+                      <span className="text-3xl font-bold text-[#d4af37] block">
+                        ${formatNumber(goldPrice.price)}
+                      </span>
+                      <span className={`text-sm ${goldPrice.change > 0 ? 'text-green-600' : goldPrice.change < 0 ? 'text-red-600' : 'text-gray-500'}`}>
+                        {goldPrice.change > 0 ? '▲' : goldPrice.change < 0 ? '▼' : ''} {goldPrice.change > 0 ? '+' : ''}{goldPrice.change} ({goldPrice.changePercent}%)
+                      </span>
+                    </div>
                   </div>
                   {exchangeRate && (
                     <div className="flex justify-between items-center">
-                      <span className="text-gray-600">GBP/oz</span>
-                      <span className="text-2xl font-bold text-yellow-500">
+                      <span className="text-gray-500 font-medium">GBP/oz</span>
+                      <span className="text-xl font-bold text-[#bfa15f]">
                         £{formatNumber((goldPrice.price * exchangeRate.usd) / exchangeRate.gbp)}
                       </span>
                     </div>
                   )}
-                  <div className="pt-3 border-t border-gray-200">
+                  <div className="pt-3 border-t border-gray-200 font-serif">
                     <div className="flex justify-between items-center mb-2">
-                      <span className="text-gray-600">원화 환산 (1oz)</span>
-                      <span className="text-lg font-semibold text-gray-900">
+                      <span className="text-gray-500 text-sm ">원화 환산 (1oz)</span>
+                      <span className="text-lg text-[#002d54]">
                         {exchangeRate && formatPrice(goldPrice.price * exchangeRate.usd)}
                       </span>
                     </div>
                     <div className="flex justify-between items-center mb-2">
-                      <span className="text-gray-600">그램당 가격</span>
-                      <span className="text-lg font-semibold text-gray-900">
+                      <span className="text-gray-500 text-sm">그램당 가격</span>
+                      <span className="text-lg text-[#002d54]">
                         {exchangeRate && formatPrice((goldPrice.price * exchangeRate.usd) / 31.1035)}
                       </span>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span className="text-gray-600">1돈 가격 (3.75g)</span>
-                      <span className="text-lg font-semibold text-gray-900">
+                      <span className="text-gray-500 text-sm">1돈 가격 (3.75g)</span>
+                      <span className="text-lg text-[#002d54]">
                         {exchangeRate && formatPrice((goldPrice.price * exchangeRate.usd / 31.1035) * 3.75)}
                       </span>
                     </div>
@@ -161,43 +168,48 @@ export default function Home() {
             </div>
 
             {/* 은 시세 카드 */}
-            <div className="bg-white rounded-lg shadow-md p-6">
-              <h2 className="text-xl font-semibold text-gray-800 mb-4 flex items-center gap-2">
+            <div className="bg-gradient-to-br from-white to-gray-100 rounded-xl shadow-xl p-6 border-t-4 border-slate-400 font-serif">
+              <h2 className="text-xl font-bold text-[#002d54] mb-4 flex items-center gap-2 font-serif">
                 <span className="text-2xl">🥈</span>
                 실시간 은 시세
               </h2>
               {silverPrice ? (
                 <div className="space-y-3">
                   <div className="flex justify-between items-center">
-                    <span className="text-gray-600">USD/oz</span>
-                    <span className="text-2xl font-bold text-blue-600">
-                      ${formatNumber(silverPrice.price)}
-                    </span>
+                    <span className="text-gray-500 font-medium">USD/oz</span>
+                    <div className="text-right">
+                      <span className="text-3xl font-bold text-slate-500 block font-serif">
+                        ${formatNumber(silverPrice.price)}
+                      </span>
+                      <span className={`text-sm ${silverPrice.change > 0 ? 'text-green-600' : silverPrice.change < 0 ? 'text-red-600' : 'text-gray-500'}`}>
+                        {silverPrice.change > 0 ? '▲' : silverPrice.change < 0 ? '▼' : ''} {silverPrice.change > 0 ? '+' : ''}{silverPrice.change} ({silverPrice.changePercent}%)
+                      </span>
+                    </div>
                   </div>
                   {exchangeRate && (
                     <div className="flex justify-between items-center">
-                      <span className="text-gray-600">GBP/oz</span>
-                      <span className="text-2xl font-bold text-blue-500">
+                      <span className="text-gray-500 font-medium">GBP/oz</span>
+                      <span className="text-xl font-bold text-slate-400">
                         £{formatNumber((silverPrice.price * exchangeRate.usd) / exchangeRate.gbp)}
                       </span>
                     </div>
                   )}
                   <div className="pt-3 border-t border-gray-200">
                     <div className="flex justify-between items-center mb-2">
-                      <span className="text-gray-600">원화 환산 (1oz)</span>
-                      <span className="text-lg font-semibold text-gray-900">
+                      <span className="text-gray-500 text-sm">원화 환산 (1oz)</span>
+                      <span className="text-lg text-[#002d54]">
                         {exchangeRate && formatPrice(silverPrice.price * exchangeRate.usd)}
                       </span>
                     </div>
                     <div className="flex justify-between items-center mb-2">
-                      <span className="text-gray-600">그램당 가격</span>
-                      <span className="text-lg font-semibold text-gray-900">
+                      <span className="text-gray-500 text-sm">그램당 가격</span>
+                      <span className="text-lg text-[#002d54]">
                         {exchangeRate && formatPrice((silverPrice.price * exchangeRate.usd) / 31.1035)}
                       </span>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span className="text-gray-600">1돈 가격 (3.75g)</span>
-                      <span className="text-lg font-semibold text-gray-900">
+                      <span className="text-gray-500 text-sm">1돈 가격 (3.75g)</span>
+                      <span className="text-lg text-[#002d54]">
                         {exchangeRate && formatPrice((silverPrice.price * exchangeRate.usd / 31.1035) * 3.75)}
                       </span>
                     </div>
@@ -209,21 +221,21 @@ export default function Home() {
             </div>
 
             {/* 환율 카드 */}
-            <div className="bg-white rounded-lg shadow-md p-6">
-              <h2 className="text-xl font-semibold text-gray-800 mb-4">
-                실시간 환율
+            <div className="bg-gradient-to-br from-white to-gray-100 rounded-xl shadow-xl p-6 border-t-4 border-[#002d54] font-serif">
+              <h2 className="text-xl font-bold text-[#002d54] mb-4">
+                📊 실시간 환율
               </h2>
               {exchangeRate ? (
                 <div className="space-y-3">
                   <div className="flex justify-between items-center">
-                    <span className="text-gray-600">USD → KRW</span>
-                    <span className="text-2xl font-bold text-green-600">
+                    <span className="text-gray-500 font-medium">USD → KRW</span>
+                    <span className="text-2xl font-bold text-[#002d54] font-serif">
                       ₩{formatNumber(exchangeRate.usd)}
                     </span>
                   </div>
                   <div className="flex justify-between items-center pt-3 border-t border-gray-200">
-                    <span className="text-gray-600">GBP → KRW</span>
-                    <span className="text-2xl font-bold text-purple-600">
+                    <span className="text-gray-500 font-medium">GBP → KRW</span>
+                    <span className="text-2xl font-bold text-[#002d54] font-serif">
                       ₩{formatNumber(exchangeRate.gbp)}
                     </span>
                   </div>
@@ -236,11 +248,11 @@ export default function Home() {
         )}
 
         {/* 자산 리스트 영역 (추후 구현) */}
-        <div className="bg-white rounded-lg shadow-md p-6">
-          <h2 className="text-xl font-semibold text-gray-800 mb-4">
+        <div className="bg-white/5 rounded-xl border border-white/10 p-6 backdrop-blur-sm">
+          <h2 className="text-xl font-bold text-white mb-4 font-serif">
             보유 자산
           </h2>
-          <p className="text-gray-500 text-center py-8">
+          <p className="text-gray-300 text-center py-8">
             자산 관리 기능은 곧 추가될 예정입니다.
           </p>
         </div>

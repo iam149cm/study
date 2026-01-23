@@ -3,14 +3,16 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --royal-navy: #002d54;
+  --royal-gold: #d4af37;
+  --background: var(--royal-navy);
+  --foreground: #ffffff;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: var(--royal-navy);
+    --foreground: #ffffff;
   }
 }
 
