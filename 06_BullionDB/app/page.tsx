@@ -100,27 +100,41 @@ export default function Home() {
         </header>
 
         {loading && (
-          <div className="bg-white rounded-lg shadow-md p-8 text-center">
+          <div className="bg-white rounded-lg shadow-md p-8 text-center opacity-80">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
-            <p className="mt-4 text-gray-600">데이터를 불러오는 중...</p>
+            <p className="mt-4 text-gray-600 font-serif">데이터를 불러오는 중...</p>
           </div>
         )}
 
-        {error && (
-          <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-6">
-            <p className="text-red-800">{error}</p>
-          </div>
-        )}
-
-        {!loading && !error && (
+        {!loading && (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
             {/* 금 시세 카드 */}
-            <div className="bg-gradient-to-br from-white to-gray-100 rounded-xl shadow-xl p-6 border-t-4 font-serif border-[#d4af37]">
+            <div className={`bg-gradient-to-br from-white to-gray-100 rounded-xl shadow-xl p-6 border-t-4 font-serif transition-all duration-500 ${
+              error ? 'grayscale opacity-70 border-gray-600 animate-pulse' : 'border-[#d4af37]'
+            }`}>
               <h2 className="text-xl font-bold text-[#002d54] mb-4 flex items-center gap-2">
                 <span className="text-2xl">🥇</span>
                 실시간 금 시세
               </h2>
-              {goldPrice ? (
+              {error ? (
+                <div className="space-y-4">
+                  <div className="flex justify-between items-center">
+                    <span className="text-gray-500 font-medium">USD/oz</span>
+                    <div className="text-right">
+                      <span className="text-2xl font-bold text-gray-600 italic block font-serif">
+                        Daily Limit Reached
+                      </span>
+                      <span className="text-sm text-gray-400">Update Pending</span>
+                    </div>
+                  </div>
+                  <div className="pt-4 border-t border-gray-300/50">
+                    <p className="text-xs text-gray-600 text-center leading-relaxed font-medium">
+                      오늘의 무료 조회 한도가 소진되었습니다.<br />
+                      데이터는 자동으로 갱신됩니다.
+                    </p>
+                  </div>
+                </div>
+              ) : goldPrice ? (
                 <div className="space-y-3">
                   <div className="flex justify-between items-center">
                     <span className="text-gray-500 font-medium">USD/oz</span>
@@ -168,12 +182,32 @@ export default function Home() {
             </div>
 
             {/* 은 시세 카드 */}
-            <div className="bg-gradient-to-br from-white to-gray-100 rounded-xl shadow-xl p-6 border-t-4 border-slate-400 font-serif">
+            <div className={`bg-gradient-to-br from-white to-gray-100 rounded-xl shadow-xl p-6 border-t-4 font-serif transition-all duration-500 ${
+              error ? 'grayscale opacity-70 border-gray-600 animate-pulse' : 'border-slate-400'
+            }`}>
               <h2 className="text-xl font-bold text-[#002d54] mb-4 flex items-center gap-2 font-serif">
                 <span className="text-2xl">🥈</span>
                 실시간 은 시세
               </h2>
-              {silverPrice ? (
+              {error ? (
+                <div className="space-y-4">
+                  <div className="flex justify-between items-center">
+                    <span className="text-gray-500 font-medium">USD/oz</span>
+                    <div className="text-right">
+                      <span className="text-2xl font-bold text-gray-600 italic block font-serif">
+                        Daily Limit Reached
+                      </span>
+                      <span className="text-sm text-gray-400">Update Pending</span>
+                    </div>
+                  </div>
+                  <div className="pt-4 border-t border-gray-300/50">
+                    <p className="text-xs text-gray-600 text-center leading-relaxed font-medium">
+                      오늘의 무료 조회 한도가 소진되었습니다.<br />
+                      데이터는 자동으로 갱신됩니다.
+                    </p>
+                  </div>
+                </div>
+              ) : silverPrice ? (
                 <div className="space-y-3">
                   <div className="flex justify-between items-center">
                     <span className="text-gray-500 font-medium">USD/oz</span>
@@ -221,11 +255,34 @@ export default function Home() {
             </div>
 
             {/* 환율 카드 */}
-            <div className="bg-gradient-to-br from-white to-gray-100 rounded-xl shadow-xl p-6 border-t-4 border-[#002d54] font-serif">
+            <div className={`bg-gradient-to-br from-white to-gray-100 rounded-xl shadow-xl p-6 border-t-4 font-serif transition-all duration-500 ${
+              error ? 'grayscale opacity-70 border-gray-600 animate-pulse' : 'border-[#002d54]'
+            }`}>
               <h2 className="text-xl font-bold text-[#002d54] mb-4">
                 📊 실시간 환율
               </h2>
-              {exchangeRate ? (
+              {error ? (
+                <div className="space-y-4">
+                  <div className="flex justify-between items-center">
+                    <span className="text-gray-500 font-medium">USD → KRW</span>
+                    <span className="text-xl font-bold text-gray-600 italic font-serif">
+                      Limit Reached
+                    </span>
+                  </div>
+                  <div className="flex justify-between items-center pt-2">
+                    <span className="text-gray-500 font-medium">GBP → KRW</span>
+                    <span className="text-xl font-bold text-gray-600 italic font-serif">
+                      Limit Reached
+                    </span>
+                  </div>
+                  <div className="pt-4 border-t border-gray-300/50">
+                    <p className="text-xs text-gray-600 text-center leading-relaxed font-medium">
+                      오늘의 무료 조회 한도가 소진되었습니다.<br />
+                      데이터는 자동으로 갱신됩니다.
+                    </p>
+                  </div>
+                </div>
+              ) : exchangeRate ? (
                 <div className="space-y-3">
                   <div className="flex justify-between items-center">
                     <span className="text-gray-500 font-medium">USD → KRW</span>
