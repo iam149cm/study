@@ -26,7 +26,8 @@
     "start": "cross-env PUBLIC_URL= react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy:redirect": "gh-pages -d redirect --dest 04_aaCert/adobe-analytics-exam"
   },
   "eslintConfig": {
     "extends": [
@@ -48,6 +49,7 @@
   },
   "devDependencies": {
     "@types/canvas-confetti": "^1.9.0",
-    "cross-env": "^7.0.3"
+    "cross-env": "^7.0.3",
+    "gh-pages": "^6.3.0"
   }
 }
