@@ -18,8 +18,6 @@ import {
   ToggleButtonGroup,
   ToggleButton
 } from '@mui/material';
-import AssignmentIcon from '@mui/icons-material/Assignment';
-import AssessmentIcon from '@mui/icons-material/Assessment';
 import useGTM from '../utils/useGTM';
 
 const HomePage: React.FC = () => {
@@ -55,7 +53,7 @@ const HomePage: React.FC = () => {
     setSelectedQuestionCount(Number(event.target.value));
   };
 
-  const handleCertificationChange = (event: React.MouseEvent<HTMLElement>, newCertification: string) => {
+  const handleCertificationChange = (event: React.MouseEvent<HTMLElement>, newCertification: string | null) => {
     if (newCertification !== null) {
       setSelectedCertification(newCertification);
       
