@@ -5,11 +5,9 @@ import {
   Typography, 
   Button, 
   Box,
-  Paper,
   Card,
   CardContent,
   CardActions,
-  Grid,
   RadioGroup,
   FormControlLabel,
   Radio,
@@ -19,6 +17,35 @@ import {
   ToggleButton
 } from '@mui/material';
 import useGTM from '../utils/useGTM';
+
+const getCertificationInfo = (cert: string) => {
+  switch (cert) {
+    case 'AD0-E213':
+      return {
+        title: 'Adobe Analytics Developer Professional',
+        description: 'Adobe Analytics 구현 및 개발 전문가 자격증',
+        focus: '구현, 개발, 기술적 측면'
+      };
+    case 'AD0-E209':
+      return {
+        title: 'Adobe Analytics Developer Expert',
+        description: 'Adobe Analytics 개발자 전문가 (고급) 자격증',
+        focus: '고급 구현, 서버사이드 추적, API, 고급 분석'
+      };
+    case 'AD0-E208':
+      return {
+        title: 'Adobe Analytics Business Practitioner Expert',
+        description: 'Adobe Analytics 비즈니스 실무 전문가 자격증',
+        focus: '비즈니스 분석, 리포트 작성, 데이터 해석, 실무 활용'
+      };
+    default:
+      return {
+        title: '',
+        description: '',
+        focus: ''
+      };
+  }
+};
 
 const HomePage: React.FC = () => {
   const navigate = useNavigate();
@@ -98,35 +125,6 @@ const HomePage: React.FC = () => {
     });
     
     navigate('/results');
-  };
-
-  const getCertificationInfo = (cert: string) => {
-    switch (cert) {
-      case 'AD0-E213':
-        return {
-          title: 'Adobe Analytics Developer Professional',
-          description: 'Adobe Analytics 구현 및 개발 전문가 자격증',
-          focus: '구현, 개발, 기술적 측면'
-        };
-      case 'AD0-E209':
-        return {
-          title: 'Adobe Analytics Developer Expert',
-          description: 'Adobe Analytics 개발자 전문가 (고급) 자격증',
-          focus: '고급 구현, 서버사이드 추적, API, 고급 분석'
-        };
-      case 'AD0-E208':
-        return {
-          title: 'Adobe Analytics Business Practitioner Expert',
-          description: 'Adobe Analytics 비즈니스 실무 전문가 자격증',
-          focus: '비즈니스 분석, 리포트 작성, 데이터 해석, 실무 활용'
-        };
-      default:
-        return {
-          title: '',
-          description: '',
-          focus: ''
-        };
-    }
   };
 
   const certInfo = getCertificationInfo(selectedCertification);
