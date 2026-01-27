@@ -2,7 +2,6 @@
   "name": "adobe-analytics-exam",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://iam149cm.github.io/study/04_aaCert/adobe-analytics-exam",
   "dependencies": {
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",

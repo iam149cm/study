@@ -2171,7 +2171,607 @@ export const questionsAD0E209: Question[] = [
    },
    answer: ["A", "C"],
    explanation: "Activity Map은 AppMeasurement 플러그인 또는 Adobe Experience Platform Launch extension을 통해 구현할 수 있습니다. 서버 사이드 구현은 불가능합니다."
- }
-  
+ },
+{
+  id: 181,
+  question: "What is the main cookie used in Adobe Analytics to define a Visit and a Visitor?",
+  options: {
+    A: "s_cc",
+    B: "s_sq",
+    C: "s_vi",
+    D: "s_fid"
+  },
+  answer: "C",
+  explanation: "s_vi 쿠키는 주로 고유 방문자를 식별하고 방문자 ID를 저장하는 데 사용되며, 방문자 및 방문 추적의 핵심입니다."
+},
+{
+  id: 182,
+  question: "What is the primary purpose of the Experience Cloud ID (ECID) Service?",
+  options: {
+    A: "To speed up data feed generation",
+    B: "To identify visitors cross-device/solution across different Experience Cloud solutions",
+    C: "To manage Processing Rules for a report suite",
+    D: "To enable automatic exit link tracking"
+  },
+  answer: "B",
+  explanation: "ECID 서비스는 Adobe Experience Cloud 솔루션 전반에 걸쳐 공통 ID를 제공하여 방문자를 교차 장치 및 솔루션으로 일관되게 식별할 수 있도록 합니다."
+},
+{
+  id: 183,
+  question: "Which variable is used to specify which variables are included in the data sent to Adobe Analytics during an s.t() or s.tl() call? (Excluding custom link tracking)",
+  options: {
+    A: "s.linkTrackVars",
+    B: "s.pageName",
+    C: "s.trackVars",
+    D: "s.linkTrackEvents"
+  },
+  answer: "C",
+  explanation: "s.trackVars 변수는 (s.t() 호출을 포함한) 일반적인 페이지 보기 추적 호출과 함께 Analytics로 전송할 변수를 명시적으로 지정할 때 사용되었습니다. 최신 AppMeasurement 라이브러리에서는 기본적으로 대부분의 변수가 포함됩니다. s.linkTrackVars는 s.tl() 호출에만 사용됩니다."
+},
+{
+  id: 184,
+  question: "What is a primary limitation of Processing Rules?",
+  options: {
+    A: "They cannot assign values to eVar variables.",
+    B: "They cannot set values for Events.",
+    C: "They only apply to collected data and not to data feeds.",
+    D: "They cannot be applied retroactively to historical hits."
+  },
+  answer: "D",
+  explanation: "처리 규칙은 새로운 히트가 수집될 때 실시간으로 적용됩니다. 이미 수집되어 처리된 데이터에는 소급 적용되지 않습니다."
+},
+{
+  id: 185,
+  question: "What is the key role of a 'Conversion Variable' (eVar) in Adobe Analytics?",
+  options: {
+    A: "Counting the number of page views per visit",
+    B: "Providing value persistence across page views and visits",
+    C: "Tracking the value that caused a specific event",
+    D: "Tracking page names and URLs"
+  },
+  answer: "B",
+  explanation: "eVar는 값을 저장하고 후속 히트에 걸쳐 지속성을 제공하도록 설계되어, 방문자 행동이 나중에 발생한 성공 이벤트에 어떻게 기여했는지 측정할 수 있습니다."
+},
+{
+  id: 186,
+  question: "When configuring a Data Feed for a report suite, what are two data elements that are typically included? (Select 2)",
+  options: {
+    A: "Report Suite ID",
+    B: "Hit Timestamp",
+    C: "Calculated Metrics",
+    D: "Segmentation Logic"
+  },
+  answer: ["A", "B"],
+  explanation: "데이터 피드에는 항상 보고서 세트 ID와 각 히트가 발생한 정확한 시간을 나타내는 타임스탬프가 포함되어야 합니다."
+},
+{
+  id: 187,
+  question: "What is the default persistence of a Traffic Variable (Prop) in Adobe Analytics?",
+  options: {
+    A: "Visit",
+    B: "Visitor",
+    C: "Hit",
+    D: "14 Days"
+  },
+  answer: "C",
+  explanation: "기본적으로 Prop 변수는 히트 수준의 데이터만 저장합니다. 즉, 현재 히트에서만 지속됩니다."
+},
+{
+  id: 188,
+  question: "What are the three main components used to configure a Rule in Adobe Experience Platform Launch (now Data Collection/Tags)? (Select 3)",
+  options: {
+    A: "Elements",
+    B: "Events",
+    C: "Conditions",
+    D: "Actions"
+  },
+  answer: ["B", "C", "D"],
+  explanation: "Launch Rule은 'Event(언제)'가 발생하면 'Conditions(특정 조건 하에)'를 평가하고 'Actions(특정 작업)'을 실행하는 방식으로 작동합니다."
+},
+{
+  id: 189,
+  question: "What is the core function called in the Adobe Analytics code for Page View tracking?",
+  options: {
+    A: "s.track()",
+    B: "s.tl()",
+    C: "s.pageview()",
+    D: "s.t()"
+  },
+  answer: "D",
+  explanation: "s.t() 함수는 페이지 보기 히트를 Adobe Analytics로 전송하는 표준 함수입니다."
+},
+{
+  id: 190,
+  question: "What is the primary purpose of a 'Success Event' in Adobe Analytics?",
+  options: {
+    A: "To store campaign IDs",
+    B: "To track user sessions",
+    C: "To count a measurable user action",
+    D: "To store the title of a page"
+  },
+  answer: "C",
+  explanation: "성공 이벤트(Events)는 구매, 등록, 다운로드 등과 같이 방문자가 수행한 측정하고자 하는 특정 작업을 계산하는 데 사용됩니다."
+},
+{
+  id: 191,
+  question: "What is the role of the s.linkTrackEvents variable in an s.tl() call?",
+  options: {
+    A: "To specify which eVars to send with the link track",
+    B: "To specify which events to send with the link track",
+    C: "To enable automatic exit link tracking",
+    D: "To set the timeout for link tracking"
+  },
+  answer: "B",
+  explanation: "s.linkTrackEvents는 사용자 정의 링크 추적(s.tl) 히트와 함께 전송할 성공 이벤트를 지정하는 데 사용됩니다."
+},
+{
+  id: 192,
+  question: "What is a key benefit of requesting an Ad Hoc Analysis report from Data Warehouse?",
+  options: {
+    A: "Real-time data collection",
+    B: "Availability of all Traffic Variables (Props) in the report suite",
+    C: "Ability to generate data ranges and segments exceeding standard report suite limits",
+    D: "Customizing the report using JavaScript"
+  },
+  answer: "C",
+  explanation: "Data Warehouse는 원시 데이터에 직접 접근하므로 표준 보고서 세트 제한을 초과하는 대규모 데이터를 요청하고 더 복잡한 날짜 범위 및 세그먼트를 사용할 수 있습니다."
+},
+{
+  id: 193,
+  question: "What does the 'Allocation' setting of an eVar determine?",
+  options: {
+    A: "How long the eVar value persists",
+    B: "How the value that led to a success event is credited",
+    C: "Whether the eVar is a Traffic or a Conversion variable",
+    D: "Whether Classifications are available for the eVar"
+  },
+  answer: "B",
+  explanation: "Allocation (배분) 설정은 성공 이벤트가 발생했을 때 방문 기간 동안 기록된 여러 eVar 값 중 어떤 값이 기여도를 받을지(예: First, Last, Linear) 결정합니다."
+},
+{
+  id: 194,
+  question: "What is a major advantage of using a Data Element to set an Adobe Analytics variable?",
+  options: {
+    A: "Sends data directly to the Adobe Analytics server",
+    B: "Defines data in a single location and reuses it across multiple rules",
+    C: "Grants access to Data Feeds",
+    D: "Defines Segmentation logic"
+  },
+  answer: "B",
+  explanation: "Data Element는 데이터를 수집하기 위한 중앙 집중식 위치 역할을 하며, Launch의 여러 규칙 및 확장에서 참조하고 재사용할 수 있습니다."
+},
+{
+  id: 195,
+  question: "What is the best implementation practice for a Digital Data Layer?",
+  options: {
+    A: "Parsing the page URL to extract data",
+    B: "Scraping data directly from the HTML DOM",
+    C: "Structuring and standardizing data in a JavaScript object",
+    D: "Storing all data in cookies"
+  },
+  answer: "C",
+  explanation: "가장 좋은 방법은 JavaScript 개체를 사용하여 필요한 데이터를 웹사이트 코드와 태그 관리 시스템 간의 표준화되고 구조화된 인터페이스로 노출하는 것입니다."
+},
+{
+  id: 196,
+  question: "What is the standard metric used in Adobe Analytics to calculate the maximum number of page views per session?",
+  options: {
+    A: "Unique Visitors",
+    B: "Page Views",
+    C: "Visits",
+    D: "Bounces"
+  },
+  answer: "B",
+  explanation: "페이지 보기(Page Views)는 방문(Visits)당 사용자 세션 내에서 발생한 페이지 로드의 수를 계산하는 기본 지표입니다."
+},
+{
+  id: 197,
+  question: "What is the role of 'Context Data Variables' within Processing Rules?",
+  options: {
+    A: "Enabling access to Data Feeds",
+    B: "Directly assigning values to eVars and Props from Launch",
+    C: "Temporary variables used to assign values to report suite variables",
+    D: "Storing all visitor segments"
+  },
+  answer: "C",
+  explanation: "Context Data Variables (c.xx)는 처리 규칙 내에서 eVar, Prop 및 Events와 같은 실제 보고서 세트 변수에 값을 할당하는 데 사용되는 임시 키-값 쌍입니다."
+},
+{
+  id: 198,
+  question: "What is the tool used to filter or subset data in Adobe Analytics?",
+  options: {
+    A: "Processing Rules",
+    B: "Data Feeds",
+    C: "Segments",
+    D: "Classifications"
+  },
+  answer: "C",
+  explanation: "세그먼트는 보고서 세트에 수집된 전체 데이터 세트에서 방문자, 방문 또는 히트의 부분 집합을 필터링하고 분리하는 데 사용됩니다."
+},
+{
+  id: 199,
+  question: "What is the main use case for 'Linear Allocation' for a Conversion Variable (eVar)?",
+  options: {
+    A: "Crediting only the first value that led to a success event",
+    B: "Crediting only the last value that led to a success event",
+    C: "Crediting all values that occurred up to a success event equally",
+    D: "Calculating unique values per visitor"
+  },
+  answer: "C",
+  explanation: "Linear Allocation (선형 배분)은 성공 이벤트가 발생하기 전에 설정된 모든 eVar 값에 균등하게 기여도를 분산합니다. 예를 들어, 여러 마케팅 터치포인트가 구매에 기여한 경우에 유용합니다."
+},
+{
+  id: 200,
+  question: "What is the main purpose of setting up Internal URL Filters in Adobe Analytics?",
+  options: {
+    A: "To identify unique visitors",
+    B: "To classify traffic coming from search engines",
+    C: "To track links leading outside the website",
+    D: "To define which domains should be considered part of the company's own website"
+  },
+  answer: "D",
+  explanation: "내부 URL 필터는 Adobe Analytics가 어떤 도메인을 웹사이트의 일부로 간주해야 하는지 정의합니다. 이는 이탈률, 종료 링크 등을 정확하게 계산하는 데 중요합니다."
+},
+{
+  id: 201,
+  question: "When setting an eVar in Adobe Analytics, what does the 'Expiration' setting determine?",
+  options: {
+    A: "The date when the eVar expires from the report suite",
+    B: "The maximum time the eVar value can appear in reports",
+    C: "The duration the eVar value persists (visitor or visitor session)",
+    D: "The maximum number of events for which the eVar remains active"
+  },
+  answer: "C",
+  explanation: "Expiration (만료) 설정은 eVar에 설정된 값이 추적 호출에서 Analytics로 전송된 후 얼마나 오랫동안 방문자에게 지속될지(예: Hit, Visit, 7 Days, Never) 결정합니다."
+},
+{
+  id: 202,
+  question: "What is the main use case for 'Classifications' in Adobe Analytics?",
+  options: {
+    A: "Assigning values to report suite variables",
+    B: "Importing metadata about collected data and showing it in reports",
+    C: "Exporting Data Feed files",
+    D: "Processing real-time data"
+  },
+  answer: "B",
+  explanation: "분류는 이미 수집된 데이터에 대한 추가적인 메타데이터(예: 캠페인 코드를 캠페인 이름, 비용 등으로 매핑)를 업로드하여 보고서에 표시하는 데 사용됩니다."
+},
+{
+  id: 203,
+  question: "If a Digital Data Layer is used, what is the most common method for populating a Data Element?",
+  options: {
+    A: "Using the Custom Code type",
+    B: "Using the CSS Selector type",
+    C: "Using the JavaScript Variable type",
+    D: "Using the Cookie type"
+  },
+  answer: "C",
+  explanation: "디지털 데이터 레이어는 일반적으로 JavaScript 개체(변수)로 구현되므로, Launch에서 이 데이터에 액세스하는 가장 직접적이고 일반적인 방법은 'JavaScript Variable' 데이터 요소 유형을 사용하는 것입니다."
+},
+{
+  id: 204,
+  question: "Which function is used to perform Custom Link Tracking in an Adobe Analytics implementation?",
+  options: {
+    A: "s.t()",
+    B: "s.tl()",
+    C: "s.link()",
+    D: "s.trackLink()"
+  },
+  answer: "B",
+  explanation: "s.tl() 함수는 페이지 보기 히트를 발생시키지 않고(non-page view) 특정 이벤트를 추적하기 위해 Adobe Analytics에서 사용자 정의 링크 추적에 사용되는 표준 함수입니다."
+},
+{
+  id: 205,
+  question: "What file formats can be included in a Data Feed? (Select all that apply)",
+  options: {
+    A: "CSV",
+    B: "JSON",
+    C: "TSV",
+    D: "XML"
+  },
+  answer: ["A", "C"],
+  explanation: "Adobe Analytics 데이터 피드는 일반적으로 탭으로 구분된 값(TSV) 또는 쉼표로 구분된 값(CSV) 파일 형식으로 제공됩니다."
+},
+{
+  id: 206,
+  question: "What is the main purpose of 'Multi-suite Tagging' in Adobe Analytics?",
+  options: {
+    A: "To send a single hit to two or more report suites",
+    B: "To migrate visitor IDs to a different organization",
+    C: "To disable real-time reporting capabilities",
+    D: "To restrict access to Data Warehouse"
+  },
+  answer: "A",
+  explanation: "다중 보고서 세트 태깅은 한 번의 추적 호출에서 수집된 데이터를 여러 보고서 세트로 전송하여, 예를 들어 글로벌 보고서 세트와 지역별 보고서 세트를 모두 채우는 데 사용됩니다."
+},
+{
+  id: 207,
+  question: "What does setting the 'Expiration' of an eVar to 'Visit' mean?",
+  options: {
+    A: "The eVar value persists only on the day it was set.",
+    B: "The eVar value persists until the visitor returns again.",
+    C: "The eVar value persists only for the duration of the current visit (session).",
+    D: "The eVar value persists for 30 days."
+  },
+  answer: "C",
+  explanation: "'Visit'으로 설정하면 eVar 값은 현재 방문(세션) 동안 설정된 모든 후속 히트에 지속됩니다. 방문이 종료되면 값은 더 이상 지속되지 않습니다."
+},
+{
+  id: 208,
+  question: "What is the primary use case for using Regular Expressions within Processing Rules?",
+  options: {
+    A: "To export data to classification files",
+    B: "To parse and manipulate variable values based on specific character patterns",
+    C: "To enable multi-suite tagging",
+    D: "To assist in creating segment definitions"
+  },
+  answer: "B",
+  explanation: "정규 표현식은 처리 규칙에서 페이지 URL, 레퍼러 등과 같은 변수의 값 내에서 특정 문자 패턴을 찾아 추출하거나 대체하는 데 사용됩니다."
+},
+{
+  id: 209,
+  question: "What does the 'Custom Insight' event type in Adobe Analytics measure?",
+  options: {
+    A: "The number of page loads",
+    B: "Monetary value (e.g., revenue)",
+    C: "Time measurement (e.g., time spent)",
+    D: "Counter values (e.g., number of downloads, clicks)"
+  },
+  answer: "D",
+  explanation: "Custom Insight 이벤트는 단순히 발생 횟수를 세는 데 사용되는 표준 카운터 이벤트입니다."
+},
+{
+  id: 210,
+  question: "If the s.pageName variable is NOT set in the AppMeasurement library, what does Adobe Analytics default to for the page name?",
+  options: {
+    A: "The page URL",
+    B: "The page title (s.pageTitle)",
+    C: "No page is recorded",
+    D: "An auto-assigned ID"
+  },
+  answer: "B",
+  explanation: "s.pageName 변수가 설정되지 않으면 AppMeasurement 코드는 일반적으로 HTML `<title>` 태그의 콘텐츠인 s.pageTitle의 값을 페이지 이름으로 대체하여 사용합니다."
+},
+{
+  id: 211,
+  question: "When sending product data using the s.products variable, what delimiter should separate each product?",
+  options: {
+    A: "Comma (',')",
+    B: "Semicolon (';')",
+    C: "Colon (':')",
+    D: "Pipe ('|')"
+  },
+  answer: "B",
+  explanation: "s.products 문자열 내에서 여러 제품 항목은 세미콜론(;)으로 구분되어야 합니다. 각 제품 항목 내의 필드는 파이프(|)로 구분됩니다."
+},
+{
+  id: 212,
+  question: "Which Adobe Experience Platform technology is required for Activity Map (formerly ClickMap) to function?",
+  options: {
+    A: "Target",
+    B: "Audience Manager",
+    C: "Experience Cloud ID Service (ECID)",
+    D: "AEP Launch (Tags)"
+  },
+  answer: "D",
+  explanation: "Activity Map은 최신 AppMeasurement 라이브러리를 통해 구현되며, 이 라이브러리는 일반적으로 AEP Launch(Tags)를 통해 배포됩니다."
+},
+{
+  id: 213,
+  question: "What is the main purpose of a 'Data Source' upload in Adobe Analytics?",
+  options: {
+    A: "To enable server-side transformations",
+    B: "To import offline or external data without Adobe Analytics tracking code",
+    C: "To improve the speed of real-time report refresh",
+    D: "To automate Data Feed generation"
+  },
+  answer: "B",
+  explanation: "데이터 소스는 Adobe Analytics 추적 호출과 별개로(오프라인, CRM 등) 외부 데이터를 가져와 Analytics 데이터에 연결하는 데 사용됩니다."
+},
+{
+  id: 214,
+  question: "What value does the 'Last Allocation' setting of an eVar credit for a purchase?",
+  options: {
+    A: "The first value that caused the purchase",
+    B: "The last eVar value set immediately before the purchase event",
+    C: "All values set during the visit",
+    D: "The most recently set value"
+  },
+  answer: "B",
+  explanation: "Last Allocation (마지막 배분)은 성공 이벤트(예: 구매)가 발생하기 전에 설정된 해당 eVar의 마지막 값에 100% 기여도를 부여합니다."
+},
+{
+  id: 215,
+  question: "In custom link tracking (s.tl()), what does the s.linkType variable setting 'o' indicate?",
+  options: {
+    A: "Exit Link",
+    B: "Download Link",
+    C: "Other Link",
+    D: "Page View"
+  },
+  answer: "C",
+  explanation: "s.linkType은 'o'(Other), 'd'(Download), 'e'(Exit) 중 하나를 사용하여 링크의 유형을 지정합니다. 'o'는 사용자 정의 링크 추적에 사용되는 일반적인 유형입니다."
+},
+{
+  id: 216,
+  question: "The data for 'Geo-Segmentation' in Adobe Analytics is primarily derived from which source?",
+  options: {
+    A: "Extracted from the HTML DOM",
+    B: "Passed from the ECID service",
+    C: "Looked up from the IP address",
+    D: "Extracted from the s.eVar1 variable"
+  },
+  answer: "C",
+  explanation: "지역 세분화 데이터(국가, 도시 등)는 히트를 보낸 방문자의 IP 주소를 조회하여 Adobe Analytics에 의해 수집 및 처리됩니다."
+},
+{
+  id: 217,
+  question: "Which variable CANNOT be set directly using Processing Rules?",
+  options: {
+    A: "eVar",
+    B: "Prop",
+    C: "Context Data Variables",
+    D: "Events"
+  },
+  answer: "C",
+  explanation: "처리 규칙은 이미 컨텍스트 데이터 변수(c.xx)에 있는 값을 eVar, Prop 또는 Event와 같은 표준 보고서 변수에 매핑하는 데 사용됩니다. 처리 규칙 자체에서 컨텍스트 데이터 변수를 생성할 수는 없습니다."
+},
+{
+  id: 218,
+  question: "What is the main purpose of the Adobe Experience Platform Debugger (formerly Experience Cloud Debugger)?",
+  options: {
+    A: "To export Data Feed files",
+    B: "To validate and debug Analytics tracking calls in real time",
+    C: "To configure report suite settings",
+    D: "To create segmentation logic"
+  },
+  answer: "B",
+  explanation: "디버거는 웹사이트에서 전송되는 Adobe Analytics 및 기타 Experience Cloud 솔루션 추적 호출을 검사하고 유효성을 검사하는 데 사용되는 브라우저 확장 프로그램입니다."
+},
+{
+  id: 219,
+  question: "If a 'Data Element' in Adobe Analytics is set to the 'Cookie' type, what information is retrieved?",
+  options: {
+    A: "The content of a `<script>` tag in the HTML DOM",
+    B: "The value of a specified cookie in the visitor's browser",
+    C: "A query string parameter from the page URL",
+    D: "The value of a Context Data Variable"
+  },
+  answer: "B",
+  explanation: "'Cookie' 유형 데이터 요소는 지정된 이름의 쿠키에서 값을 검색하는 데 사용됩니다."
+},
+{
+  id: 220,
+  question: "What is the role of the `s.visitor.setCustomerIDs` function in an Adobe Analytics implementation?",
+  options: {
+    A: "To disable the ECID service",
+    B: "To pass customer-specific IDs to the Experience Cloud ID Service",
+    C: "To override the s_vi cookie value",
+    D: "To set the s.products variable"
+  },
+  answer: "B",
+  explanation: "`setCustomerIDs` 함수는 로그인한 사용자 ID와 같은 고객별 ID를 Experience Cloud ID 서비스로 전달하여 사용자 ID에 대한 교차 장치/솔루션 식별을 활성화합니다."
+},
+{
+  id: 221,
+  question: "What is the key benefit of the 'First Allocation' setting for an eVar?",
+  options: {
+    A: "Crediting the most recent marketing touchpoint",
+    B: "Crediting the initial discovery source",
+    C: "Crediting all intermediary touchpoints",
+    D: "Calculating value contribution over time"
+  },
+  answer: "B",
+  explanation: "First Allocation (첫 번째 배분)은 방문 또는 방문자 기간 동안 eVar에 설정된 첫 번째 값에 성공 이벤트에 대한 100% 기여도를 부여합니다. 이는 사용자를 유입시킨 최초의 소스를 평가하는 데 유용합니다."
+},
+{
+  id: 222,
+  question: "When implementing using Adobe Experience Platform Launch (Tags), what is the most common way to load the AppMeasurement library?",
+  options: {
+    A: "Directly embedding it using a `<script>` tag in HTML",
+    B: "Using the Adobe Analytics Extension",
+    C: "Using a Custom Code Data Element",
+    D: "Using Processing Rules"
+  },
+  answer: "B",
+  explanation: "Launch에서 Adobe Analytics 확장을 설치하고 구성하는 것이 AppMeasurement 라이브러리를 로드하고 기본 구성 및 추적을 처리하는 표준 방법입니다."
+},
+{
+  id: 223,
+  question: "When is the 'Time Spent on Page' metric NOT calculated in Adobe Analytics?",
+  options: {
+    A: "On the visitor's first page view",
+    B: "When the hit is sent with s.tl() instead of s.t()",
+    C: "When the page is the last page of the visit",
+    D: "When the page has a 100% bounce rate"
+  },
+  answer: "C",
+  explanation: "페이지 체류 시간은 현재 페이지 히트와 다음 페이지 히트 사이의 시간 간격으로 계산됩니다. 따라서 방문의 마지막 페이지에는 후속 페이지가 없기 때문에 체류 시간을 계산할 수 없습니다."
+},
+{
+  id: 224,
+  question: "What is the main purpose of generating a 'Data Feed' in Adobe Analytics?",
+  options: {
+    A: "To generate real-time reports",
+    B: "To export raw Analytics data to an offline system or external warehouse",
+    C: "To measure page load time",
+    D: "To import Data Sources"
+  },
+  answer: "B",
+  explanation: "데이터 피드는 각 Analytics 히트의 원시 데이터를 포함하는 파일을 생성하여 고객의 데이터 웨어하우스나 다른 비즈니스 인텔리전스 시스템으로 내보내는 데 사용됩니다."
+},
+{
+  id: 225,
+  question: "Which type of variables are used to set values in Processing Rules?",
+  options: {
+    A: "eVar (Conversion Variable)",
+    B: "Prop (Traffic Variable)",
+    C: "Events",
+    D: "All of the above"
+  },
+  answer: "D",
+  explanation: "처리 규칙은 컨텍스트 데이터 변수를 eVar, Prop 및 Events를 포함한 모든 표준 보고서 세트 변수에 매핑하거나 설정하는 데 사용할 수 있습니다."
+},
+{
+  id: 226,
+  question: "What are two Experience Cloud solution features that require the Experience Cloud ID Service? (Select 2)",
+  options: {
+    A: "A4T (Analytics for Target) Integration",
+    B: "Data Warehouse reports",
+    C: "Cross-Device Analytics (CDA)",
+    D: "Activity Map"
+  },
+  answer: ["A", "C"],
+  explanation: "A4T(Target-Analytics 통합)와 CDA(교차 장치 Analytics)는 모두 방문자에게 공통 ID를 제공하기 위해 Experience Cloud ID 서비스(ECID)를 필요로 합니다."
+},
+{
+  id: 227,
+  question: "In Analytics 'Segmentation', which of the three container types ('Hit', 'Visit', 'Visitor') is the broadest?",
+  options: {
+    A: "Hit",
+    B: "Visit",
+    C: "Visitor",
+    D: "Conversion"
+  },
+  answer: "C",
+  explanation: "Visitor 컨테이너는 방문자의 전체 기록(여러 방문 및 히트 포함)을 포함하므로 세 컨테이너 중 가장 광범위한 범위입니다."
+},
+{
+  id: 228,
+  question: "Which parameter in the s.tl() function is used to set the Link Name?",
+  options: {
+    A: "First parameter",
+    B: "Second parameter",
+    C: "Third parameter",
+    D: "Fourth parameter"
+  },
+  answer: "C",
+  explanation: "s.tl() 함수 구문은 `s.tl(linkObject, linkType, linkName, variableOverrides)`이며, 여기서 링크 이름은 세 번째 필수 매개변수입니다."
+},
+{
+  id: 229,
+  question: "What is a main advantage of collecting data using the 'Data Insertion API' in Analytics?",
+  options: {
+    A: "No browser-side coding is required",
+    B: "Enables real-time segmentation",
+    C: "Speeds up Data Feed generation",
+    D: "Direct access to Data Warehouse"
+  },
+  answer: "A",
+  explanation: "Data Insertion API는 서버 측 통신을 허용하여 클라이언트(브라우저) 측 JavaScript 코드를 사용하여 데이터를 수집할 필요 없이 HTTP 요청을 통해 데이터를 Adobe Analytics로 직접 보낼 수 있습니다."
+},
+{
+  id: 230,
+  question: "What does setting the 'Expiration' of an eVar to 'Never' mean?",
+  options: {
+    A: "The eVar value persists for 30 days.",
+    B: "The eVar value persists until the next visit.",
+    C: "The eVar value persists indefinitely for the visitor until overwritten or expired manually.",
+    D: "The eVar value persists only during the current visit."
+  },
+  answer: "C",
+  explanation: "'Never' 만료는 eVar 값이 방문자의 전체 기간 동안 지속되며, 방문자가 다시 돌아와도 새로운 값이 덮어쓰거나 만료되기 전까지는 원래 값이 모든 후속 히트에 계속 연결됨을 의미합니다."
+}
+
 
 ]; 
