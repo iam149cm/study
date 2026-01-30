@@ -114,7 +114,7 @@ export default function Home() {
             }`}>
               <h2 className="text-xl font-bold text-[#002d54] mb-4 flex items-center gap-2">
                 <span className="text-2xl">🥇</span>
-                실시간 금 시세
+                오늘의 금 시세
               </h2>
               {error ? (
                 <div className="space-y-4">
@@ -187,7 +187,7 @@ export default function Home() {
             }`}>
               <h2 className="text-xl font-bold text-[#002d54] mb-4 flex items-center gap-2 font-serif">
                 <span className="text-2xl">🥈</span>
-                실시간 은 시세
+                오늘의 은 시세
               </h2>
               {error ? (
                 <div className="space-y-4">
@@ -259,7 +259,7 @@ export default function Home() {
               error ? 'grayscale opacity-70 border-gray-600 animate-pulse' : 'border-[#002d54]'
             }`}>
               <h2 className="text-xl font-bold text-[#002d54] mb-4">
-                📊 실시간 환율
+                📊 오늘의 환율
               </h2>
               {error ? (
                 <div className="space-y-4">
